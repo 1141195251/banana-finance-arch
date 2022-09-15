@@ -1,2 +1,4 @@
 # banana-finance
-正在全力输入中..
+nacos port 8848
+redis port 6379
+swagger-doc localhost:9201/doc.html
