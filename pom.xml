@@ -27,6 +27,11 @@
     <spring-cloud-starter-oauth2.version>2.2.5.RELEASE</spring-cloud-starter-oauth2.version>
     <nimbus-jose-jwt.version>9.23</nimbus-jose-jwt.version>
     <knife4j.version>3.0.3</knife4j.version>
+    <druid.version>1.2.9</druid.version>
+    <mysql-connector.version>8.0.29</mysql-connector.version>
+    <jjwt.version>0.9.1</jjwt.version>
+    <mybatis-plus.version>3.5.1</mybatis-plus.version>
+    <velocity.version>2.3</velocity.version>
   </properties>
 
   <dependencyManagement>
@@ -62,6 +67,36 @@
         <groupId>com.github.xiaoymin</groupId>
         <artifactId>knife4j-spring-boot-starter</artifactId>
         <version>${knife4j.version}</version>
+      </dependency>
+      <!--MyBatis Plus 依赖-->
+      <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus-boot-starter</artifactId>
+        <version>${mybatis-plus.version}</version>
+      </dependency>
+      <!--MyBatis Plus 代码生成器-->
+      <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus-generator</artifactId>
+        <version>${mybatis-plus.version}</version>
+      </dependency>
+      <!--Velocity模板引擎-->
+      <dependency>
+        <groupId>org.apache.velocity</groupId>
+        <artifactId>velocity-engine-core</artifactId>
+        <version>${velocity.version}</version>
+      </dependency>
+      <!--集成druid连接池-->
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>druid-spring-boot-starter</artifactId>
+        <version>${druid.version}</version>
+      </dependency>
+      <!--Mysql数据库驱动-->
+      <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>${mysql-connector.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
