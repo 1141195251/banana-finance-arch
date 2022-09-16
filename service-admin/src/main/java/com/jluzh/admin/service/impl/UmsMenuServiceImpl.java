@@ -1,5 +1,6 @@
 package com.jluzh.admin.service.impl;
 
+import com.jluzh.admin.dto.UmsMenuNode;
 import com.jluzh.admin.model.UmsMenu;
 import com.jluzh.admin.mapper.UmsMenuMapper;
 import com.jluzh.admin.service.UmsMenuService;
@@ -22,8 +23,8 @@ import java.util.stream.Collectors;
  */
 @Service
 public class UmsMenuServiceImpl extends ServiceImpl<UmsMenuMapper, UmsMenu> implements UmsMenuService {
-//    @Autowired
-//    private UmsMenuMapper menuMapper;
+    @Autowired
+    private UmsMenuMapper menuMapper;
 //
 //    @Override
 //    public int create(UmsMenu umsMenu) {
@@ -76,14 +77,15 @@ public class UmsMenuServiceImpl extends ServiceImpl<UmsMenuMapper, UmsMenu> impl
 //        return menuMapper.selectByExample(example);
 //    }
 //
-//    @Override
-//    public List<UmsMenuNode> treeList() {
-//        List<UmsMenu> menuList = menuMapper.selectByExample(new UmsMenuExample());
-//        List<UmsMenuNode> result = menuList.stream()
-//                .filter(menu -> menu.getParentId().equals(0L))
-//                .map(menu -> covertMenuNode(menu, menuList)).collect(Collectors.toList());
-//        return result;
-//    }
+    @Override
+    public List<UmsMenuNode> treeList() {
+        List<UmsMenu> menuList =  baseMapper.selectList(null);
+        List<UmsMenuNode> result = menuList.stream()
+                // 先筛选出一级菜单
+                .filter(menu -> menu.getParentId().equals(0L))
+                .map(menu -> covertMenuNode(menu, menuList)).collect(Collectors.toList());
+        return result;
+    }
 //
 //    @Override
 //    public int updateHidden(Long id, Integer hidden) {
@@ -93,16 +95,21 @@ public class UmsMenuServiceImpl extends ServiceImpl<UmsMenuMapper, UmsMenu> impl
 //        return menuMapper.updateByPrimaryKeySelective(umsMenu);
 //    }
 //
-//    /**
-//     * 将UmsMenu转化为UmsMenuNode并设置children属性
-//     */
-//    private UmsMenuNode covertMenuNode(UmsMenu menu, List<UmsMenu> menuList) {
-//        UmsMenuNode node = new UmsMenuNode();
-//        BeanUtils.copyProperties(menu, node);
-//        List<UmsMenuNode> children = menuList.stream()
-//                .filter(subMenu -> subMenu.getParentId().equals(menu.getId()))
-//                .map(subMenu -> covertMenuNode(subMenu, menuList)).collect(Collectors.toList());
-//        node.setChildren(children);
-//        return node;
-//    }
+
+    /**
+     * 将UmsMenu转化为UmsMenuNode并设置children属性
+     * @param menu 需要转换为节点的一级菜单
+     * @param menuList 源菜单列表
+     * @return 包含子菜单的菜单节点
+     */
+    private UmsMenuNode covertMenuNode(UmsMenu menu, List<UmsMenu> menuList) {
+        UmsMenuNode node = new UmsMenuNode();
+        BeanUtils.copyProperties(menu, node);
+        List<UmsMenuNode> children = menuList.stream()
+                .filter(subMenu -> subMenu.getParentId().equals(menu.getId()))
+                // 迭代
+                .map(subMenu -> covertMenuNode(subMenu, menuList)).collect(Collectors.toList());
+        node.setChildren(children);
+        return node;
+    }
 }
