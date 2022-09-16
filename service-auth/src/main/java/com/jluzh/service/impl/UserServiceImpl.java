@@ -15,7 +15,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -31,7 +30,7 @@ public class UserServiceImpl implements UserDetailsService {
 
     /**
      *
-     * @param username 来自外部输入的用户名
+     * @param username 用户输入的用户名
      * @return 封装后的用户信息
      * @throws UsernameNotFoundException 用户名未找到异常
      */
@@ -39,9 +38,12 @@ public class UserServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         String clientId = request.getParameter("client_id");
         UserDto userDto = null;
-        if(AuthConstant.ADMIN_CLIENT_ID.equals(clientId)){
+        // 当前认证的客户端是后台客户端时
+        if(AuthConstant.ADMIN_CLIENT_ID.equals(clientId)) {
             // 数据库获取通用用户
             userDto = adminService.loadUserByUsername(username);
+        }else{
+            userDto = adminService.loadUserByUsername(username);  // TODO 从前台用户服务获取用户信息
         }
         if (userDto==null) {
             throw new UsernameNotFoundException(MessageConstant.USERNAME_PASSWORD_ERROR);

@@ -42,8 +42,15 @@ public class Oauth2ServerConfig extends AuthorizationServerConfigurerAdapter {
                 .secret(passwordEncoder.encode("123456")) // 配置客户端密钥
                 .scopes("all") // 配置申请的权限范围
                 .authorizedGrantTypes("password", "refresh_token") // 配置grant_type 表示授权类型
-                .accessTokenValiditySeconds(3600) // 配置访问token的有效期
-                .refreshTokenValiditySeconds(86400); // 配置刷新token的有效期
+                .accessTokenValiditySeconds(3600*24) // 配置访问token的有效期
+                .refreshTokenValiditySeconds(3600*24*7) // 配置刷新token的有效期
+                .and()
+                .withClient("portal-app")
+                .secret(passwordEncoder.encode("123456"))
+                .scopes("all")
+                .authorizedGrantTypes("password", "refresh_token")
+                .accessTokenValiditySeconds(3600*24)
+                .refreshTokenValiditySeconds(3600*24*7);
     }
 
     @Override
@@ -68,7 +75,7 @@ public class Oauth2ServerConfig extends AuthorizationServerConfigurerAdapter {
     public JwtAccessTokenConverter accessTokenConverter() {
         JwtAccessTokenConverter jwtAccessTokenConverter = new JwtAccessTokenConverter();
         jwtAccessTokenConverter.setKeyPair(keyPair());
-        return jwtAccessTokenConverter; //生成令牌转换器
+        return jwtAccessTokenConverter; // 生成令牌转换器
     }
 
     @Bean

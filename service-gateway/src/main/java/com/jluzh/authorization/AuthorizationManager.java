@@ -65,9 +65,11 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
             JWSObject jwsObject = JWSObject.parse(realToken);
             String userStr = jwsObject.getPayload().toString();
             UserDto userDto = JSONUtil.toBean(userStr, UserDto.class);
+            // 请求来源是后台客户端但是URL不是去后台接口
             if (AuthConstant.ADMIN_CLIENT_ID.equals(userDto.getClientId()) && !pathMatcher.match(AuthConstant.ADMIN_URL_PATTERN, uri.getPath())) {
                 return Mono.just(new AuthorizationDecision(false));
             }
+            // TODO 请求来源是前台客户端但是URL去的是后台接口
             if (AuthConstant.PORTAL_CLIENT_ID.equals(userDto.getClientId()) && pathMatcher.match(AuthConstant.ADMIN_URL_PATTERN, uri.getPath())) {
                 return Mono.just(new AuthorizationDecision(false));
             }
@@ -75,11 +77,11 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
             e.printStackTrace();
             return Mono.just(new AuthorizationDecision(false));
         }
-        //非管理端路径直接放行
+        // 非管理端路径直接放行
         if (!pathMatcher.match(AuthConstant.ADMIN_URL_PATTERN, uri.getPath())) {
             return Mono.just(new AuthorizationDecision(true));
         }
-        //管理端路径需校验权限
+        // 管理端路径需校验权限
         Map<Object, Object> resourceRolesMap = redisTemplate.opsForHash().entries(AuthConstant.RESOURCE_ROLES_MAP_KEY);
         Iterator<Object> iterator = resourceRolesMap.keySet().iterator();
         List<String> authorities = new ArrayList<>();
@@ -91,7 +93,7 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
         }
         // 添加前缀
         authorities = authorities.stream().map(i -> i = AuthConstant.AUTHORITY_PREFIX + i).collect(Collectors.toList());
-        //认证通过且角色匹配的用户可访问当前路径
+        // 认证通过且角色匹配的用户可访问当前路径
         return mono
                 .filter(Authentication::isAuthenticated)
                 .flatMapIterable(Authentication::getAuthorities)

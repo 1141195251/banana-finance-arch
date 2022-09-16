@@ -99,7 +99,8 @@ public class UmsAdminServiceImpl extends ServiceImpl<UmsAdminMapper, UmsAdmin> i
             Asserts.fail("用户名或密码不能为空！");
         }
         Map<String, String> params = new HashMap<>();
-        params.put("client_id", AuthConstant.ADMIN_CLIENT_ID);
+        // 前台登录用PORTAL_CLIENT_ID 后台ADMIN_CLIENT_ID
+        params.put("client_id", AuthConstant.PORTAL_CLIENT_ID);
         params.put("client_secret","123456");
         params.put("grant_type","password");
         params.put("username",username);

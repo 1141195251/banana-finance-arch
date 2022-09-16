@@ -14,14 +14,16 @@ public interface AuthConstant {
     @ApiModelProperty("JWT存储权限属性")
     String AUTHORITY_CLAIM_NAME = "authorities";
 
-    @ApiModelProperty("后台管理client_id")
+    @ApiModelProperty("后台客户端client_id")
     String ADMIN_CLIENT_ID = "client-app";
 
-    @ApiModelProperty("前台商城client_id")
+    @ApiModelProperty("前台客户端client_id")
     String PORTAL_CLIENT_ID = "portal-app";
 
+    // TODO 后台接口待完善
+    // url应该指向权限管理接口
     @ApiModelProperty("后台管理接口路径匹配")
-    String ADMIN_URL_PATTERN = "/service-api/**";
+    String ADMIN_URL_PATTERN = "/service-admin/**";
 
     @ApiModelProperty("Redis缓存权限规则key")
     String RESOURCE_ROLES_MAP_KEY = "AUTH:RESOURCE_ROLES_MAP";
