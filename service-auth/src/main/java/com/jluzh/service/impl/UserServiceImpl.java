@@ -1,9 +1,11 @@
 package com.jluzh.service.impl;
 
-import cn.hutool.core.collection.CollUtil;
+import com.jluzh.constant.AuthConstant;
 import com.jluzh.constant.MessageConstant;
 import com.jluzh.domain.SecurityUser;
 import com.jluzh.domain.UserDto;
+import com.jluzh.service.UmsAdminService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AccountExpiredException;
 import org.springframework.security.authentication.CredentialsExpiredException;
 import org.springframework.security.authentication.DisabledException;
@@ -11,14 +13,10 @@ import org.springframework.security.authentication.LockedException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * 用户管理业务类
@@ -26,21 +24,10 @@ import java.util.stream.Collectors;
  */
 @Service
 public class UserServiceImpl implements UserDetailsService {
-
-    private List<UserDto> userList;
-    @Resource
-    private PasswordEncoder passwordEncoder;
-
-    /**
-     * 假装是在数据库获取加载到DTO对象
-     */
-    @PostConstruct
-    public void initData() {
-        String password = passwordEncoder.encode("123456");
-        userList = new ArrayList<>();
-        userList.add(new UserDto(1L,"macro", password,1, "client-app", CollUtil.toList("ADMIN")));
-        userList.add(new UserDto(2L,"andy", password,1, "client-app", CollUtil.toList("TEST")));
-    }
+    @Autowired
+    private HttpServletRequest request;
+    @Autowired
+    private UmsAdminService adminService;
 
     /**
      *
@@ -50,14 +37,17 @@ public class UserServiceImpl implements UserDetailsService {
      */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        // TODO 从数据库的用户信息和外部输入的用户信息比对
-        List<UserDto> findUserList = userList.stream().filter(item -> item.getUsername().equals(username)).collect(Collectors.toList());
-        // 未找到用户信息抛出异常
-        if (!CollUtil.isEmpty(findUserList)) {
+        String clientId = request.getParameter("client_id");
+        UserDto userDto = null;
+        if(AuthConstant.ADMIN_CLIENT_ID.equals(clientId)){
+            // 数据库获取通用用户
+            userDto = adminService.loadUserByUsername(username);
+        }
+        if (userDto==null) {
             throw new UsernameNotFoundException(MessageConstant.USERNAME_PASSWORD_ERROR);
         }
-        //
-        SecurityUser securityUser = new SecurityUser(userList.get(0));
+        userDto.setClientId(clientId);
+        SecurityUser securityUser = new SecurityUser(userDto);
         if (!securityUser.isEnabled()) {
             throw new DisabledException(MessageConstant.ACCOUNT_DISABLED);
         } else if (!securityUser.isAccountNonLocked()) {

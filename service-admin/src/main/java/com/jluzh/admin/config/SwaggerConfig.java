@@ -17,7 +17,7 @@ public class SwaggerConfig extends BaseSwaggerConfig {
     @Override
     public SwaggerProperties swaggerProperties() {
         return SwaggerProperties.builder()
-                .apiBasePackage("com.jluzh.controller")
+                .apiBasePackage("com.jluzh.admin.controller")
                 .title("权限管理接口中心")
                 .description("权限管理接口中心相关接口文档")
                 .contactName("banana")
