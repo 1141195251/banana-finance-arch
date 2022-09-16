@@ -32,6 +32,7 @@
     <jjwt.version>0.9.1</jjwt.version>
     <mybatis-plus.version>3.5.1</mybatis-plus.version>
     <velocity.version>2.3</velocity.version>
+    <logstash-logback.version>5.3</logstash-logback.version>
   </properties>
 
   <dependencyManagement>
@@ -97,6 +98,12 @@
         <groupId>mysql</groupId>
         <artifactId>mysql-connector-java</artifactId>
         <version>${mysql-connector.version}</version>
+      </dependency>
+      <!--集成logstash-->
+      <dependency>
+        <groupId>net.logstash.logback</groupId>
+        <artifactId>logstash-logback-encoder</artifactId>
+        <version>${logstash-logback.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
