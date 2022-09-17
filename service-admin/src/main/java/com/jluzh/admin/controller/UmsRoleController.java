@@ -27,15 +27,15 @@ public class UmsRoleController {
     @Resource(name = "umsRoleServiceImpl")
     private UmsRoleService roleService;
 
-//    @ApiOperation("添加角色")
-//    @PostMapping("/create")
-//    public CommonResult create(@RequestBody UmsRole role) {
-//        int count = roleService.create(role);
-//        if (count > 0) {
-//            return CommonResult.success(count);
-//        }
-//        return CommonResult.failed();
-//    }
+    @ApiOperation("添加角色")
+    @PostMapping("/create")
+    public CommonResult create(@RequestBody UmsRole role) {
+        int count = roleService.create(role);
+        if (count > 0) {
+            return CommonResult.success(count);
+        }
+        return CommonResult.failed();
+    }
 
 //    @ApiOperation("修改角色")
 //    @PostMapping("/update/{id}")

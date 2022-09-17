@@ -19,10 +19,10 @@ import java.util.List;
 public interface UmsRoleService extends IService<UmsRole> {
     /**
      * 添加角色
-     *//*
+     */
     int create(UmsRole role);
 
-    *//**
+    /**
      * 修改角色信息
      *//*
     int update(Long id, UmsRole role);
@@ -44,10 +44,10 @@ public interface UmsRoleService extends IService<UmsRole> {
 
     *//**
      * 根据管理员ID获取对应菜单
-     *//*
+     */
     List<UmsMenu> getMenuList(Long adminId);
 
-    */
+
     /**
      * 获取角色相关菜单
      */

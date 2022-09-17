@@ -12,5 +12,5 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @since 2022-09-15
  */
 public interface UmsAdminMapper extends BaseMapper<UmsAdmin> {
-
+    int updateByPrimaryKeySelective(UmsAdmin record);
 }

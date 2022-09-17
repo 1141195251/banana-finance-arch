@@ -1,13 +1,12 @@
 package com.jluzh.admin.controller;
 
 
+import com.jluzh.admin.dto.AsyncMenu;
 import com.jluzh.admin.dto.UmsMenuNode;
-import com.jluzh.admin.model.UmsMenu;
 import com.jluzh.admin.service.UmsMenuService;
 import com.jluzh.api.CommonResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -27,6 +26,15 @@ import java.util.List;
 public class UmsMenuController {
     @Resource(name = "umsMenuServiceImpl")
     private UmsMenuService menuService;
+
+
+    @ApiOperation("根据roleId加载异步路由菜单")
+    @GetMapping("/initRoutesByRoleId/{roleId}")
+    public  CommonResult initRoutesByRoleId(@PathVariable Long roleId) {
+        // TODO 还要加载没有roleId关联的菜单 这种情况默认是不需要权限
+        List<AsyncMenu> list = menuService.asyncList(roleId);
+        return CommonResult.success(list);
+    }
 
 //    @ApiOperation("添加后台菜单")
 //    @PostMapping("/create")

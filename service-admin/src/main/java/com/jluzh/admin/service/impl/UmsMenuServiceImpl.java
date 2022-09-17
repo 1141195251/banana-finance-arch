@@ -1,16 +1,26 @@
 package com.jluzh.admin.service.impl;
 
+import cn.hutool.json.JSON;
+import cn.hutool.json.JSONArray;
+import cn.hutool.json.JSONObject;
+import cn.hutool.json.JSONUtil;
+import com.jluzh.admin.dto.AsyncMenu;
+import com.jluzh.admin.dto.AuthProp;
+import com.jluzh.admin.dto.PageProp;
 import com.jluzh.admin.dto.UmsMenuNode;
 import com.jluzh.admin.model.UmsMenu;
 import com.jluzh.admin.mapper.UmsMenuMapper;
 import com.jluzh.admin.service.UmsMenuService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.jluzh.admin.service.UmsRoleService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -25,6 +35,8 @@ import java.util.stream.Collectors;
 public class UmsMenuServiceImpl extends ServiceImpl<UmsMenuMapper, UmsMenu> implements UmsMenuService {
     @Autowired
     private UmsMenuMapper menuMapper;
+    @Autowired
+    private UmsRoleService roleService;
 //
 //    @Override
 //    public int create(UmsMenu umsMenu) {
@@ -86,6 +98,56 @@ public class UmsMenuServiceImpl extends ServiceImpl<UmsMenuMapper, UmsMenu> impl
                 .map(menu -> covertMenuNode(menu, menuList)).collect(Collectors.toList());
         return result;
     }
+
+    @Override
+    public List<AsyncMenu> asyncList(Long roleId) {
+        List<UmsMenu> umsMenus = roleService.listMenu(roleId);
+        AsyncMenu asyncMenu = initRoot(umsMenus, roleId);
+        List<AsyncMenu> asyncMenus = new ArrayList<>();
+        asyncMenus.add(asyncMenu);
+        return asyncMenus;
+    }
+
+    private AsyncMenu initRoot(List<UmsMenu> menuList, Long roleId) {
+        AsyncMenu asyncMenu = new AsyncMenu();
+        asyncMenu.setRouter("root");
+        asyncMenu.setChildren(convertAsyncMenuList(menuList, roleId));
+        // TODO 用配置文件解耦
+        asyncMenu.setAuthority(null);
+        asyncMenu.setName("首页");
+        asyncMenu.setInvisible(false);
+        PageProp pageProp = new PageProp();
+        pageProp.setTitle("首页");
+        asyncMenu.setPage(pageProp);
+        return asyncMenu;
+    }
+    private List<AsyncMenu> convertAsyncMenuList(List<UmsMenu> menuList, Long roleId) {
+        List<AsyncMenu> collect = menuList.stream()
+                .filter(umsMenu -> umsMenu.getParentId().equals(0L))
+                .map(umsMenu -> convertAsyncMenu(umsMenu, menuList, roleId))
+                .collect(Collectors.toList());
+        return collect;
+    }
+
+    private AsyncMenu convertAsyncMenu(UmsMenu umsMenu, List<UmsMenu> menuList, Long roleId) {
+        AsyncMenu asyncMenu = new AsyncMenu();
+        asyncMenu.setRouter(umsMenu.getName());
+        asyncMenu.setName(umsMenu.getTitle());
+        asyncMenu.setInvisible(umsMenu.getHidden() == 1 ? true : false);
+        asyncMenu.setIcon(umsMenu.getIcon());
+        PageProp pageProp = new PageProp();
+        pageProp.setTitle(umsMenu.getTitle());
+        asyncMenu.setPage(pageProp);
+        AuthProp authProp = new AuthProp();
+        authProp.setRole(roleId.toString());
+        asyncMenu.setAuthority(authProp);
+        List<AsyncMenu> result = menuList.stream()
+                .filter(subMenu -> subMenu.getParentId().equals(umsMenu.getId()))
+                .map(subMenu -> convertAsyncMenu(subMenu, menuList, roleId)).collect(Collectors.toList());
+        asyncMenu.setChildren(result);
+        return asyncMenu;
+    }
+
 //
 //    @Override
 //    public int updateHidden(Long id, Integer hidden) {

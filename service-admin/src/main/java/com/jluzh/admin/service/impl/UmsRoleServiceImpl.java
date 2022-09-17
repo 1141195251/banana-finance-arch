@@ -23,8 +23,6 @@ import java.util.List;
 @Service
 public class UmsRoleServiceImpl extends ServiceImpl<UmsRoleMapper, UmsRole> implements UmsRoleService {
 //    @Autowired
-//    private UmsRoleMapper roleMapper;
-//    @Autowired
 //    private UmsRoleMenuRelationMapper roleMenuRelationMapper;
 //    @Autowired
 //    private UmsRoleResourceRelationMapper roleResourceRelationMapper;
@@ -32,13 +30,13 @@ public class UmsRoleServiceImpl extends ServiceImpl<UmsRoleMapper, UmsRole> impl
     private UmsRoleMapper roleMapper;
 //    @Autowired
 //    private UmsResourceService resourceService;
-//    @Override
-//    public int create(UmsRole role) {
-//        role.setCreateTime(new Date());
-//        role.setAdminCount(0);
-//        role.setSort(0);
-//        return roleMapper.insert(role);
-//    }
+    @Override
+    public int create(UmsRole role) {
+        role.setCreateTime(new Date());
+        role.setAdminCount(0);
+        role.setSort(0);
+        return roleMapper.insert(role);
+    }
 //
 //    @Override
 //    public int update(Long id, UmsRole role) {
@@ -70,10 +68,10 @@ public class UmsRoleServiceImpl extends ServiceImpl<UmsRoleMapper, UmsRole> impl
 //        return roleMapper.selectByExample(example);
 //    }
 //
-//    @Override
-//    public List<UmsMenu> getMenuList(Long adminId) {
-//        return roleDao.getMenuList(adminId);
-//    }
+    @Override
+    public List<UmsMenu> getMenuList(Long adminId) {
+        return roleMapper.getMenuList(adminId);
+    }
 //
     @Override
     public List<UmsMenu> listMenu(Long roleId) {

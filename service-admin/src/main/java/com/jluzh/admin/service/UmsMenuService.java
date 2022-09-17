@@ -1,5 +1,6 @@
 package com.jluzh.admin.service;
 
+import com.jluzh.admin.dto.AsyncMenu;
 import com.jluzh.admin.dto.UmsMenuNode;
 import com.jluzh.admin.model.UmsMenu;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -46,6 +47,7 @@ public interface UmsMenuService extends IService<UmsMenu> {
      */
     List<UmsMenuNode> treeList();
 
+    List<AsyncMenu> asyncList(Long roleId);
     /**
      * 修改菜单显示状态
      *//*
