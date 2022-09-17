@@ -1,5 +1,6 @@
 package com.jluzh.admin.model;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
@@ -9,7 +10,7 @@ import lombok.Setter;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author banana
@@ -27,16 +28,19 @@ public class UmsRoleOperation implements Serializable {
     private Long roleId;
 
     @ApiModelProperty("添加操作")
+    @TableField(value = "`add`")
     private String add;
 
     @ApiModelProperty("编辑操作")
+    @TableField(value = "`edit`")
     private String edit;
 
     @ApiModelProperty("删除操作")
+    @TableField(value = "`delete`")
     private String delete;
 
     @ApiModelProperty("查询操作")
+    @TableField(value = "`find`")
     private String find;
-
 
 }

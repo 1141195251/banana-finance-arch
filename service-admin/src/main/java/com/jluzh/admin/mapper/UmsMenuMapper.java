@@ -12,5 +12,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @since 2022-09-15
  */
 public interface UmsMenuMapper extends BaseMapper<UmsMenu> {
+    UmsMenu selectByPrimaryKey(Long id);
+    int updateByPrimaryKeySelective(UmsMenu record);
+    int updateByPrimaryKey(UmsMenu record);
 
 }

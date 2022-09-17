@@ -37,38 +37,38 @@ public class UmsMenuServiceImpl extends ServiceImpl<UmsMenuMapper, UmsMenu> impl
     private UmsMenuMapper menuMapper;
     @Autowired
     private UmsRoleService roleService;
+
+    @Override
+    public int create(UmsMenu umsMenu) {
+        umsMenu.setCreateTime(new Date());
+        updateLevel(umsMenu);
+        return menuMapper.insert(umsMenu);
+    }
 //
-//    @Override
-//    public int create(UmsMenu umsMenu) {
-//        umsMenu.setCreateTime(new Date());
-//        updateLevel(umsMenu);
-//        return menuMapper.insert(umsMenu);
-//    }
-//
-//    /**
-//     * 修改菜单层级
-//     */
-//    private void updateLevel(UmsMenu umsMenu) {
-//        if (umsMenu.getParentId() == 0) {
-//            //没有父菜单时为一级菜单
-//            umsMenu.setLevel(0);
-//        } else {
-//            //有父菜单时选择根据父菜单level设置
-//            UmsMenu parentMenu = menuMapper.selectByPrimaryKey(umsMenu.getParentId());
-//            if (parentMenu != null) {
-//                umsMenu.setLevel(parentMenu.getLevel() + 1);
-//            } else {
-//                umsMenu.setLevel(0);
-//            }
-//        }
-//    }
-//
-//    @Override
-//    public int update(Long id, UmsMenu umsMenu) {
-//        umsMenu.setId(id);
-//        updateLevel(umsMenu);
-//        return menuMapper.updateByPrimaryKeySelective(umsMenu);
-//    }
+    /**
+     * 修改菜单层级
+     */
+    private void updateLevel(UmsMenu umsMenu) {
+        if (umsMenu.getParentId() == 0) {
+            // 没有父菜单时为一级菜单
+            umsMenu.setLevel(0);
+        } else {
+            // 有父菜单时选择根据父菜单level设置
+            UmsMenu parentMenu = menuMapper.selectByPrimaryKey(umsMenu.getParentId());
+            if (parentMenu != null) {
+                umsMenu.setLevel(parentMenu.getLevel() + 1);
+            } else {
+                umsMenu.setLevel(0);
+            }
+        }
+    }
+
+    @Override
+    public int update(Long id, UmsMenu umsMenu) {
+        umsMenu.setId(id);
+        updateLevel(umsMenu);
+        return menuMapper.updateByPrimaryKeySelective(umsMenu);
+    }
 //
 //    @Override
 //    public UmsMenu getItem(Long id) {
@@ -148,15 +148,15 @@ public class UmsMenuServiceImpl extends ServiceImpl<UmsMenuMapper, UmsMenu> impl
         return asyncMenu;
     }
 
-//
-//    @Override
-//    public int updateHidden(Long id, Integer hidden) {
-//        UmsMenu umsMenu = new UmsMenu();
-//        umsMenu.setId(id);
-//        umsMenu.setHidden(hidden);
-//        return menuMapper.updateByPrimaryKeySelective(umsMenu);
-//    }
-//
+
+    @Override
+    public int updateHidden(Long id, Integer hidden) {
+        UmsMenu umsMenu = new UmsMenu();
+        umsMenu.setId(id);
+        umsMenu.setHidden(hidden);
+        return menuMapper.updateByPrimaryKeySelective(umsMenu);
+    }
+
 
     /**
      * 将UmsMenu转化为UmsMenuNode并设置children属性

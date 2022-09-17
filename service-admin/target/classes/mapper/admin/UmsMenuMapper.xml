@@ -14,5 +14,55 @@
         <result column="icon" property="icon" />
         <result column="hidden" property="hidden" />
     </resultMap>
-
+    <sql id="Base_Column_List">
+        id, parent_id, create_time, title, level, sort, name, icon, hidden
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM ums_menu
+        WHERE id = #{id,jdbcType=BIGINT}
+    </select>
+    <update id="updateByPrimaryKey" parameterType="com.jluzh.admin.model.UmsMenu">
+        UPDATE ums_menu
+        set parent_id = #{parentId,jdbcType=BIGINT},
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+        title = #{title,jdbcType=VARCHAR},
+        level = #{level,jdbcType=INTEGER},
+        sort = #{sort,jdbcType=INTEGER},
+        name = #{name,jdbcType=VARCHAR},
+        icon = #{icon,jdbcType=VARCHAR},
+        hidden = #{hidden,jdbcType=INTEGER}
+        WHERE id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.jluzh.admin.model.UmsMenu">
+        UPDATE ums_menu
+        <set>
+            <if test="parentId != null">
+                parent_id = #{parentId,jdbcType=BIGINT},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="title != null">
+                title = #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="level != null">
+                level = #{level,jdbcType=INTEGER},
+            </if>
+            <if test="sort != null">
+                sort = #{sort,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="icon != null">
+                icon = #{icon,jdbcType=VARCHAR},
+            </if>
+            <if test="hidden != null">
+                hidden = #{hidden,jdbcType=INTEGER},
+            </if>
+        </set>
+        WHERE id = #{id,jdbcType=BIGINT}
+    </update>
 </mapper>

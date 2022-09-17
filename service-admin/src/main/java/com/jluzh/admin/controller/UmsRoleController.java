@@ -37,15 +37,15 @@ public class UmsRoleController {
         return CommonResult.failed();
     }
 
-//    @ApiOperation("修改角色")
-//    @PostMapping("/update/{id}")
-//    public CommonResult update(@PathVariable Long id, @RequestBody UmsRole role) {
-//        int count = roleService.update(id, role);
-//        if (count > 0) {
-//            return CommonResult.success(count);
-//        }
-//        return CommonResult.failed();
-//    }
+    @ApiOperation("修改角色")
+    @PostMapping("/update/{id}")
+    public CommonResult update(@PathVariable Long id, @RequestBody UmsRole role) {
+        int count = roleService.update(id, role);
+        if (count > 0) {
+            return CommonResult.success(count);
+        }
+        return CommonResult.failed();
+    }
 
 //    @ApiOperation("批量删除角色")
 //    @PostMapping("/delete")
@@ -73,17 +73,17 @@ public class UmsRoleController {
 //        return CommonResult.success(CommonPage.restPage(roleList));
 //    }
 
-//    @ApiOperation("修改角色状态")
-//    @PostMapping("/updateStatus/{id}")
-//    public CommonResult updateStatus(@PathVariable Long id, @RequestParam(value = "status") Integer status) {
-//        UmsRole umsRole = new UmsRole();
-//        umsRole.setStatus(status);
-//        int count = roleService.update(id, umsRole);
-//        if (count > 0) {
-//            return CommonResult.success(count);
-//        }
-//        return CommonResult.failed();
-//    }
+    @ApiOperation("修改角色状态")
+    @PostMapping("/updateStatus/{id}")
+    public CommonResult updateStatus(@PathVariable Long id, @RequestParam(value = "status") Integer status) {
+        UmsRole umsRole = new UmsRole();
+        umsRole.setStatus(status);
+        int count = roleService.update(id, umsRole);
+        if (count > 0) {
+            return CommonResult.success(count);
+        }
+        return CommonResult.failed();
+    }
 
     @ApiOperation("获取角色相关菜单")
     @GetMapping("/listMenu/{roleId}")

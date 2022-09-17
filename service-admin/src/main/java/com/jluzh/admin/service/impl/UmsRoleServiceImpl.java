@@ -37,12 +37,12 @@ public class UmsRoleServiceImpl extends ServiceImpl<UmsRoleMapper, UmsRole> impl
         role.setSort(0);
         return roleMapper.insert(role);
     }
-//
-//    @Override
-//    public int update(Long id, UmsRole role) {
-//        role.setId(id);
-//        return roleMapper.updateByPrimaryKeySelective(role);
-//    }
+
+    @Override
+    public int update(Long id, UmsRole role) {
+        role.setId(id);
+        return roleMapper.updateByPrimaryKeySelective(role);
+    }
 //
 //    @Override
 //    public int delete(List<Long> ids) {

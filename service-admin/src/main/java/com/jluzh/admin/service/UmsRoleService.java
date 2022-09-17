@@ -24,10 +24,10 @@ public interface UmsRoleService extends IService<UmsRole> {
 
     /**
      * 修改角色信息
-     *//*
+     */
     int update(Long id, UmsRole role);
 
-    *//**
+    /**
      * 批量删除角色
      *//*
     int delete(List<Long> ids);

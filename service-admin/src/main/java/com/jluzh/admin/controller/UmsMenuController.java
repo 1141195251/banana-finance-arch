@@ -3,6 +3,7 @@ package com.jluzh.admin.controller;
 
 import com.jluzh.admin.dto.AsyncMenu;
 import com.jluzh.admin.dto.UmsMenuNode;
+import com.jluzh.admin.model.UmsMenu;
 import com.jluzh.admin.service.UmsMenuService;
 import com.jluzh.api.CommonResult;
 import io.swagger.annotations.Api;
@@ -36,46 +37,46 @@ public class UmsMenuController {
         return CommonResult.success(list);
     }
 
-//    @ApiOperation("添加后台菜单")
-//    @PostMapping("/create")
-//    public CommonResult create(@RequestBody UmsMenu umsMenu) {
-//        int count = menuService.create(umsMenu);
-//        if (count > 0) {
-//            return CommonResult.success(count);
-//        } else {
-//            return CommonResult.failed();
-//        }
-//    }
+    @ApiOperation("添加后台菜单")
+    @PostMapping("/create")
+    public CommonResult create(@RequestBody UmsMenu umsMenu) {
+        int count = menuService.create(umsMenu);
+        if (count > 0) {
+            return CommonResult.success(count);
+        } else {
+            return CommonResult.failed();
+        }
+    }
 
-//    @ApiOperation("修改后台菜单")
-//    @PostMapping("/update/{id}")
-//    public CommonResult update(@PathVariable Long id,
-//                               @RequestBody UmsMenu umsMenu) {
-//        int count = menuService.update(id, umsMenu);
-//        if (count > 0) {
-//            return CommonResult.success(count);
-//        } else {
-//            return CommonResult.failed();
-//        }
-//    }
+    @ApiOperation("修改后台菜单")
+    @PostMapping("/update/{id}")
+    public CommonResult update(@PathVariable Long id,
+                               @RequestBody UmsMenu umsMenu) {
+        int count = menuService.update(id, umsMenu);
+        if (count > 0) {
+            return CommonResult.success(count);
+        } else {
+            return CommonResult.failed();
+        }
+    }
 
-//    @ApiOperation("根据ID获取菜单详情")
-//    @GetMapping("/{id}")
-//    public CommonResult<UmsMenu> getItem(@PathVariable Long id) {
-//        UmsMenu umsMenu = menuService.getItem(id);
-//        return CommonResult.success(umsMenu);
-//    }
+    @ApiOperation("根据ID获取菜单详情")
+    @GetMapping("/{id}")
+    public CommonResult<UmsMenu> getItem(@PathVariable Long id) {
+        UmsMenu umsMenu = menuService.getById(id);
+        return CommonResult.success(umsMenu);
+    }
 
-//    @ApiOperation("根据ID删除后台菜单")
-//    @PostMapping("/delete/{id}")
-//    public CommonResult delete(@PathVariable Long id) {
-//        int count = menuService.delete(id);
-//        if (count > 0) {
-//            return CommonResult.success(count);
-//        } else {
-//            return CommonResult.failed();
-//        }
-//    }
+    @ApiOperation("根据ID删除后台菜单")
+    @PostMapping("/delete/{id}")
+    public CommonResult delete(@PathVariable Long id) {
+        boolean hasRemoved = menuService.removeById(id);
+        if (hasRemoved) {
+            return CommonResult.success(hasRemoved);
+        } else {
+            return CommonResult.failed();
+        }
+    }
 
 //    @ApiOperation("分页查询后台菜单")
 //    @GetMapping("/list/{parentId}")
@@ -93,15 +94,15 @@ public class UmsMenuController {
         return CommonResult.success(list);
     }
 
-//    @ApiOperation("修改菜单显示状态")
-//    @PostMapping("/updateHidden/{id}")
-//    public CommonResult updateHidden(@PathVariable Long id, @RequestParam("hidden") Integer hidden) {
-//        int count = menuService.updateHidden(id, hidden);
-//        if (count > 0) {
-//            return CommonResult.success(count);
-//        } else {
-//            return CommonResult.failed();
-//        }
-//    }
+    @ApiOperation("修改菜单显示状态")
+    @PostMapping("/updateHidden/{id}")
+    public CommonResult updateHidden(@PathVariable Long id, @RequestParam("hidden") Integer hidden) {
+        int count = menuService.updateHidden(id, hidden);
+        if (count > 0) {
+            return CommonResult.success(count);
+        } else {
+            return CommonResult.failed();
+        }
+    }
 }
 
