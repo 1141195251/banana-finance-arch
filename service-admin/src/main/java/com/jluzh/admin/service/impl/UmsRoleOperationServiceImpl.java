@@ -1,5 +1,6 @@
 package com.jluzh.admin.service.impl;
 
+import cn.hutool.core.collection.CollUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.jluzh.admin.dto.OperationProp;
 import com.jluzh.admin.dto.RoleOperationDto;
@@ -31,6 +32,10 @@ public class UmsRoleOperationServiceImpl extends ServiceImpl<UmsRoleOperationMap
     @Override
     public List<RoleOperationDto> init(Long adminId) {
         List<UmsRole> roleList = adminRoleRelationMapper.getRoleList(adminId);
+        // 当前账户没有角色就别搜了
+        if(CollUtil.isEmpty(roleList)) {
+            return null;
+        }
         List<Long> roleIdList = new ArrayList<>();
         for(UmsRole umsRole: roleList) {
             roleIdList.add(umsRole.getId());
@@ -41,7 +46,7 @@ public class UmsRoleOperationServiceImpl extends ServiceImpl<UmsRoleOperationMap
         List<RoleOperationDto> roleOperationDtos = new ArrayList<>();
         for(UmsRoleOperation opr : roleOperationList) {
             RoleOperationDto oprDto = new RoleOperationDto();
-            oprDto.setId(opr.getRoleId());
+            oprDto.setId(opr.getRoleId().toString());
             OperationProp operationProp = new OperationProp();
             BeanUtils.copyProperties(opr, operationProp);
             oprDto.setOperation(operationProp);

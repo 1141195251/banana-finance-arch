@@ -8,6 +8,6 @@ public class RoleOperationDto {
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty("角色id")
-    private Long Id;
+    private String Id;
     private OperationProp operation;
 }
