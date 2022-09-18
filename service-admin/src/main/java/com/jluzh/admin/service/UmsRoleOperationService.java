@@ -1,4 +1,4 @@
-package com.jluzh.admin.service.service;
+package com.jluzh.admin.service;
 
 import com.jluzh.admin.dto.RoleOperationDto;
 import com.jluzh.admin.model.UmsRoleOperation;

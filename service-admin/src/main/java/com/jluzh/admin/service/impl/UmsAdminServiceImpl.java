@@ -18,8 +18,10 @@ import com.jluzh.admin.model.UmsAdminLoginLog;
 import com.jluzh.admin.model.UmsAdminRoleRelation;
 import com.jluzh.admin.model.UmsRole;
 import com.jluzh.admin.service.AuthService;
+import com.jluzh.admin.service.UmsAdminRoleRelationService;
 import com.jluzh.admin.service.UmsAdminService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.jluzh.admin.service.UmsRoleService;
 import com.jluzh.api.CommonResult;
 import com.jluzh.api.ResultCode;
 import com.jluzh.constant.AuthConstant;
@@ -57,6 +59,8 @@ public class UmsAdminServiceImpl extends ServiceImpl<UmsAdminMapper, UmsAdmin> i
     private UmsAdminRoleRelationMapper adminRoleRelationMapper;
     @Resource(name = "umsAdminLoginLogMapper")
     private UmsAdminLoginLogMapper loginLogMapper;
+    @Resource(name = "umsAdminRoleRelationServiceImpl")
+    private UmsAdminRoleRelationService umsAdminRoleRelationService;
     @Autowired
     private AuthService authService;
     @Autowired
@@ -88,7 +92,12 @@ public class UmsAdminServiceImpl extends ServiceImpl<UmsAdminMapper, UmsAdmin> i
         // 将密码进行加密操作
         String encodePassword = BCrypt.hashpw(umsAdmin.getPassword());
         umsAdmin.setPassword(encodePassword);
-        baseMapper.insert(umsAdmin);
+        int idAfterInsert = baseMapper.insert(umsAdmin);
+        UmsAdminRoleRelation umsAdminRoleRelation = new UmsAdminRoleRelation();
+        // 给新注册的账号设置默认角色
+        umsAdminRoleRelation.setRoleId(5L);
+        umsAdminRoleRelation.setAdminId(Long.getLong(idAfterInsert + ""));
+        umsAdminRoleRelationService.save(umsAdminRoleRelation);
         return umsAdmin;
     }
 
@@ -115,8 +124,17 @@ public class UmsAdminServiceImpl extends ServiceImpl<UmsAdminMapper, UmsAdmin> i
         return restResult;
     }
 
+    /**
+     * 根据用户id获取多个角色id
+     * @param adminId
+     * @return
+     */
+    @Override
+    public List<Long> getRoleIdsByAdminId(Long adminId) {
+        return adminMapper.getRoleIdsByAdminId(adminId);
+    }
 
-/**
+    /**
      * 添加登录记录
      * @param username 用户名
      */

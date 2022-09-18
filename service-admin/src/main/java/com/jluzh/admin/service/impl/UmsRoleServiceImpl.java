@@ -1,5 +1,6 @@
 package com.jluzh.admin.service.impl;
 
+import com.jluzh.admin.mapper.UmsRoleMenuRelationMapper;
 import com.jluzh.admin.model.UmsMenu;
 import com.jluzh.admin.model.UmsRole;
 import com.jluzh.admin.mapper.UmsRoleMapper;
@@ -22,8 +23,8 @@ import java.util.List;
  */
 @Service
 public class UmsRoleServiceImpl extends ServiceImpl<UmsRoleMapper, UmsRole> implements UmsRoleService {
-//    @Autowired
-//    private UmsRoleMenuRelationMapper roleMenuRelationMapper;
+    @Autowired
+    private UmsRoleMenuRelationMapper roleMenuRelationMapper;
 //    @Autowired
 //    private UmsRoleResourceRelationMapper roleResourceRelationMapper;
     @Autowired
@@ -77,7 +78,9 @@ public class UmsRoleServiceImpl extends ServiceImpl<UmsRoleMapper, UmsRole> impl
     public List<UmsMenu> listMenu(Long roleId) {
         return roleMapper.getMenuListByRoleId(roleId);
     }
-//
+
+
+    //
 //    @Override
 //    public List<UmsResource> listResource(Long roleId) {
 //        return roleDao.getResourceListByRoleId(roleId);

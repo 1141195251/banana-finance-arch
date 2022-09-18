@@ -53,6 +53,7 @@ public interface UmsRoleService extends IService<UmsRole> {
      */
     List<UmsMenu> listMenu(Long roleId);
 
+
     /**
      * 获取角色相关资源
      *//*

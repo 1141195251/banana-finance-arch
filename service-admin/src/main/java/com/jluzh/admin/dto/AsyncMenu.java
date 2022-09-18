@@ -16,8 +16,9 @@ public class AsyncMenu {
     private String router;
     @ApiModelProperty(name = "路由名称")
     private String name;
-    @ApiModelProperty(name = "权限")
-    private AuthProp authority;
+    // TODO
+//    @ApiModelProperty(name = "权限")
+//    private AuthProp authority;
     @ApiModelProperty(name = "图标")
     private String icon;
     @ApiModelProperty(name = "菜单不可见性 0->可见,1->不可见")

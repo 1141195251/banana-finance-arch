@@ -70,6 +70,7 @@ public interface UmsAdminService extends IService<UmsAdmin> {
      */
     List<UmsRole> getRoleList(Long adminId);
 
+    List<Long> getRoleIdsByAdminId(Long adminId);
     /**
      * 获取指定用户的可访问资源
      */

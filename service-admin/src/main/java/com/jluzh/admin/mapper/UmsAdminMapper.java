@@ -3,6 +3,8 @@ package com.jluzh.admin.mapper;
 import com.jluzh.admin.model.UmsAdmin;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
+import java.util.List;
+
 /**
  * <p>
  * 后台用户表 Mapper 接口
@@ -13,4 +15,5 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface UmsAdminMapper extends BaseMapper<UmsAdmin> {
     int updateByPrimaryKeySelective(UmsAdmin record);
+    List<Long> getRoleIdsByAdminId(Long adminId);
 }

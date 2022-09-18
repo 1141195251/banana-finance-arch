@@ -2,12 +2,12 @@ package com.jluzh.admin.controller;
 
 
 import cn.hutool.core.collection.CollUtil;
-import com.jluzh.admin.dto.UmsAdminLoginParam;
-import com.jluzh.admin.dto.UmsAdminParam;
-import com.jluzh.admin.dto.UpdateAdminPasswordParam;
+import com.jluzh.admin.dto.*;
 import com.jluzh.admin.model.UmsAdmin;
 import com.jluzh.admin.model.UmsRole;
 import com.jluzh.admin.service.UmsAdminService;
+import com.jluzh.admin.service.UmsMenuService;
+import com.jluzh.admin.service.UmsRoleOperationService;
 import com.jluzh.admin.service.UmsRoleService;
 import com.jluzh.api.CommonResult;
 import com.jluzh.domain.UserDto;
@@ -38,6 +38,10 @@ public class UmsAdminController {
     private UmsAdminService adminService;
     @Resource(name = "umsRoleServiceImpl")
     private UmsRoleService roleService;
+    @Resource(name = "umsMenuServiceImpl")
+    private UmsMenuService menuService;
+    @Resource(name = "umsRoleOperationServiceImpl")
+    private UmsRoleOperationService umsRoleOperationService;
 
     @ApiOperation(value = "用户注册")
     @PostMapping( "/register")
@@ -58,17 +62,26 @@ public class UmsAdminController {
     @ApiOperation(value = "获取当前登录用户信息")
     @GetMapping("/info")
     public CommonResult getAdminInfo() {
+        // 从请求头中获取到用户
         UmsAdmin umsAdmin = adminService.getCurrentAdmin();
         Map<String, Object> data = new HashMap<>();
         data.put("username", umsAdmin.getUsername());
-        data.put("menus", roleService.getMenuList(umsAdmin.getId()));
+        // 根据用户ID获取其相应的多个角色
+        List<Long> roleIdsByAdminId = adminService.getRoleIdsByAdminId(umsAdmin.getId());
+        List<AsyncMenu> asyncMenus = null;
+        List<RoleOperationDto> initRoles = null;
+        // 如果当前账号没有任何角色则不进行加载菜单
+        // 目前的思想则是默认所有的账号都有一个默认角色
+        // TODO
+        if(CollUtil.isNotEmpty(roleIdsByAdminId)) {
+            asyncMenus = menuService.asyncListByRoleIds(roleIdsByAdminId);
+            initRoles = umsRoleOperationService.init(umsAdmin.getId());
+        }
+        data.put("menus", asyncMenus);
         data.put("icon", umsAdmin.getIcon());
         data.put("loginTime", umsAdmin.getLoginTime());
-        List<UmsRole> roleList = adminService.getRoleList(umsAdmin.getId());
-        if(CollUtil.isNotEmpty(roleList)){
-            List<String> roles = roleList.stream().map(UmsRole::getName).collect(Collectors.toList());
-            data.put("roles",roles);
-        }
+        // 没有角色就没必要查询了
+        data.put("roles", initRoles);
         return CommonResult.success(data);
     }
 

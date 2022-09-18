@@ -102,34 +102,46 @@ public class UmsMenuServiceImpl extends ServiceImpl<UmsMenuMapper, UmsMenu> impl
     @Override
     public List<AsyncMenu> asyncList(Long roleId) {
         List<UmsMenu> umsMenus = roleService.listMenu(roleId);
-        AsyncMenu asyncMenu = initRoot(umsMenus, roleId);
+        AsyncMenu asyncMenu = initRoot(umsMenus);
         List<AsyncMenu> asyncMenus = new ArrayList<>();
         asyncMenus.add(asyncMenu);
         return asyncMenus;
     }
 
-    private AsyncMenu initRoot(List<UmsMenu> menuList, Long roleId) {
+    @Override
+    public List<AsyncMenu> asyncListByRoleIds(List<Long> roleIds) {
+        List<UmsMenu> umsMenus = menuMapper.selectByRoleIds(roleIds);
+        AsyncMenu asyncMenu = initRoot(umsMenus);
+        List<AsyncMenu> asyncMenus = new ArrayList<>();
+        asyncMenus.add(asyncMenu);
+        return asyncMenus;
+    }
+
+
+    private AsyncMenu initRoot(List<UmsMenu> menuList) {
         AsyncMenu asyncMenu = new AsyncMenu();
         asyncMenu.setRouter("root");
-        asyncMenu.setChildren(convertAsyncMenuList(menuList, roleId));
         // TODO 用配置文件解耦
-        asyncMenu.setAuthority(null);
+        // 设置头路由
+//        asyncMenu.setAuthority(null);
         asyncMenu.setName("首页");
         asyncMenu.setInvisible(false);
         PageProp pageProp = new PageProp();
         pageProp.setTitle("首页");
         asyncMenu.setPage(pageProp);
+        // 添加子路由
+        asyncMenu.setChildren(convertAsyncMenuList(menuList));
         return asyncMenu;
     }
-    private List<AsyncMenu> convertAsyncMenuList(List<UmsMenu> menuList, Long roleId) {
+    private List<AsyncMenu> convertAsyncMenuList(List<UmsMenu> menuList) {
         List<AsyncMenu> collect = menuList.stream()
                 .filter(umsMenu -> umsMenu.getParentId().equals(0L))
-                .map(umsMenu -> convertAsyncMenu(umsMenu, menuList, roleId))
+                .map(umsMenu -> convertAsyncMenu(umsMenu, menuList))
                 .collect(Collectors.toList());
         return collect;
     }
 
-    private AsyncMenu convertAsyncMenu(UmsMenu umsMenu, List<UmsMenu> menuList, Long roleId) {
+    private AsyncMenu convertAsyncMenu(UmsMenu umsMenu, List<UmsMenu> menuList) {
         AsyncMenu asyncMenu = new AsyncMenu();
         asyncMenu.setRouter(umsMenu.getName());
         asyncMenu.setName(umsMenu.getTitle());
@@ -138,12 +150,13 @@ public class UmsMenuServiceImpl extends ServiceImpl<UmsMenuMapper, UmsMenu> impl
         PageProp pageProp = new PageProp();
         pageProp.setTitle(umsMenu.getTitle());
         asyncMenu.setPage(pageProp);
-        AuthProp authProp = new AuthProp();
-        authProp.setRole(roleId.toString());
-        asyncMenu.setAuthority(authProp);
+        //TODO hideen属性需要添加
+//        AuthProp authProp = new AuthProp();
+//        authProp.setRole(roleId.toString());
+//        asyncMenu.setAuthority(authProp);
         List<AsyncMenu> result = menuList.stream()
                 .filter(subMenu -> subMenu.getParentId().equals(umsMenu.getId()))
-                .map(subMenu -> convertAsyncMenu(subMenu, menuList, roleId)).collect(Collectors.toList());
+                .map(subMenu -> convertAsyncMenu(subMenu, menuList)).collect(Collectors.toList());
         asyncMenu.setChildren(result);
         return asyncMenu;
     }

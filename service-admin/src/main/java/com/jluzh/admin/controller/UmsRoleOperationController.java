@@ -3,8 +3,7 @@ package com.jluzh.admin.controller;
 
 import cn.hutool.core.collection.CollUtil;
 import com.jluzh.admin.dto.RoleOperationDto;
-import com.jluzh.admin.model.UmsRoleOperation;
-import com.jluzh.admin.service.service.UmsRoleOperationService;
+import com.jluzh.admin.service.UmsRoleOperationService;
 import com.jluzh.api.CommonResult;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.GetMapping;

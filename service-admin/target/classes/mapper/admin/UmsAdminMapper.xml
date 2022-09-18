@@ -15,7 +15,12 @@
         <result column="login_time" property="loginTime" />
         <result column="status" property="status" />
     </resultMap>
-
+    <select id="getRoleIdsByAdminId" resultType="java.lang.Long">
+        SELECT ar.role_id
+        FROM ums_admin_role_relation ar
+        JOIN ums_admin ad ON ar.admin_id = ad.id
+        WHERE admin_id = #{adminId}
+    </select>
     <insert id="insertSelective" parameterType="com.jluzh.admin.model.UmsAdmin">
         INSERT INTO ums_admin
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -110,4 +115,5 @@
         </set>
         where id = #{id,jdbcType=BIGINT}
     </update>
+
 </mapper>

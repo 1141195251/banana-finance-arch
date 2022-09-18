@@ -65,4 +65,13 @@
         </set>
         WHERE id = #{id,jdbcType=BIGINT}
     </update>
+    <select id="selectByRoleIds" resultType="com.jluzh.admin.model.UmsMenu">
+        SELECT DISTINCT m.*
+        FROM ums_menu m
+        JOIN ums_role_menu_relation rm ON m.id = rm.menu_id
+        WHERE role_id IN
+        <foreach collection="list" open="(" close=")" separator="," item="item">
+            #{item}
+        </foreach>
+    </select>
 </mapper>

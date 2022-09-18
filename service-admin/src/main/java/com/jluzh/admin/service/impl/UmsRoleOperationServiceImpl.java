@@ -1,4 +1,4 @@
-package com.jluzh.admin.service.service.impl;
+package com.jluzh.admin.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.jluzh.admin.dto.OperationProp;
@@ -8,14 +8,13 @@ import com.jluzh.admin.model.UmsRole;
 import com.jluzh.admin.model.UmsRoleOperation;
 import com.jluzh.admin.mapper.UmsRoleOperationMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.jluzh.admin.service.service.UmsRoleOperationService;
+import com.jluzh.admin.service.UmsRoleOperationService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * <p>
