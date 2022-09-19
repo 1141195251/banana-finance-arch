@@ -212,11 +212,11 @@ public class UmsAdminServiceImpl extends ServiceImpl<UmsAdminMapper, UmsAdmin> i
     @Override
     public int updateRole(Long adminId, List<Long> roleIds) {
         int count = roleIds == null ? 0 : roleIds.size();
-        //先删除原来的关系
+        // 先删除原来的关系
         QueryWrapper<UmsAdminRoleRelation> umsAdminRoleRelationQueryWrapper = new QueryWrapper<>();
         umsAdminRoleRelationQueryWrapper.eq("admin_id", adminId);
         adminRoleRelationMapper.delete(umsAdminRoleRelationQueryWrapper);
-        //建立新关系
+        // 建立新关系
         if (!CollectionUtils.isEmpty(roleIds)) {
             List<UmsAdminRoleRelation> list = new ArrayList<>();
             for (Long roleId : roleIds) {

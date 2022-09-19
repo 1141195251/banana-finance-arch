@@ -29,18 +29,18 @@ public class UmsRoleOperation implements Serializable {
 
     @ApiModelProperty("添加操作")
     @TableField(value = "`add`")
-    private String add;
+    private int add;
 
     @ApiModelProperty("编辑操作")
     @TableField(value = "`edit`")
-    private String edit;
+    private int edit;
 
     @ApiModelProperty("删除操作")
     @TableField(value = "`delete`")
-    private String delete;
+    private int delete;
 
     @ApiModelProperty("查询操作")
     @TableField(value = "`find`")
-    private String find;
+    private int find;
 
 }

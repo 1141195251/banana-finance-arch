@@ -47,8 +47,20 @@ public class UmsRoleOperationServiceImpl extends ServiceImpl<UmsRoleOperationMap
         for(UmsRoleOperation opr : roleOperationList) {
             RoleOperationDto oprDto = new RoleOperationDto();
             oprDto.setId(opr.getRoleId().toString());
-            OperationProp operationProp = new OperationProp();
-            BeanUtils.copyProperties(opr, operationProp);
+            List<String> operationProp = new ArrayList<>();
+            // TODO
+            if(opr.getAdd() != 0) {
+                operationProp.add("add");
+            }
+            if(opr.getEdit() != 0) {
+                operationProp.add("edit");
+            }
+            if(opr.getFind() != 0) {
+                operationProp.add("find");
+            }
+            if(opr.getDelete() != 0) {
+                operationProp.add("delete");
+            }
             oprDto.setOperation(operationProp);
             roleOperationDtos.add(oprDto);
         }

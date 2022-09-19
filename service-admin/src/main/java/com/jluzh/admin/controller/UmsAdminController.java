@@ -3,6 +3,7 @@ package com.jluzh.admin.controller;
 
 import cn.hutool.core.collection.CollUtil;
 import com.jluzh.admin.dto.*;
+import com.jluzh.admin.dto.admin.UpdateRoleParam;
 import com.jluzh.admin.model.UmsAdmin;
 import com.jluzh.admin.model.UmsRole;
 import com.jluzh.admin.service.UmsAdminService;
@@ -158,9 +159,9 @@ public class UmsAdminController {
 
     @ApiOperation("根据用户id修改角色")
     @PostMapping("/role/update")
-    public CommonResult updateRole(@RequestParam("adminId") Long adminId,
-                                   @RequestParam("roleIds") List<Long> roleIds) {
-        int count = adminService.updateRole(adminId, roleIds);
+    public CommonResult updateRole(@Validated @RequestBody UpdateRoleParam updateRoleParam) {
+        int count = adminService.updateRole(updateRoleParam.getAdminId(), updateRoleParam.getRoleIds());
+
         if (count >= 0) {
             return CommonResult.success(count);
         }
