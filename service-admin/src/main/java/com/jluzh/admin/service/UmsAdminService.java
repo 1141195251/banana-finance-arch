@@ -1,7 +1,10 @@
 package com.jluzh.admin.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.jluzh.admin.dto.UmsAdminParam;
 import com.jluzh.admin.dto.UpdateAdminPasswordParam;
+import com.jluzh.admin.dto.admin.AdminListParam;
+import com.jluzh.admin.dto.admin.AdminSuperListVo;
 import com.jluzh.admin.model.UmsAdmin;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.jluzh.admin.model.UmsResource;
@@ -47,7 +50,9 @@ public interface UmsAdminService extends IService<UmsAdmin> {
     /**
      * 根据用户名或昵称分页查询用户
      */
-//    List<UmsAdmin> list(String keyword, Integer pageSize, Integer pageNum);
+    Page<UmsAdmin> list(AdminListParam param);
+
+    Page<AdminSuperListVo> superList(AdminListParam param);
 
     /**
      * 修改指定用户信息
@@ -55,9 +60,10 @@ public interface UmsAdminService extends IService<UmsAdmin> {
     int update(Long id, UmsAdmin admin);
 
     /**
-     * 删除指定用户
+     * 删除指定用户包括和他关联的角色关系表
      */
-//    int delete(Long id);
+    @Transactional
+    int deleteById(Long id);
 
     /**
      * 修改用户角色关系

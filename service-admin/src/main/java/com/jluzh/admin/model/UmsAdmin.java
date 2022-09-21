@@ -10,6 +10,8 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.validation.constraints.Email;
+
 /**
  * <p>
  * 后台用户表
@@ -37,6 +39,7 @@ public class UmsAdmin implements Serializable {
     private String icon;
 
     @ApiModelProperty("邮箱")
+    @Email
     private String email;
 
     @ApiModelProperty("昵称")

@@ -2,7 +2,10 @@ package com.jluzh.admin.controller;
 
 
 import cn.hutool.core.collection.CollUtil;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.jluzh.admin.dto.*;
+import com.jluzh.admin.dto.admin.AdminListParam;
+import com.jluzh.admin.dto.admin.AdminSuperListVo;
 import com.jluzh.admin.dto.admin.UpdateRoleParam;
 import com.jluzh.admin.model.UmsAdmin;
 import com.jluzh.admin.model.UmsRole;
@@ -10,6 +13,7 @@ import com.jluzh.admin.service.UmsAdminService;
 import com.jluzh.admin.service.UmsMenuService;
 import com.jluzh.admin.service.UmsRoleOperationService;
 import com.jluzh.admin.service.UmsRoleService;
+import com.jluzh.api.CommonPage;
 import com.jluzh.api.CommonResult;
 import com.jluzh.domain.UserDto;
 import io.swagger.annotations.Api;
@@ -21,7 +25,6 @@ import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -92,15 +95,19 @@ public class UmsAdminController {
         return CommonResult.success(null);
     }
 
-//    @ApiOperation("根据用户名或姓名分页获取用户列表")
-//    @GetMapping("/list")
-//    public CommonResult<CommonPage<UmsAdmin>> list(@RequestParam(value = "keyword", required = false) String keyword,
-//                                                   @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
-//                                                   @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
-//        List<UmsAdmin> adminList = adminService.list(keyword, pageSize, pageNum);
-//        return CommonResult.success(CommonPage.restPage(adminList));
-//    }
+    @ApiOperation("分页获取用户列表")
+    @PostMapping("/list")
+    public CommonResult<CommonPage<UmsAdmin>> list(@Validated @RequestBody AdminListParam param) {
+        Page<UmsAdmin> list = adminService.list(param);
+        return CommonResult.success(CommonPage.restPage(list));
+    }
 
+    @ApiOperation("分页获取用户角色超级列表")
+    @PostMapping("/superList")
+    public CommonResult<CommonPage<AdminSuperListVo>> superList(@Validated @RequestBody AdminListParam param) {
+        Page<AdminSuperListVo> list = adminService.superList(param);
+        return CommonResult.success(CommonPage.restPage(list));
+    }
     @ApiOperation("获取指定用户信息")
     @GetMapping("/{id}")
     public CommonResult<UmsAdmin> getItem(@PathVariable Long id) {
@@ -110,7 +117,7 @@ public class UmsAdminController {
 
     @ApiOperation("修改指定用户信息")
     @PostMapping("/update/{id}")
-    public CommonResult update(@PathVariable Long id, @RequestBody UmsAdmin admin) {
+    public CommonResult update(@PathVariable Long id, @Validated @RequestBody UmsAdmin admin) {
         int count = adminService.update(id, admin);
         if (count > 0) {
             return CommonResult.success(count);
@@ -136,13 +143,13 @@ public class UmsAdminController {
     }
 
     @ApiOperation("删除指定用户信息")
-    @PostMapping("/delete/{id}")
+    @GetMapping("/delete/{id}")
     public CommonResult delete(@PathVariable Long id) {
-        Boolean result = adminService.removeById(id);
-        if (result) {
-            return CommonResult.success("true");
+        int count = adminService.deleteById(id);
+        if (count >= 1) {
+            return CommonResult.success("删除成功");
         }
-        return CommonResult.failed();
+        return CommonResult.failed("删除失败");
     }
 
     @ApiOperation("修改帐号状态")
@@ -157,7 +164,7 @@ public class UmsAdminController {
         return CommonResult.failed();
     }
 
-    @ApiOperation("根据用户id修改角色")
+    @ApiOperation("根据用户id修改角色,分配角色")
     @PostMapping("/role/update")
     public CommonResult updateRole(@Validated @RequestBody UpdateRoleParam updateRoleParam) {
         int count = adminService.updateRole(updateRoleParam.getAdminId(), updateRoleParam.getRoleIds());
@@ -174,6 +181,7 @@ public class UmsAdminController {
         List<UmsRole> roleList = adminService.getRoleList(adminId);
         return CommonResult.success(roleList);
     }
+
 
     @ApiOperation("根据用户名获取通用用户信息")
     @GetMapping("/loadByUsername")

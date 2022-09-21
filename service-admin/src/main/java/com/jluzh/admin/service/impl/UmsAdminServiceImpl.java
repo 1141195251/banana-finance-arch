@@ -8,8 +8,12 @@ import cn.hutool.json.JSONUtil;
 import com.alibaba.nacos.common.utils.CollectionUtils;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.jluzh.admin.dto.UmsAdminParam;
 import com.jluzh.admin.dto.UpdateAdminPasswordParam;
+import com.jluzh.admin.dto.admin.AdminListParam;
+import com.jluzh.admin.dto.admin.AdminSuperListVo;
 import com.jluzh.admin.mapper.UmsAdminLoginLogMapper;
 import com.jluzh.admin.mapper.UmsAdminRoleRelationMapper;
 import com.jluzh.admin.model.UmsAdmin;
@@ -31,6 +35,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -101,7 +106,6 @@ public class UmsAdminServiceImpl extends ServiceImpl<UmsAdminMapper, UmsAdmin> i
         return umsAdmin;
     }
 
-
     @Override
     public CommonResult login(String username, String password) {
         if(StrUtil.isEmpty(username) || StrUtil.isEmpty(password)) {
@@ -169,17 +173,45 @@ public class UmsAdminServiceImpl extends ServiceImpl<UmsAdminMapper, UmsAdmin> i
 //        return adminMapper.selectByPrimaryKey(id);
 //    }
 //
-//    @Override
-//    public List<UmsAdmin> list(String keyword, Integer pageSize, Integer pageNum) {
-//        PageHelper.startPage(pageNum, pageSize);
-//        UmsAdminExample example = new UmsAdminExample();
-//        UmsAdminExample.Criteria criteria = example.createCriteria();
-//        if (!StringUtils.isEmpty(keyword)) {
-//            criteria.andUsernameLike("%" + keyword + "%");
-//            example.or(example.createCriteria().andNickNameLike("%" + keyword + "%"));
-//        }
-//        return adminMapper.selectByExample(example);
-//    }
+    @Override
+    public Page<UmsAdmin> list(AdminListParam param) {
+        Page<UmsAdmin> pageSetting = new Page<>(param.getPageNum(), param.getPageSize());
+        UmsAdmin umsAdmin = new UmsAdmin();
+        BeanUtils.copyProperties(param, umsAdmin);
+        Page<UmsAdmin> page = adminMapper.listPage(pageSetting, umsAdmin);
+        return page;
+    }
+
+    @Override
+    public Page<AdminSuperListVo> superList(AdminListParam param) {
+        Page<UmsAdmin> pageSetting = new Page<>(param.getPageNum(), param.getPageSize());
+        UmsAdmin umsAdmin = new UmsAdmin();
+        BeanUtils.copyProperties(param, umsAdmin);
+        Page<UmsAdmin> page = adminMapper.listPage(pageSetting, umsAdmin);
+        List<UmsAdmin> records = page.getRecords();
+        Page<AdminSuperListVo> voPage= new Page<>();
+        List<AdminSuperListVo> collect = records.stream().map(item -> convertToSuperListVo(item)).collect(Collectors.toList());
+        BeanUtils.copyProperties(page, voPage);
+        voPage.setRecords(collect);
+        return voPage;
+    }
+
+    private AdminSuperListVo convertToSuperListVo(UmsAdmin admin) {
+        AdminSuperListVo listVo = AdminSuperListVo.builder()
+                .email(admin.getEmail())
+                .icon(admin.getIcon())
+                .note(admin.getNote())
+                .createTime(admin.getCreateTime())
+                .loginTime(admin.getLoginTime())
+                .status(admin.getStatus())
+                .nickName(admin.getNickName())
+                .innerData(new ArrayList())
+                .username(admin.getUsername())
+                .id(admin.getId())
+                .build();
+        return listVo;
+
+    }
 //
     @Override
     public int update(Long id, UmsAdmin admin) {
@@ -201,14 +233,16 @@ public class UmsAdminServiceImpl extends ServiceImpl<UmsAdminMapper, UmsAdmin> i
         // TODO 如果用户信息存在了Redis 更新用户信息后需要删除原来的信息
         return count;
     }
-//
-//    @Override
-//    public int delete(Long id) {
-//        int count = adminMapper.deleteByPrimaryKey(id);
-//        getCacheService().delAdmin(id);
-//        return count;
-//    }
-//
+
+    @Override
+    public int deleteById(Long id) {
+        int count = adminMapper.deleteById(id);
+        QueryWrapper<UmsAdminRoleRelation> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("admin_id", id);
+        int count1 = adminRoleRelationMapper.delete(queryWrapper);
+        return count + count1;
+    }
+
     @Override
     public int updateRole(Long adminId, List<Long> roleIds) {
         int count = roleIds == null ? 0 : roleIds.size();

@@ -15,13 +15,20 @@
         <result column="login_time" property="loginTime" />
         <result column="status" property="status" />
     </resultMap>
+    <sql id="baseProperties">
+        id,username,password,icon,email,nick_name,note,create_time,login_time,status
+    </sql>
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        SELECT <include refid="baseProperties" />
+        FROM ums_admin
+    </insert>
     <select id="getRoleIdsByAdminId" resultType="java.lang.Long">
         SELECT ar.role_id
         FROM ums_admin_role_relation ar
         JOIN ums_admin ad ON ar.admin_id = ad.id
         WHERE admin_id = #{adminId}
     </select>
-    <insert id="insertSelective" parameterType="com.jluzh.admin.model.UmsAdmin">
+    <insert id="insertSelective" parameterType="com.jluzh.admin.model.UmsAdmin" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
         INSERT INTO ums_admin
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="username != null">
@@ -115,5 +122,28 @@
         </set>
         where id = #{id,jdbcType=BIGINT}
     </update>
-
+    <select id="listPage" resultType="com.jluzh.admin.model.UmsAdmin" >
+        SELECT <include refid="baseProperties" />
+        FROM ums_admin
+        <where>
+            <if test="admin.username != null and admin.username != '' ">
+                AND username like concat('%',#{admin.username},'%')
+            </if>
+            <if test="admin.email != null and admin.email != '' ">
+                AND email = #{admin.email}
+            </if>
+            <if test="admin.nickName != null and admin.nickName != '' ">
+                AND nick_name like concat('%',#{admin.nickName},'%')
+            </if>
+            <if test="admin.createTime != null">
+                AND DATE_FORMAT(create_time,'%Y-%m-%d') = #{admin.createTime,jdbcType=DATE}
+            </if>
+            <if test="admin.loginTime != null and admin.loginTime != '' ">
+                AND DATE_FORMAT(login_time,'%Y-%m-%d') = #{admin.loginTime,jdbcType=DATE}
+            </if>
+            <if test="admin.status != null">
+                AND status = #{admin.status}
+            </if>
+        </where>
+    </select>
 </mapper>

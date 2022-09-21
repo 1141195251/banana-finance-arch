@@ -51,4 +51,5 @@ public class GlobalExceptionHandler {
         }
         return CommonResult.validateFailed(message);
     }
+
 }
