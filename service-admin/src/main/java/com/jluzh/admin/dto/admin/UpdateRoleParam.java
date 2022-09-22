@@ -10,7 +10,7 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class UpdateRoleParam {
-    @NotNull
+    private String username;
     private Long adminId;
     @NotEmpty
     private List<Long> roleIds;

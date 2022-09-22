@@ -5,6 +5,7 @@ import cn.hutool.core.collection.CollUtil;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.jluzh.admin.dto.*;
 import com.jluzh.admin.dto.admin.AdminListParam;
+import com.jluzh.admin.dto.admin.AdminRoleTransferVo;
 import com.jluzh.admin.dto.admin.AdminSuperListVo;
 import com.jluzh.admin.dto.admin.UpdateRoleParam;
 import com.jluzh.admin.model.UmsAdmin;
@@ -166,22 +167,44 @@ public class UmsAdminController {
 
     @ApiOperation("根据用户id修改角色,分配角色")
     @PostMapping("/role/update")
-    public CommonResult updateRole(@Validated @RequestBody UpdateRoleParam updateRoleParam) {
+    public CommonResult updateRole(@RequestBody UpdateRoleParam updateRoleParam) {
         int count = adminService.updateRole(updateRoleParam.getAdminId(), updateRoleParam.getRoleIds());
-
         if (count >= 0) {
             return CommonResult.success(count);
         }
         return CommonResult.failed();
     }
 
-    @ApiOperation("获取指定用户的角色")
+    @ApiOperation("根据用户名字修改角色,分配角色")
+    @PostMapping("/role/updateByUsername")
+    public CommonResult updateRoleByUsername(@RequestBody UpdateRoleParam updateRoleParam) {
+        int count = adminService.updateRoleByUsername(updateRoleParam.getUsername(), updateRoleParam.getRoleIds());
+        if (count >= 0) {
+            return CommonResult.success(count);
+        }
+        return CommonResult.failed();
+    }
+
+    @ApiOperation("获取指定用户id的角色")
     @GetMapping("/role/{adminId}")
     public CommonResult<List<UmsRole>> getRoleList(@PathVariable Long adminId) {
         List<UmsRole> roleList = adminService.getRoleList(adminId);
         return CommonResult.success(roleList);
     }
 
+    @ApiOperation("获取指定用户名的角色")
+    @GetMapping("/role/{adminName}")
+    public CommonResult<List<UmsRole>> getRoleList(@PathVariable String adminName) {
+        List<UmsRole> roleList = adminService.getRoleListByAdminName(adminName);
+        return CommonResult.success(roleList);
+    }
+
+    @ApiOperation("获取分配角色的Vo")
+    @GetMapping("/role/transfer/{adminName}")
+    public CommonResult<List<AdminRoleTransferVo>> getTransferVo(@PathVariable String adminName) {
+        List<AdminRoleTransferVo> voList = adminService.getAdminRoleTransferVo(adminName);
+        return CommonResult.success(voList);
+    }
 
     @ApiOperation("根据用户名获取通用用户信息")
     @GetMapping("/loadByUsername")

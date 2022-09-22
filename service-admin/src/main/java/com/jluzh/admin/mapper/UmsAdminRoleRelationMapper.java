@@ -30,6 +30,13 @@ public interface UmsAdminRoleRelationMapper extends BaseMapper<UmsAdminRoleRelat
     List<UmsRole> getRoleList(@Param("adminId") Long adminId);
 
     /**
+     * 根据用户名获取其角色
+     * @param adminName
+     * @return
+     */
+    List<UmsRole> getRoleListByAdminName(String adminName);
+
+    /**
      *
      */
     Page<AdminRoleRelationVo> getAdminRoleRelationList(Page<AdminRoleRelationVo> pageSetting);

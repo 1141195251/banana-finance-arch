@@ -13,9 +13,11 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.jluzh.admin.dto.UmsAdminParam;
 import com.jluzh.admin.dto.UpdateAdminPasswordParam;
 import com.jluzh.admin.dto.admin.AdminListParam;
+import com.jluzh.admin.dto.admin.AdminRoleTransferVo;
 import com.jluzh.admin.dto.admin.AdminSuperListVo;
 import com.jluzh.admin.mapper.UmsAdminLoginLogMapper;
 import com.jluzh.admin.mapper.UmsAdminRoleRelationMapper;
+import com.jluzh.admin.mapper.UmsRoleMapper;
 import com.jluzh.admin.model.UmsAdmin;
 import com.jluzh.admin.mapper.UmsAdminMapper;
 import com.jluzh.admin.model.UmsAdminLoginLog;
@@ -44,6 +46,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * <p>
@@ -58,8 +61,8 @@ public class UmsAdminServiceImpl extends ServiceImpl<UmsAdminMapper, UmsAdmin> i
     private static final Logger LOGGER = LoggerFactory.getLogger(UmsAdminServiceImpl.class);
     @Autowired
     private UmsAdminMapper adminMapper;
-//    @Autowired
-//    private UmsAdminRoleRelationMapper adminRoleRelationMapper;
+    @Autowired
+    private UmsRoleMapper umsRoleMapper;
     @Autowired
     private UmsAdminRoleRelationMapper adminRoleRelationMapper;
     @Resource(name = "umsAdminLoginLogMapper")
@@ -97,11 +100,11 @@ public class UmsAdminServiceImpl extends ServiceImpl<UmsAdminMapper, UmsAdmin> i
         // 将密码进行加密操作
         String encodePassword = BCrypt.hashpw(umsAdmin.getPassword());
         umsAdmin.setPassword(encodePassword);
-        int idAfterInsert = baseMapper.insert(umsAdmin);
+        adminMapper.insertSelective(umsAdmin);
         UmsAdminRoleRelation umsAdminRoleRelation = new UmsAdminRoleRelation();
         // 给新注册的账号设置默认角色
         umsAdminRoleRelation.setRoleId(5L);
-        umsAdminRoleRelation.setAdminId(Long.getLong(idAfterInsert + ""));
+        umsAdminRoleRelation.setAdminId(umsAdmin.getId());
         umsAdminRoleRelationService.save(umsAdminRoleRelation);
         return umsAdmin;
     }
@@ -245,7 +248,7 @@ public class UmsAdminServiceImpl extends ServiceImpl<UmsAdminMapper, UmsAdmin> i
 
     @Override
     public int updateRole(Long adminId, List<Long> roleIds) {
-        int count = roleIds == null ? 0 : roleIds.size();
+        int count = (roleIds == null || roleIds.isEmpty()) ? 0 : roleIds.size();
         // 先删除原来的关系
         QueryWrapper<UmsAdminRoleRelation> umsAdminRoleRelationQueryWrapper = new QueryWrapper<>();
         umsAdminRoleRelationQueryWrapper.eq("admin_id", adminId);
@@ -265,8 +268,71 @@ public class UmsAdminServiceImpl extends ServiceImpl<UmsAdminMapper, UmsAdmin> i
     }
 
     @Override
+    public int updateRoleByUsername(String username, List<Long> roleIds) {
+        int count = (roleIds == null || roleIds.isEmpty()) ? 0 : roleIds.size();
+        QueryWrapper<UmsAdmin> umsAdminQueryWrapper = new QueryWrapper<>();
+        umsAdminQueryWrapper.eq("username", username).select("id");
+        UmsAdmin umsAdmin = baseMapper.selectOne(umsAdminQueryWrapper);
+        // 先删除原来的关系
+        QueryWrapper<UmsAdminRoleRelation> umsAdminRoleRelationQueryWrapper = new QueryWrapper<>();
+        umsAdminRoleRelationQueryWrapper.eq("admin_id", umsAdmin.getId());
+        adminRoleRelationMapper.delete(umsAdminRoleRelationQueryWrapper);
+        if(count != 0) {
+            // 建立新关系
+            if (!CollectionUtils.isEmpty(roleIds)) {
+                List<UmsAdminRoleRelation> list = new ArrayList<>();
+                for (Long roleId : roleIds) {
+                    UmsAdminRoleRelation roleRelation = new UmsAdminRoleRelation();
+                    roleRelation.setAdminId(umsAdmin.getId());
+                    roleRelation.setRoleId(roleId);
+                    list.add(roleRelation);
+                }
+                count = adminRoleRelationMapper.insertList(list);
+            }
+        }
+        return count;
+    }
+
+    @Override
     public List<UmsRole> getRoleList(Long adminId) {
         return adminRoleRelationMapper.getRoleList(adminId);
+    }
+
+    @Override
+    public List<UmsRole> getRoleListByAdminName(String adminName) {
+        return adminRoleRelationMapper.getRoleListByAdminName(adminName);
+    }
+
+    @Override
+    public List<AdminRoleTransferVo> getAdminRoleTransferVo(String adminName) {
+        List<UmsRole> roleListByAdminName = adminRoleRelationMapper.getRoleListByAdminName(adminName);
+        List<UmsRole> allList = umsRoleMapper.selectList(null);
+        List<AdminRoleTransferVo> roleListByAdminVo = roleListByAdminName.stream().map(item -> convertToTransferVo(item)).collect(Collectors.toList());
+        List<AdminRoleTransferVo> allListVo = allList.stream().map(item -> convertToTransferVo(item)).collect(Collectors.toList());
+        // 进行比较以便设置disable属性的值
+        List<AdminRoleTransferVo> finalResult = allListVo.stream().map(item -> setChosenProp(item, roleListByAdminVo)).collect(Collectors.toList());
+        return finalResult;
+    }
+
+    // 当condition的Key没有一个和Vo的Key一致则设置chosen属性为false
+    private AdminRoleTransferVo setChosenProp(AdminRoleTransferVo vo, List<AdminRoleTransferVo> condition) {
+        String key = vo.getKey();
+        for(AdminRoleTransferVo vo1 : condition) {
+            if(vo1.getKey().equals(key)) {
+                vo.setChosen(true);
+            }
+        }
+        return vo;
+    }
+
+    private AdminRoleTransferVo convertToTransferVo(UmsRole role) {
+        AdminRoleTransferVo vo = AdminRoleTransferVo.builder()
+                .key(role.getId().toString())
+                .title(role.getName())
+                .description(role.getDescription())
+                .chosen(false)
+                .build();
+        return vo;
     }
 //
 //    @Override

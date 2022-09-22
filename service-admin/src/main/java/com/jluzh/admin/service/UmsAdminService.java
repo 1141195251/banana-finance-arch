@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.jluzh.admin.dto.UmsAdminParam;
 import com.jluzh.admin.dto.UpdateAdminPasswordParam;
 import com.jluzh.admin.dto.admin.AdminListParam;
+import com.jluzh.admin.dto.admin.AdminRoleTransferVo;
 import com.jluzh.admin.dto.admin.AdminSuperListVo;
 import com.jluzh.admin.model.UmsAdmin;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -71,12 +72,18 @@ public interface UmsAdminService extends IService<UmsAdmin> {
     @Transactional
     int updateRole(Long adminId, List<Long> roleIds);
 
+    @Transactional
+    int updateRoleByUsername(String username, List<Long> roleIds);
     /**
      * 获取用户对于角色
      */
     List<UmsRole> getRoleList(Long adminId);
 
     List<Long> getRoleIdsByAdminId(Long adminId);
+
+    public List<UmsRole> getRoleListByAdminName(String adminName);
+
+    public List<AdminRoleTransferVo> getAdminRoleTransferVo(String adminName);
     /**
      * 获取指定用户的可访问资源
      */

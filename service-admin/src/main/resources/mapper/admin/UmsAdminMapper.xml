@@ -18,17 +18,16 @@
     <sql id="baseProperties">
         id,username,password,icon,email,nick_name,note,create_time,login_time,status
     </sql>
-    <insert id="insert" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
-        SELECT <include refid="baseProperties" />
-        FROM ums_admin
-    </insert>
     <select id="getRoleIdsByAdminId" resultType="java.lang.Long">
         SELECT ar.role_id
         FROM ums_admin_role_relation ar
         JOIN ums_admin ad ON ar.admin_id = ad.id
         WHERE admin_id = #{adminId}
     </select>
-    <insert id="insertSelective" parameterType="com.jluzh.admin.model.UmsAdmin" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+    <insert id="insertSelective" parameterType="com.jluzh.admin.model.UmsAdmin" >
+        <selectKey keyProperty="id" keyColumn="id" order="AFTER" resultType="java.lang.Long">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
         INSERT INTO ums_admin
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="username != null">
