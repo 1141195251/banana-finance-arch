@@ -47,6 +47,12 @@ public class UmsMenuController {
             return CommonResult.failed();
         }
     }
+    @ApiOperation("获取所有菜单名和菜单编号")
+    @GetMapping("/getMenuName")
+    public CommonResult getMenuName() {
+        List<UmsMenu> data = menuService.getMenuNameId();
+        return CommonResult.success(data);
+    }
 
     @ApiOperation("修改后台菜单")
     @PostMapping("/update/{id}")
@@ -56,7 +62,7 @@ public class UmsMenuController {
         if (count > 0) {
             return CommonResult.success(count);
         } else {
-            return CommonResult.failed();
+            return CommonResult.failed("父菜单不能是自己!");
         }
     }
 
@@ -67,12 +73,12 @@ public class UmsMenuController {
         return CommonResult.success(umsMenu);
     }
 
-    @ApiOperation("根据ID删除后台菜单")
-    @PostMapping("/delete/{id}")
+    @ApiOperation("根据编号删除后台菜单")
+    @GetMapping("/delete/{id}")
     public CommonResult delete(@PathVariable Long id) {
         boolean hasRemoved = menuService.removeById(id);
         if (hasRemoved) {
-            return CommonResult.success(hasRemoved);
+            return CommonResult.success(true);
         } else {
             return CommonResult.failed();
         }

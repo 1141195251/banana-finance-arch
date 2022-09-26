@@ -1,31 +1,28 @@
-package com.jluzh.admin.model;
+package com.jluzh.admin.dto.admin;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-/**
- * <p>
- *
- * </p>
- *
- * @author banana
- * @since 2022-09-17
- */
+import java.io.Serializable;
+
+
 @Getter
 @Setter
 @TableName("ums_role_operation")
-@ApiModel(value = "UmsRoleOperation对象", description = "")
-public class UmsRoleOperation implements Serializable {
+@ApiModel(value = "StandardRoleOperationDto", description = "")
+public class StandardRoleOperationDto implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
     @ApiModelProperty("角色id")
     private Long roleId;
+
+    @ApiModelProperty("角色名称")
+    private String name;
 
     @ApiModelProperty("添加操作")
     @TableField(value = "`add`")

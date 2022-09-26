@@ -2,8 +2,11 @@ package com.jluzh.admin.controller;
 
 
 import cn.hutool.core.collection.CollUtil;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.jluzh.admin.dto.RoleOperationDto;
+import com.jluzh.admin.dto.admin.StandardRoleOperationDto;
 import com.jluzh.admin.service.UmsRoleOperationService;
+import com.jluzh.api.CommonPage;
 import com.jluzh.api.CommonResult;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,6 +40,11 @@ public class UmsRoleOperationController {
         }else {
             return CommonResult.failed();
         }
+    }
+    @GetMapping("/getRoleWithName/{pageNum}/{pageSize}")
+    public CommonResult getRoleWithName(@PathVariable Long pageNum, @PathVariable Long pageSize) {
+        Page<StandardRoleOperationDto> pageResult = operationService.selectWithRoleName(pageNum, pageSize);
+        return CommonResult.success(CommonPage.restPage(pageResult));
     }
 }
 

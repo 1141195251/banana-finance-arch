@@ -2,8 +2,10 @@ package com.jluzh.admin.service.impl;
 
 import cn.hutool.core.collection.CollUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.jluzh.admin.dto.OperationProp;
 import com.jluzh.admin.dto.RoleOperationDto;
+import com.jluzh.admin.dto.admin.StandardRoleOperationDto;
 import com.jluzh.admin.mapper.UmsAdminRoleRelationMapper;
 import com.jluzh.admin.model.UmsRole;
 import com.jluzh.admin.model.UmsRoleOperation;
@@ -67,4 +69,10 @@ public class UmsRoleOperationServiceImpl extends ServiceImpl<UmsRoleOperationMap
         return roleOperationDtos;
     }
 
+    @Override
+    public Page<StandardRoleOperationDto> selectWithRoleName(Long pageNum, Long pageSize) {
+        Page<StandardRoleOperationDto> settings = new Page<>(pageNum, pageSize);
+        Page<StandardRoleOperationDto> result = baseMapper.selectWithRoleName(settings);
+        return result;
+    }
 }

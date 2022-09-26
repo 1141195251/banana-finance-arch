@@ -1,31 +1,18 @@
-package com.jluzh.admin.model;
+package com.jluzh.admin.dto.admin;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
-import java.util.Date;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
-/**
- * <p>
- * 后台用户角色表
- * </p>
- *
- * @author banana
- * @since 2022-09-15
- */
+import java.util.Date;
+
 @Getter
 @Setter
-@TableName("ums_role")
-@ApiModel(value = "UmsRole对象", description = "后台用户角色表")
-public class UmsRole implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
+public class RoleAndOperationDto {
+    private Long pageNum;
+    private Long pageSize;
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
@@ -46,4 +33,8 @@ public class UmsRole implements Serializable {
 
     private Integer sort;
 
+    private Integer find;
+    private Integer edit;
+    private Integer add;
+    private Integer delete;
 }

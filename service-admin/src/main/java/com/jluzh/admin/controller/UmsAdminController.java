@@ -186,7 +186,7 @@ public class UmsAdminController {
     }
 
     @ApiOperation("获取指定用户id的角色")
-    @GetMapping("/role/{adminId}")
+    @GetMapping("/role/id/{adminId}")
     public CommonResult<List<UmsRole>> getRoleList(@PathVariable Long adminId) {
         List<UmsRole> roleList = adminService.getRoleList(adminId);
         return CommonResult.success(roleList);

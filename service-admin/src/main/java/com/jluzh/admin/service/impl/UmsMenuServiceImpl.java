@@ -1,5 +1,6 @@
 package com.jluzh.admin.service.impl;
 
+import cn.hutool.core.collection.CollUtil;
 import cn.hutool.json.JSON;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONObject;
@@ -65,6 +66,10 @@ public class UmsMenuServiceImpl extends ServiceImpl<UmsMenuMapper, UmsMenu> impl
 
     @Override
     public int update(Long id, UmsMenu umsMenu) {
+        // 如果菜单设置父菜单为自己则不予处理
+        if(id == umsMenu.getParentId()) {
+            return 0;
+        }
         umsMenu.setId(id);
         updateLevel(umsMenu);
         return menuMapper.updateByPrimaryKeySelective(umsMenu);
@@ -145,7 +150,7 @@ public class UmsMenuServiceImpl extends ServiceImpl<UmsMenuMapper, UmsMenu> impl
         AsyncMenu asyncMenu = new AsyncMenu();
         asyncMenu.setRouter(umsMenu.getName());
         asyncMenu.setName(umsMenu.getTitle());
-        asyncMenu.setInvisible(umsMenu.getHidden() == 1 ? true : false);
+        asyncMenu.setInvisible((umsMenu.getHidden() !=null && umsMenu.getHidden() == 1) ? true : false);
         asyncMenu.setIcon(umsMenu.getIcon());
         PageProp pageProp = new PageProp();
         pageProp.setTitle(umsMenu.getTitle());
@@ -186,5 +191,11 @@ public class UmsMenuServiceImpl extends ServiceImpl<UmsMenuMapper, UmsMenu> impl
                 .map(subMenu -> covertMenuNode(subMenu, menuList)).collect(Collectors.toList());
         node.setChildren(children);
         return node;
+    }
+
+    @Override
+    public List<UmsMenu> getMenuNameId() {
+        List<UmsMenu> result = baseMapper.getMenuNameId();
+        return result;
     }
 }

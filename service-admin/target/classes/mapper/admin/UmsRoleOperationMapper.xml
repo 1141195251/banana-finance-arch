@@ -10,5 +10,27 @@
         <result column="delete" property="delete" />
         <result column="find" property="find" />
     </resultMap>
-
+    <select id="selectWithRoleName" resultType="com.jluzh.admin.dto.admin.StandardRoleOperationDto">
+        SELECT ro.role_id, r.`name`, ro.`add`, ro.`edit`, ro.`delete`, ro.`find`
+        FROM ums_role_operation ro
+        LEFT JOIN ums_role r ON r.id = ro.`role_id`
+    </select>
+    <update id="updateByPrimaryKeySelective" parameterType="com.jluzh.admin.model.UmsRoleOperation">
+        UPDATE ums_role_operation
+        <set>
+            <if test="add != null">
+                name = #{add},
+            </if>
+            <if test="edit != null">
+                name = #{edit},
+            </if>
+            <if test="delete != null">
+                name = #{delete},
+            </if>
+            <if test="find != null">
+                name = #{find},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
 </mapper>

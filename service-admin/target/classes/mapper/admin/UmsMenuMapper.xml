@@ -17,6 +17,10 @@
     <sql id="Base_Column_List">
         id, parent_id, create_time, title, level, sort, name, icon, hidden
     </sql>
+    <select id="getMenuNameId" resultType="com.jluzh.admin.model.UmsMenu">
+        SELECT id, title
+        FROM ums_menu
+    </select>
     <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         SELECT
         <include refid="Base_Column_List" />

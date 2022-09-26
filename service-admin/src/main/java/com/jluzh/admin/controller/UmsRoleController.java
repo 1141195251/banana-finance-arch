@@ -1,9 +1,14 @@
 package com.jluzh.admin.controller;
 
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.jluzh.admin.dto.admin.AdminSuperListVo;
+import com.jluzh.admin.dto.admin.RoleAndOperationDto;
+import com.jluzh.admin.dto.admin.RolePageParam;
 import com.jluzh.admin.model.UmsMenu;
 import com.jluzh.admin.model.UmsRole;
 import com.jluzh.admin.service.UmsRoleService;
+import com.jluzh.api.CommonPage;
 import com.jluzh.api.CommonResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -34,13 +39,33 @@ public class UmsRoleController {
         if (count > 0) {
             return CommonResult.success(count);
         }
-        return CommonResult.failed();
+        return CommonResult.failed("角色名称重复!");
+    }
+
+    @ApiOperation("添加角色和操作")
+    @PostMapping("/createWithOpr")
+    public CommonResult create(@RequestBody RoleAndOperationDto params) {
+        int count = roleService.createRoleAndOperation(params);
+        if (count > 0) {
+            return CommonResult.success(count);
+        }
+        return CommonResult.failed("角色名称重复!");
     }
 
     @ApiOperation("修改角色")
     @PostMapping("/update/{id}")
     public CommonResult update(@PathVariable Long id, @RequestBody UmsRole role) {
         int count = roleService.update(id, role);
+        if (count > 0) {
+            return CommonResult.success(count);
+        }
+        return CommonResult.failed();
+    }
+
+    @ApiOperation("修改角色和其操作权限")
+    @PostMapping("/updateRoleAndOpr/{id}")
+    public CommonResult updateRoleAndOpr(@PathVariable Long id, @RequestBody RoleAndOperationDto source) {
+        int count = roleService.update(id, source);
         if (count > 0) {
             return CommonResult.success(count);
         }
@@ -64,6 +89,19 @@ public class UmsRoleController {
         return CommonResult.success(roleList);
     }
 
+    @ApiOperation("分页获取所有角色")
+    @PostMapping("/listAllPage")
+    public CommonResult<CommonPage<UmsRole>> listAllPage(@RequestBody RolePageParam params) {
+        Page<UmsRole> roleList = roleService.listPage(params);
+        return CommonResult.success(CommonPage.restPage(roleList));
+    }
+
+    @ApiOperation("分页获取所有角色和操作权限")
+    @PostMapping("/listRoleAndOperationPage")
+    public CommonResult<CommonPage<RoleAndOperationDto>> listRoleAndOperationPage(@RequestBody RoleAndOperationDto params) {
+        Page<RoleAndOperationDto> list = roleService.listRoleAndOperationPage(params);
+        return CommonResult.success(CommonPage.restPage(list));
+    }
 //    @ApiOperation("根据角色名称分页获取角色列表")
 //    @GetMapping("/list")
 //    public CommonResult<CommonPage<UmsRole>> list(@RequestParam(value = "keyword", required = false) String keyword,
@@ -79,6 +117,16 @@ public class UmsRoleController {
         UmsRole umsRole = new UmsRole();
         umsRole.setStatus(status);
         int count = roleService.update(id, umsRole);
+        if (count > 0) {
+            return CommonResult.success(count);
+        }
+        return CommonResult.failed();
+    }
+
+    @ApiOperation("删除单个角色根据Id")
+    @GetMapping("/delete/{id}")
+    public CommonResult deleteById(@PathVariable Long id) {
+        int count = roleService.deleteById(id);
         if (count > 0) {
             return CommonResult.success(count);
         }

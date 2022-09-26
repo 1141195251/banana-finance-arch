@@ -52,5 +52,7 @@ public interface UmsMenuService extends IService<UmsMenu> {
      * 修改菜单显示状态
      */
     int updateHidden(Long id, Integer hidden);
-    public List<AsyncMenu> asyncListByRoleIds(List<Long> roleIds);
+    List<AsyncMenu> asyncListByRoleIds(List<Long> roleIds);
+
+    List<UmsMenu> getMenuNameId();
 }
