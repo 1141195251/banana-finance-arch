@@ -19,18 +19,18 @@
         UPDATE ums_role_operation
         <set>
             <if test="add != null">
-                name = #{add},
+                `add` = #{add},
             </if>
             <if test="edit != null">
-                name = #{edit},
+                `edit` = #{edit},
             </if>
             <if test="delete != null">
-                name = #{delete},
+                `delete` = #{delete},
             </if>
             <if test="find != null">
-                name = #{find},
+                `find` = #{find},
             </if>
         </set>
-        where id = #{id,jdbcType=BIGINT}
+        where role_id = #{roleId,jdbcType=BIGINT}
     </update>
 </mapper>

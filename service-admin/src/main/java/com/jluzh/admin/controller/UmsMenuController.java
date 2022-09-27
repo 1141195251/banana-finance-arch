@@ -73,6 +73,14 @@ public class UmsMenuController {
         return CommonResult.success(umsMenu);
     }
 
+//    @ApiOperation("根据角色编号获取菜单名")
+//    @GetMapping("/menuName/{id}")
+//    // TODO
+//    public CommonResult<UmsMenu> getMenuName(@PathVariable Long id) {
+//        UmsMenu umsMenu = menuService.getMenuNameByRoleId(id);
+//        return CommonResult.success(umsMenu);
+//    }
+
     @ApiOperation("根据编号删除后台菜单")
     @GetMapping("/delete/{id}")
     public CommonResult delete(@PathVariable Long id) {

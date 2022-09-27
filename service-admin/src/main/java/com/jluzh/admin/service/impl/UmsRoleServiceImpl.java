@@ -9,6 +9,7 @@ import com.jluzh.admin.mapper.UmsRoleOperationMapper;
 import com.jluzh.admin.model.UmsMenu;
 import com.jluzh.admin.model.UmsRole;
 import com.jluzh.admin.mapper.UmsRoleMapper;
+import com.jluzh.admin.model.UmsRoleMenuRelation;
 import com.jluzh.admin.model.UmsRoleOperation;
 import com.jluzh.admin.service.UmsRoleService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -72,10 +73,21 @@ public class UmsRoleServiceImpl extends ServiceImpl<UmsRoleMapper, UmsRole> impl
             return null;
         }
         UmsRoleOperation opr = new UmsRoleOperation();
-        opr.setAdd(source.getAdd());
-        opr.setEdit(source.getEdit());
-        opr.setFind(source.getFind());
-        opr.setDelete(source.getDelete());
+        if(source.getId() != null) {
+            opr.setRoleId(source.getId());
+        }
+        if(source.getAdd() != null) {
+            opr.setAdd(source.getAdd());
+        }
+        if(source.getEdit() != null) {
+            opr.setEdit(source.getEdit());
+        }
+        if(source.getFind() != null) {
+            opr.setFind(source.getFind());
+        }
+        if(source.getDelete() != null) {
+            opr.setDelete(source.getDelete());
+        }
         return opr;
     }
     private UmsRole convertToRole(RoleAndOperationDto source) {
@@ -83,14 +95,30 @@ public class UmsRoleServiceImpl extends ServiceImpl<UmsRoleMapper, UmsRole> impl
             return null;
         }
         UmsRole target = new UmsRole();
-        target.setId(source.getId());
-        target.setName(source.getName());
-        target.setSort(source.getSort());
-        target.setDescription(source.getDescription());
-        target.setStatus(source.getStatus());
-        target.setCreateTime(new Date());
-        target.setAdminCount(0);
-        target.setSort(0);
+        if(source.getId() != null) {
+            target.setId(source.getId());
+        }
+        if(source.getName() != null) {
+            target.setName(source.getName());
+        }
+        if(source.getSort() != null) {
+            target.setSort(source.getSort());
+        }
+        if(source.getDescription() != null) {
+            target.setDescription(source.getDescription());
+        }
+        if(source.getStatus() != null) {
+            target.setStatus(source.getStatus());
+        }
+        if(source.getCreateTime() != null) {
+            target.setCreateTime(new Date());
+        }
+        if(source.getAdminCount() != null) {
+            target.setAdminCount(0);
+        }
+        if(source.getSort() != null) {
+            target.setSort(0);
+        }
         return target;
     }
     @Override
@@ -105,7 +133,7 @@ public class UmsRoleServiceImpl extends ServiceImpl<UmsRoleMapper, UmsRole> impl
         UmsRole umsRole = convertToRole(role);
         int count = roleMapper.updateByPrimaryKeySelective(umsRole);
         UmsRoleOperation operation = convertToOpr(role);
-        count = roleOperationMapper.updateByPrimaryKeySelective(operation);
+        count = count + roleOperationMapper.updateByPrimaryKeySelective(operation);
         return count;
     }
 
@@ -123,7 +151,7 @@ public class UmsRoleServiceImpl extends ServiceImpl<UmsRoleMapper, UmsRole> impl
         Page<RoleAndOperationDto> result = roleMapper.listRoleAndOperationPage(settings, params);
         return result;
     }
-
+    // 可以用beanUtils.copyProperties
     private UmsRole convertToRole(RolePageParam param) {
         UmsRole target = new UmsRole();
         target.setId(param.getId());
@@ -184,21 +212,20 @@ public class UmsRoleServiceImpl extends ServiceImpl<UmsRoleMapper, UmsRole> impl
 //        return roleDao.getResourceListByRoleId(roleId);
 //    }
 //
-//    @Override
-//    public int allocMenu(Long roleId, List<Long> menuIds) {
-//        //先删除原有关系
-//        UmsRoleMenuRelationExample example=new UmsRoleMenuRelationExample();
-//        example.createCriteria().andRoleIdEqualTo(roleId);
-//        roleMenuRelationMapper.deleteByExample(example);
-//        //批量插入新关系
-//        for (Long menuId : menuIds) {
-//            UmsRoleMenuRelation relation = new UmsRoleMenuRelation();
-//            relation.setRoleId(roleId);
-//            relation.setMenuId(menuId);
-//            roleMenuRelationMapper.insert(relation);
-//        }
-//        return menuIds.size();
-//    }
+    @Override
+    public int allocMenu(Long roleId, List<Long> menuIds) {
+        // 先删除原有关系
+        roleMenuRelationMapper.deleteById(roleId);
+        // 批量插入新关系
+        int rows = 0;
+        for (Long menuId : menuIds) {
+            UmsRoleMenuRelation relation = new UmsRoleMenuRelation();
+            relation.setRoleId(roleId);
+            relation.setMenuId(menuId);
+            rows += roleMenuRelationMapper.insert(relation);
+        }
+        return rows;
+    }
 //
 //    @Override
 //    public int allocResource(Long roleId, List<Long> resourceIds) {

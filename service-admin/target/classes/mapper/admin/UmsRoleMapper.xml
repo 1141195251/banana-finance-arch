@@ -120,7 +120,7 @@
             <if test="conditions.name != null and conditions.name != '' ">
                 AND r.name like concat('%',#{conditions.name},'%')
             </if>
-            <if test="conditions.description != null and role.description != '' ">
+            <if test="conditions.description != null and conditions.description != '' ">
                 AND r.description like concat('%', #{conditions.description}, '%'}
             </if>
             <if test="conditions.adminCount != null">
@@ -148,5 +148,11 @@
                 AND ro.delete = #{conditions.delete}
             </if>
         </where>
+    </select>
+    <select id="getMenuNameByRoleId" resultType="String">
+        SELECT m.title
+        FROM ums_menu m
+        JOIN ums_role_menu_relation rm ON m.id = rm.`menu_id`
+        WHERE
     </select>
 </mapper>

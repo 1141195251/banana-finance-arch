@@ -3,6 +3,7 @@ package com.jluzh.admin.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.jluzh.admin.dto.admin.AdminSuperListVo;
+import com.jluzh.admin.dto.admin.AllocaParam;
 import com.jluzh.admin.dto.admin.RoleAndOperationDto;
 import com.jluzh.admin.dto.admin.RolePageParam;
 import com.jluzh.admin.model.UmsMenu;
@@ -41,6 +42,7 @@ public class UmsRoleController {
         }
         return CommonResult.failed("角色名称重复!");
     }
+
 
     @ApiOperation("添加角色和操作")
     @PostMapping("/createWithOpr")
@@ -88,6 +90,7 @@ public class UmsRoleController {
         List<UmsRole> roleList = roleService.list();
         return CommonResult.success(roleList);
     }
+
 
     @ApiOperation("分页获取所有角色")
     @PostMapping("/listAllPage")
@@ -147,12 +150,12 @@ public class UmsRoleController {
 //        return CommonResult.success(roleList);
 //    }
 
-//    @ApiOperation("给角色分配菜单")
-//    @PostMapping("/allocMenu")
-//    public CommonResult allocMenu(@RequestParam Long roleId, @RequestParam List<Long> menuIds) {
-//        int count = roleService.allocMenu(roleId, menuIds);
-//        return CommonResult.success(count);
-//    }
+    @ApiOperation("给角色分配菜单")
+    @PostMapping("/allocMenu")
+    public CommonResult allocMenu(@RequestBody AllocaParam params) {
+        int count = roleService.allocMenu(params.getRoleId(), params.getMenuIds());
+        return CommonResult.success(count);
+    }
 
 //    @ApiOperation("给角色分配资源")
 //    @PostMapping("/allocResource")

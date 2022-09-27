@@ -19,4 +19,5 @@ public interface UmsMenuMapper extends BaseMapper<UmsMenu> {
     int updateByPrimaryKey(UmsMenu record);
     List<UmsMenu> selectByRoleIds(List<Long> roleIds);
     List<UmsMenu> getMenuNameId();
+    List<String> getMenuNameByRoleId();
 }

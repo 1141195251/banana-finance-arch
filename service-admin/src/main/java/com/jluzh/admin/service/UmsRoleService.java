@@ -54,9 +54,12 @@ public interface UmsRoleService extends IService<UmsRole> {
      * 获取角色相关菜单
      */
     List<UmsMenu> listMenu(Long roleId);
+
     @Transactional
     int createRoleAndOperation(RoleAndOperationDto params);
+
     Page<UmsRole> listPage(RolePageParam param);
+
     Page<RoleAndOperationDto> listRoleAndOperationPage(RoleAndOperationDto params);
 
     int deleteById(Long id);
@@ -65,13 +68,14 @@ public interface UmsRoleService extends IService<UmsRole> {
      *//*
     List<UmsResource> listResource(Long roleId);
 
-    *//**
+    */
+    /**
      * 给角色分配菜单
-     *//*
+     */
     @Transactional
     int allocMenu(Long roleId, List<Long> menuIds);
 
-    *//**
+    /**
      * 给角色分配资源
      *//*
     @Transactional
