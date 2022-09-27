@@ -133,6 +133,14 @@ public class UmsRoleServiceImpl extends ServiceImpl<UmsRoleMapper, UmsRole> impl
         UmsRole umsRole = convertToRole(role);
         int count = roleMapper.updateByPrimaryKeySelective(umsRole);
         UmsRoleOperation operation = convertToOpr(role);
+        // 如果角色没有任何生成任何操作，则新建插入一行
+        QueryWrapper<UmsRoleOperation> oprWrapper = new QueryWrapper<>();
+        oprWrapper.eq("role_id", id);
+        // 不存在
+        if(!roleOperationMapper.exists(oprWrapper)) {
+            count += roleOperationMapper.insert(operation);
+        }
+        // 存在则做出更新修改操作
         count = count + roleOperationMapper.updateByPrimaryKeySelective(operation);
         return count;
     }
