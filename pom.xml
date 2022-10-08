@@ -6,9 +6,9 @@
   <modules>
     <module>service-auth</module>
     <module>service-gateway</module>
-      <module>service-api</module>
-      <module>common</module>
-      <module>service-admin</module>
+    <module>service-api</module>
+    <module>common</module>
+    <module>service-admin</module>
   </modules>
   <groupId>com.jluzh</groupId>
   <artifactId>banana-finance</artifactId>
