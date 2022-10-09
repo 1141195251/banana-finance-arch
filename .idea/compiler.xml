@@ -17,10 +17,14 @@
         <outputRelativeToContentRoot value="true" />
         <module name="service-admin" />
         <module name="service-gateway" />
+        <module name="service-reimbursement" />
         <module name="common" />
         <module name="service-auth" />
         <module name="service-api" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="service-expense-reimbursement" target="8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

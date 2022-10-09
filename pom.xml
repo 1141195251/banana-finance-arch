@@ -9,6 +9,7 @@
       <module>service-api</module>
       <module>common</module>
       <module>service-admin</module>
+      <module>service-reimbursement</module>
   </modules>
   <groupId>com.jluzh</groupId>
   <artifactId>banana-finance</artifactId>
@@ -138,11 +139,14 @@
       <artifactId>lombok</artifactId>
       <optional>true</optional>
     </dependency>
+
     <dependency>
       <groupId>cn.hutool</groupId>
       <artifactId>hutool-all</artifactId>
-      <version>${hutool-version}</version>
+      <version>5.7.22</version>
     </dependency>
+
+
   </dependencies>
 
   <build>
