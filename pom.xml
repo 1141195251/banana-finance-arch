@@ -9,6 +9,7 @@
     <module>service-api</module>
     <module>common</module>
     <module>service-admin</module>
+    <module>service-msm</module>
   </modules>
   <groupId>com.jluzh</groupId>
   <artifactId>banana-finance</artifactId>
