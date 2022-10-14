@@ -104,7 +104,7 @@ public class UmsResourceServiceImpl extends ServiceImpl<UmsResourceMapper, UmsRe
         for (UmsResource resource : resourceList) {
             Set<Long> roleIds = relationList.stream().filter(item -> item.getResourceId().equals(resource.getId())).map(UmsRoleResourceRelation::getRoleId).collect(Collectors.toSet());
             List<String> roleNames = roleList.stream().filter(item -> roleIds.contains(item.getId())).map(item -> item.getId() + "_" + item.getName()).collect(Collectors.toList());
-            // exp: put("/service-api/user/currentUser", CollUtil.toList("ADMIN", "TEST"))
+            // exp: "/service-admin/admin/**": ["5_超级管理员","8_权限管理员"]
             resourceRoleMap.put("/"+applicationName+resource.getUrl(),roleNames);
         }
         // 覆盖之前存的

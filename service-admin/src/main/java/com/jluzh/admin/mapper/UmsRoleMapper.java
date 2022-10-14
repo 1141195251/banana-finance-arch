@@ -1,5 +1,7 @@
 package com.jluzh.admin.mapper;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.jluzh.admin.dto.admin.RoleAndOperationDto;
 import com.jluzh.admin.model.UmsMenu;
 import com.jluzh.admin.model.UmsResource;
 import com.jluzh.admin.model.UmsRole;
@@ -29,4 +31,12 @@ public interface UmsRoleMapper extends BaseMapper<UmsRole> {
      * 根据角色ID获取资源
      */
     List<UmsResource> getResourceListByRoleId(@Param("roleId") Long roleId);
+
+    /**
+     *
+     * 根据角色ID选择性更新
+     */
+    int updateByPrimaryKeySelective(UmsRole record);
+    Page<UmsRole> listPage(Page<UmsRole> settings,@Param("role") UmsRole conditions);
+    Page<RoleAndOperationDto> listRoleAndOperationPage(Page<RoleAndOperationDto> settings, @Param("conditions") RoleAndOperationDto conditions);
 }

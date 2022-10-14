@@ -6,9 +6,10 @@
   <modules>
     <module>service-auth</module>
     <module>service-gateway</module>
-      <module>service-api</module>
-      <module>common</module>
-      <module>service-admin</module>
+    <module>service-api</module>
+    <module>common</module>
+    <module>service-admin</module>
+    <module>service-msm</module>
   </modules>
   <groupId>com.jluzh</groupId>
   <artifactId>banana-finance</artifactId>
@@ -73,6 +74,11 @@
       <dependency>
         <groupId>com.baomidou</groupId>
         <artifactId>mybatis-plus-boot-starter</artifactId>
+        <version>${mybatis-plus.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus-extension</artifactId>
         <version>${mybatis-plus.version}</version>
       </dependency>
       <!--MyBatis Plus 代码生成器-->

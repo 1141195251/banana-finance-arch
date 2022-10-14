@@ -1,5 +1,8 @@
 package com.jluzh.admin.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.jluzh.admin.dto.admin.AdminRoleRelationVo;
+import com.jluzh.admin.dto.admin.AdminSuperListVo;
 import com.jluzh.admin.model.UmsAdminRoleRelation;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -12,5 +15,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2022-09-15
  */
 public interface UmsAdminRoleRelationService extends IService<UmsAdminRoleRelation> {
-
+    Page<AdminRoleRelationVo> getAdminRoleRelationList(Long pageNum, Long pageSize);
 }

@@ -46,5 +46,4 @@ public class UmsRole implements Serializable {
 
     private Integer sort;
 
-
 }

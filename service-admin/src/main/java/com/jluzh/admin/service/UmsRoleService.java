@@ -1,7 +1,9 @@
 package com.jluzh.admin.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.jluzh.admin.dto.admin.RoleAndOperationDto;
+import com.jluzh.admin.dto.admin.RolePageParam;
 import com.jluzh.admin.model.UmsMenu;
-import com.jluzh.admin.model.UmsResource;
 import com.jluzh.admin.model.UmsRole;
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,19 +21,19 @@ import java.util.List;
 public interface UmsRoleService extends IService<UmsRole> {
     /**
      * 添加角色
-     *//*
+     */
     int create(UmsRole role);
 
-    *//**
+    /**
      * 修改角色信息
-     *//*
+     */
     int update(Long id, UmsRole role);
+    int update(Long id, RoleAndOperationDto role);
 
-    *//**
+    /**
      * 批量删除角色
      *//*
     int delete(List<Long> ids);
-
     *//**
      * 获取所有角色列表
      *//*
@@ -44,26 +46,36 @@ public interface UmsRoleService extends IService<UmsRole> {
 
     *//**
      * 根据管理员ID获取对应菜单
-     *//*
+     */
     List<UmsMenu> getMenuList(Long adminId);
 
-    *//**
+
+    /**
      * 获取角色相关菜单
-     *//*
+     */
     List<UmsMenu> listMenu(Long roleId);
 
-    *//**
+    @Transactional
+    int createRoleAndOperation(RoleAndOperationDto params);
+
+    Page<UmsRole> listPage(RolePageParam param);
+
+    Page<RoleAndOperationDto> listRoleAndOperationPage(RoleAndOperationDto params);
+
+    int deleteById(Long id);
+    /**
      * 获取角色相关资源
      *//*
     List<UmsResource> listResource(Long roleId);
 
-    *//**
+    */
+    /**
      * 给角色分配菜单
-     *//*
+     */
     @Transactional
     int allocMenu(Long roleId, List<Long> menuIds);
 
-    *//**
+    /**
      * 给角色分配资源
      *//*
     @Transactional

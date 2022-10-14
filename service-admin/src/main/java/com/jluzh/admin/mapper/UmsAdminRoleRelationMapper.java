@@ -1,5 +1,7 @@
 package com.jluzh.admin.mapper;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.jluzh.admin.dto.admin.AdminRoleRelationVo;
 import com.jluzh.admin.model.UmsAdminRoleRelation;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.jluzh.admin.model.UmsResource;
@@ -27,6 +29,17 @@ public interface UmsAdminRoleRelationMapper extends BaseMapper<UmsAdminRoleRelat
      */
     List<UmsRole> getRoleList(@Param("adminId") Long adminId);
 
+    /**
+     * 根据用户名获取其角色
+     * @param adminName
+     * @return
+     */
+    List<UmsRole> getRoleListByAdminName(String adminName);
+
+    /**
+     *
+     */
+    Page<AdminRoleRelationVo> getAdminRoleRelationList(Page<AdminRoleRelationVo> pageSetting);
     /**
      * 获取用户所有可访问资源
      */

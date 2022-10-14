@@ -12,5 +12,147 @@
         <result column="status" property="status" />
         <result column="sort" property="sort" />
     </resultMap>
+    <sql id="baseProperties">
+        id, name, description, admin_count, create_time, status, sort
+    </sql>
+    <select id="getMenuList" resultType="com.jluzh.admin.model.UmsMenu" >
+        SELECT
+        m.id id,
+        m.parent_id parentId,
+        m.create_time createTime,
+        m.title title,
+        m.level level,
+        m.sort sort,
+        m.name name,
+        m.icon icon,
+        m.hidden hidden
+        FROM
+        ums_admin_role_relation arr
+        LEFT JOIN ums_role r ON arr.role_id = r.id
+        LEFT JOIN ums_role_menu_relation rmr ON r.id = rmr.role_id
+        LEFT JOIN ums_menu m ON rmr.menu_id = m.id
+        WHERE
+        arr.admin_id = #{adminId}
+        AND m.id IS NOT NULL
+        GROUP BY
+        m.id
+    </select>
 
+    <select id="getMenuListByRoleId" resultType="com.jluzh.admin.model.UmsMenu">
+        SELECT
+        m.id id,
+        m.parent_id parentId,
+        m.create_time createTime,
+        m.title title,
+        m.level level,
+        m.sort sort,
+        m.name name,
+        m.icon icon,
+        m.hidden hidden
+        FROM
+        ums_role_menu_relation rmr
+        LEFT JOIN ums_menu m ON rmr.menu_id = m.id
+        WHERE
+        rmr.role_id = #{roleId}
+        AND m.id IS NOT NULL
+        GROUP BY
+        m.id
+    </select>
+    <update id="updateByPrimaryKeySelective" parameterType="com.jluzh.admin.model.UmsMenu">
+        update ums_role
+        <set>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="description != null">
+                description = #{description,jdbcType=VARCHAR},
+            </if>
+            <if test="adminCount != null">
+                admin_count = #{adminCount,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="sort != null">
+                sort = #{sort,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <select id="listPage" resultType="com.jluzh.admin.model.UmsRole" >
+        SELECT <include refid="baseProperties" />
+        FROM ums_role
+        <where>
+            <if test="role.id != null">
+                AND id = #{role.id}
+            </if>
+            <if test="role.name != null and role.name != '' ">
+                AND name like concat('%',#{role.name},'%')
+            </if>
+            <if test="role.description != null and role.description != '' ">
+                AND description like concat('%', #{role.description}, '%'}
+            </if>
+            <if test="role.adminCount != null">
+                AND admin_count = #{role.adminCount}
+            </if>
+            <if test="role.createTime != null">
+                AND DATE_FORMAT(create_time,'%Y-%m-%d') = #{role.createTime,jdbcType=DATE}
+            </if>
+            <if test="role.status != null">
+                AND status = #{role.status}
+            </if>
+            <if test="role.sort != null">
+                AND sort = #{role.sort}
+            </if>
+        </where>
+    </select>
+    <select id="listRoleAndOperationPage" resultType="com.jluzh.admin.dto.admin.RoleAndOperationDto" >
+        SELECT r.*, ro.`find`, ro.`edit`, ro.`add`, ro.`delete`
+        FROM ums_role r
+        LEFT JOIN ums_role_operation ro ON r.`id` = ro.`role_id`
+        <where>
+            <if test="conditions.id != null">
+                AND r.id = #{conditions.id}
+            </if>
+            <if test="conditions.name != null and conditions.name != '' ">
+                AND r.name like concat('%',#{conditions.name},'%')
+            </if>
+            <if test="conditions.description != null and conditions.description != '' ">
+                AND r.description like concat('%', #{conditions.description}, '%'}
+            </if>
+            <if test="conditions.adminCount != null">
+                AND r.admin_count = #{conditions.adminCount}
+            </if>
+            <if test="conditions.createTime != null">
+                AND r.DATE_FORMAT(create_time,'%Y-%m-%d') = #{conditions.createTime,jdbcType=DATE}
+            </if>
+            <if test="conditions.status != null">
+                AND r.status = #{conditions.status}
+            </if>
+            <if test="conditions.sort != null">
+                AND r.sort = #{conditions.sort}
+            </if>
+            <if test="conditions.add != null">
+                AND ro.add = #{conditions.add}
+            </if>
+            <if test="conditions.add != null">
+                AND ro.find = #{conditions.find}
+            </if>
+            <if test="conditions.edit != null">
+                AND ro.edit = #{conditions.edit}
+            </if>
+            <if test="conditions.delete != null">
+                AND ro.delete = #{conditions.delete}
+            </if>
+        </where>
+    </select>
+    <select id="getMenuNameByRoleId" resultType="String">
+        SELECT m.title
+        FROM ums_menu m
+        JOIN ums_role_menu_relation rm ON m.id = rm.`menu_id`
+        WHERE
+    </select>
 </mapper>

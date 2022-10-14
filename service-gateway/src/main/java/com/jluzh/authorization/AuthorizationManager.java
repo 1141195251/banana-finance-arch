@@ -71,7 +71,7 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
             }
             // TODO 请求来源是前台客户端但是URL去的是后台接口
             if (AuthConstant.PORTAL_CLIENT_ID.equals(userDto.getClientId()) && pathMatcher.match(AuthConstant.ADMIN_URL_PATTERN, uri.getPath())) {
-                return Mono.just(new AuthorizationDecision(false));
+                return Mono.just(new AuthorizationDecision(true)); // TODO 现在暂时设为true，以后前台完善需要设置为false
             }
         } catch (ParseException e) {
             e.printStackTrace();
@@ -87,13 +87,17 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
         List<String> authorities = new ArrayList<>();
         while (iterator.hasNext()) {
             String pattern = (String) iterator.next();
+            // 将当前路径对应的所有权限都放进校验权限列表中待检验
+            // resourceRolesMap = "/service-admin/admin/**": ["5_超级管理员","8_权限管理员"]
             if (pathMatcher.match(pattern, uri.getPath())) {
                 authorities.addAll(Convert.toList(String.class, resourceRolesMap.get(pattern)));
             }
         }
         // 添加前缀
+        // ["ROLE_5_超级管理员","ROLE_8_权限管理员"]
         authorities = authorities.stream().map(i -> i = AuthConstant.AUTHORITY_PREFIX + i).collect(Collectors.toList());
         // 认证通过且角色匹配的用户可访问当前路径
+        // 授权调用顺序
         return mono
                 .filter(Authentication::isAuthenticated)
                 .flatMapIterable(Authentication::getAuthorities)

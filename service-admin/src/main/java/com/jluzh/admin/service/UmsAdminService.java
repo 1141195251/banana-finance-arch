@@ -1,7 +1,11 @@
 package com.jluzh.admin.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.jluzh.admin.dto.UmsAdminParam;
 import com.jluzh.admin.dto.UpdateAdminPasswordParam;
+import com.jluzh.admin.dto.admin.AdminListParam;
+import com.jluzh.admin.dto.admin.AdminRoleTransferVo;
+import com.jluzh.admin.dto.admin.AdminSuperListVo;
 import com.jluzh.admin.model.UmsAdmin;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.jluzh.admin.model.UmsResource;
@@ -47,29 +51,39 @@ public interface UmsAdminService extends IService<UmsAdmin> {
     /**
      * 根据用户名或昵称分页查询用户
      */
-//    List<UmsAdmin> list(String keyword, Integer pageSize, Integer pageNum);
+    Page<UmsAdmin> list(AdminListParam param);
+
+    Page<AdminSuperListVo> superList(AdminListParam param);
 
     /**
      * 修改指定用户信息
      */
-//    int update(Long id, UmsAdmin admin);
+    int update(Long id, UmsAdmin admin);
 
     /**
-     * 删除指定用户
+     * 删除指定用户包括和他关联的角色关系表
      */
-//    int delete(Long id);
+    @Transactional
+    int deleteById(Long id);
 
     /**
      * 修改用户角色关系
      */
-//    @Transactional
-//    int updateRole(Long adminId, List<Long> roleIds);
+    @Transactional
+    int updateRole(Long adminId, List<Long> roleIds);
 
+    @Transactional
+    int updateRoleByUsername(String username, List<Long> roleIds);
     /**
      * 获取用户对于角色
      */
     List<UmsRole> getRoleList(Long adminId);
 
+    List<Long> getRoleIdsByAdminId(Long adminId);
+
+    public List<UmsRole> getRoleListByAdminName(String adminName);
+
+    public List<AdminRoleTransferVo> getAdminRoleTransferVo(String adminName);
     /**
      * 获取指定用户的可访问资源
      */
@@ -78,7 +92,7 @@ public interface UmsAdminService extends IService<UmsAdmin> {
     /**
      * 修改密码
      */
-//    int updatePassword(UpdateAdminPasswordParam updatePasswordParam);
+    int updatePassword(UpdateAdminPasswordParam updatePasswordParam);
 
     /**
      * 获取用户信息
@@ -88,7 +102,7 @@ public interface UmsAdminService extends IService<UmsAdmin> {
     /**
      * 获取当前登录后台用户
      */
-//    UmsAdmin getCurrentAdmin();
+    UmsAdmin getCurrentAdmin();
 
     /**
      * 获取缓存服务
