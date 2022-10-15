@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jluzh.dao.TbReimbursementItemDao">
+
+    <resultMap type="com.jluzh.entity.TbReimbursementItem" id="TbReimbursementItemMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="claimVoucherId" column="claim_voucher_id" jdbcType="INTEGER"/>
+        <result property="item" column="item" jdbcType="VARCHAR"/>
+        <result property="amount" column="amount" jdbcType="NUMERIC"/>
+        <result property="comment" column="comment" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="TbReimbursementItemMap">
+        select
+          id, claim_voucher_id, item, amount, comment
+        from tb_reimbursement_item
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="TbReimbursementItemMap">
+        select
+          id, claim_voucher_id, item, amount, comment
+        from tb_reimbursement_item
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="claimVoucherId != null">
+                and claim_voucher_id = #{claimVoucherId}
+            </if>
+            <if test="item != null and item != ''">
+                and item = #{item}
+            </if>
+            <if test="amount != null">
+                and amount = #{amount}
+            </if>
+            <if test="comment != null and comment != ''">
+                and comment = #{comment}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from tb_reimbursement_item
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="claimVoucherId != null">
+                and claim_voucher_id = #{claimVoucherId}
+            </if>
+            <if test="item != null and item != ''">
+                and item = #{item}
+            </if>
+            <if test="amount != null">
+                and amount = #{amount}
+            </if>
+            <if test="comment != null and comment != ''">
+                and comment = #{comment}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into tb_reimbursement_item(claim_voucher_id, item, amount, comment)
+        values (#{claimVoucherId}, #{item}, #{amount}, #{comment})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into tb_reimbursement_item(claim_voucher_id, item, amount, comment)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.claimVoucherId}, #{entity.item}, #{entity.amount}, #{entity.comment})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into tb_reimbursement_item(claim_voucher_id, item, amount, comment)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.claimVoucherId}, #{entity.item}, #{entity.amount}, #{entity.comment})
+        </foreach>
+        on duplicate key update
+        claim_voucher_id = values(claim_voucher_id),
+        item = values(item),
+        amount = values(amount),
+        comment = values(comment)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update tb_reimbursement_item
+        <set>
+            <if test="claimVoucherId != null">
+                claim_voucher_id = #{claimVoucherId},
+            </if>
+            <if test="item != null and item != ''">
+                item = #{item},
+            </if>
+            <if test="amount != null">
+                amount = #{amount},
+            </if>
+            <if test="comment != null and comment != ''">
+                comment = #{comment},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from tb_reimbursement_item where id = #{id}
+    </delete>
+
+    <!--查所有数据-->
+    <select id="queryAll" resultMap="TbReimbursementItemMap">
+    select
+    id, claim_voucher_id, item, amount, comment
+    from tb_reimbursement_item
+    </select>
+
+
+
+</mapper>
+
