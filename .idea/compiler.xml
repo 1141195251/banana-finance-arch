@@ -16,6 +16,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="service-admin" />
+        <module name="service-msm" />
         <module name="service-gateway" />
         <module name="service-reimbursement" />
         <module name="common" />
