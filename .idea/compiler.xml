@@ -15,10 +15,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="service-admin" />
         <module name="service-msm" />
         <module name="service-gateway" />
         <module name="common" />
-        <module name="service-admin" />
         <module name="service-auth" />
         <module name="service-api" />
       </profile>

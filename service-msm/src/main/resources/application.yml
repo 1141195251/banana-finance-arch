@@ -1,7 +1,7 @@
 banana:
   mqtt:
-    username: admin
-    password: feiliuzhixia3qianchi
+    username: ENC(S6PJ2mT6Zs44k8+SoCYrzXt8f09M/ZMgTRD+bLvYmQpdQC9znluVSSI3B+3AgU68)
+    password: ENC(ClLQCQXi6iakQBgBaRWRNwVJ0AV+kjSjE7BDw24fmg1xqgeHQznPpPtD4qIk2eJqbpVZplFkEFAmBvnEcouJ1A==)
     clientId: client-1
     defaultTopic: push_message_topic
     serverClientId: publisherClient-1
@@ -18,8 +18,8 @@ spring:
   rabbitmq:
     host: 124.223.102.183
     port: 5672
-    username: admin
-    password: feiliuzhixia3qianchi
+    username: ENC(S6PJ2mT6Zs44k8+SoCYrzXt8f09M/ZMgTRD+bLvYmQpdQC9znluVSSI3B+3AgU68)
+    password: ENC(ClLQCQXi6iakQBgBaRWRNwVJ0AV+kjSjE7BDw24fmg1xqgeHQznPpPtD4qIk2eJqbpVZplFkEFAmBvnEcouJ1A==)
   datasource:
     url: jdbc:mysql://localhost:3306/bfinance?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false
     username: root
