@@ -79,7 +79,6 @@
         </option>
         <option name="moduleName" value="service-msm" />
         <option name="projectPath" value="$PROJECT_DIR$" />
-        <option name="templateName" value="mybatis-plus3" />
       </TemplateContext>
     </option>
   </component>

@@ -19,6 +19,7 @@
         <module name="service-msm" />
         <module name="service-gateway" />
         <module name="service-risk" />
+        <module name="service-reimbursement" />
         <module name="common" />
         <module name="service-admin" />
         <module name="service-ledger" />
@@ -27,5 +28,8 @@
         <module name="service-capital" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="service-reimbursement" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

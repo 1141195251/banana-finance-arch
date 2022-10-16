@@ -3,15 +3,22 @@
   <component name="EasyCodeTableSetting">
     <option name="tableInfoMap">
       <map>
+<<<<<<< HEAD
         <entry key="bfinance.bank_deposit_diary">
           <value>
             <TableInfoDTO>
               <option name="comment" value="银行存款日记" />
+=======
+        <entry key="bfinance.tb_reimbursement _info">
+          <value>
+            <TableInfoDTO>
+>>>>>>> dev1
               <option name="fullColumn">
                 <list>
                   <ColumnInfoDTO>
                     <option name="comment" value="编号" />
                     <option name="custom" value="false" />
+<<<<<<< HEAD
                     <option name="ext" value="{}" />
                     <option name="name" value="id" />
                     <option name="type" value="java.lang.Long" />
@@ -86,10 +93,27 @@
                     <option name="comment" value="编号" />
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
+=======
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+>>>>>>> dev1
                     <option name="name" value="id" />
                     <option name="type" value="java.lang.Integer" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
+<<<<<<< HEAD
                     <option name="comment" value="名称" />
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
@@ -761,23 +785,79 @@
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
                     <option name="name" value="content" />
+=======
+                    <option name="comment" value="事由" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+                    <option name="name" value="cause" />
+>>>>>>> dev1
                     <option name="type" value="java.lang.String" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="创建人" />
                     <option name="custom" value="false" />
+<<<<<<< HEAD
                     <option name="ext" value="{}" />
                     <option name="name" value="createBy" />
                     <option name="type" value="java.lang.Long" />
+=======
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+                    <option name="name" value="createSn" />
+                    <option name="type" value="java.lang.String" />
+>>>>>>> dev1
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="创建时间" />
                     <option name="custom" value="false" />
+<<<<<<< HEAD
                     <option name="ext" value="{}" />
+=======
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+>>>>>>> dev1
                     <option name="name" value="createTime" />
                     <option name="type" value="java.util.Date" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
+<<<<<<< HEAD
                     <option name="comment" value="修改人" />
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
@@ -980,16 +1060,109 @@
           <value>
             <TableInfoDTO>
               <option name="comment" value="风险表" />
+=======
+                    <option name="comment" value="待处理人" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+                    <option name="name" value="nextDealSn" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="总金额" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+                    <option name="name" value="totalAmount" />
+                    <option name="type" value="java.lang.Double" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="状态" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+                    <option name="name" value="status" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                </list>
+              </option>
+              <option name="name" value="TbReimbursement Info" />
+              <option name="preName" value="" />
+              <option name="saveModelName" value="service-reimbursement" />
+              <option name="savePackageName" value="" />
+              <option name="savePath" value="./service-reimbursement/src/main/java" />
+              <option name="templateGroupName" value="Default" />
+            </TableInfoDTO>
+          </value>
+        </entry>
+        <entry key="bfinance.tb_reimbursement_info">
+          <value>
+            <TableInfoDTO>
+>>>>>>> dev1
               <option name="fullColumn">
                 <list>
                   <ColumnInfoDTO>
                     <option name="comment" value="编号" />
                     <option name="custom" value="false" />
+<<<<<<< HEAD
                     <option name="ext" value="{}" />
+=======
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+>>>>>>> dev1
                     <option name="name" value="id" />
                     <option name="type" value="java.lang.Integer" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
+<<<<<<< HEAD
                     <option name="comment" value="风险名称" />
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
@@ -1025,16 +1198,169 @@
           <value>
             <TableInfoDTO>
               <option name="comment" value="风险分类表" />
+=======
+                    <option name="comment" value="事由" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+                    <option name="name" value="cause" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="创建人" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+                    <option name="name" value="createSn" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="创建时间" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+                    <option name="name" value="createTime" />
+                    <option name="type" value="java.util.Date" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="待处理人" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+                    <option name="name" value="nextDealSn" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="总金额" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+                    <option name="name" value="totalAmount" />
+                    <option name="type" value="java.lang.Double" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="状态" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+                    <option name="name" value="status" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                </list>
+              </option>
+              <option name="name" value="TbReimbursementInfo" />
+              <option name="preName" value="" />
+              <option name="saveModelName" value="service-reimbursement" />
+              <option name="savePackageName" value="" />
+              <option name="savePath" value="./service-reimbursement/src/main/java/com/jluzh" />
+              <option name="templateGroupName" value="" />
+            </TableInfoDTO>
+          </value>
+        </entry>
+        <entry key="bfinance.tb_reimbursement_item">
+          <value>
+            <TableInfoDTO>
+>>>>>>> dev1
               <option name="fullColumn">
                 <list>
                   <ColumnInfoDTO>
                     <option name="comment" value="编号" />
                     <option name="custom" value="false" />
+<<<<<<< HEAD
                     <option name="ext" value="{}" />
+=======
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+>>>>>>> dev1
                     <option name="name" value="id" />
                     <option name="type" value="java.lang.Integer" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
+<<<<<<< HEAD
                     <option name="comment" value="风险名称" />
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
@@ -1108,6 +1434,95 @@
               <option name="savePackageName" value="com.jluzh.risk" />
               <option name="savePath" value="./service-risk/src/main/java/com/jluzh/risk" />
               <option name="templateGroupName" value="" />
+=======
+                    <option name="comment" value="报销单" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+                    <option name="name" value="claimVoucherId" />
+                    <option name="type" value="java.lang.Integer" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="费用类型" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+                    <option name="name" value="item" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="金额" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+                    <option name="name" value="amount" />
+                    <option name="type" value="java.lang.Double" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="描述" />
+                    <option name="custom" value="false" />
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+                    <option name="name" value="comment" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                </list>
+              </option>
+              <option name="name" value="TbReimbursementItem" />
+              <option name="preName" value="" />
+              <option name="saveModelName" value="service-reimbursement" />
+              <option name="savePackageName" value="" />
+              <option name="savePath" value="./service-reimbursement/src/main/java/com/jluzh" />
+              <option name="templateGroupName" value="Default" />
+>>>>>>> dev1
             </TableInfoDTO>
           </value>
         </entry>
@@ -1119,49 +1534,168 @@
                   <ColumnInfoDTO>
                     <option name="comment" value="编号" />
                     <option name="custom" value="false" />
+<<<<<<< HEAD
                     <option name="ext" value="{}" />
+=======
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+>>>>>>> dev1
                     <option name="name" value="id" />
                     <option name="type" value="java.lang.Integer" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="报销单" />
                     <option name="custom" value="false" />
+<<<<<<< HEAD
                     <option name="ext" value="{}" />
+=======
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+>>>>>>> dev1
                     <option name="name" value="claimVoucherId" />
                     <option name="type" value="java.lang.Integer" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="处理人" />
                     <option name="custom" value="false" />
+<<<<<<< HEAD
                     <option name="ext" value="{}" />
+=======
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+>>>>>>> dev1
                     <option name="name" value="dealSn" />
                     <option name="type" value="java.lang.String" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="处理时间" />
                     <option name="custom" value="false" />
+<<<<<<< HEAD
                     <option name="ext" value="{}" />
+=======
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+>>>>>>> dev1
                     <option name="name" value="dealTime" />
                     <option name="type" value="java.util.Date" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="处理类型" />
                     <option name="custom" value="false" />
+<<<<<<< HEAD
                     <option name="ext" value="{}" />
+=======
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+>>>>>>> dev1
                     <option name="name" value="dealWay" />
                     <option name="type" value="java.lang.String" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="处理结果" />
                     <option name="custom" value="false" />
+<<<<<<< HEAD
                     <option name="ext" value="{}" />
+=======
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+>>>>>>> dev1
                     <option name="name" value="dealResult" />
                     <option name="type" value="java.lang.String" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="备注" />
                     <option name="custom" value="false" />
+<<<<<<< HEAD
                     <option name="ext" value="{}" />
+=======
+                    <option name="ext">
+                      <map>
+                        <entry key="jdbcType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                        <entry key="sqlType">
+                          <value>
+                            <Object />
+                          </value>
+                        </entry>
+                      </map>
+                    </option>
+>>>>>>> dev1
                     <option name="name" value="comment" />
                     <option name="type" value="java.lang.String" />
                   </ColumnInfoDTO>
@@ -1169,6 +1703,7 @@
               </option>
               <option name="name" value="TbReimbursementRecord" />
               <option name="preName" value="" />
+<<<<<<< HEAD
               <option name="saveModelName" value="" />
               <option name="savePackageName" value="" />
               <option name="savePath" value="" />
@@ -1622,6 +2157,11 @@
               <option name="saveModelName" value="" />
               <option name="savePackageName" value="" />
               <option name="savePath" value="" />
+=======
+              <option name="saveModelName" value="service-reimbursement" />
+              <option name="savePackageName" value="" />
+              <option name="savePath" value="./service-reimbursement/src/main/java/com/jluzh" />
+>>>>>>> dev1
               <option name="templateGroupName" value="" />
             </TableInfoDTO>
           </value>

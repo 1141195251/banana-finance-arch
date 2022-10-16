@@ -10,9 +10,10 @@
     <module>common</module>
     <module>service-admin</module>
     <module>service-msm</module>
-      <module>service-ledger</module>
-      <module>service-risk</module>
+    <module>service-ledger</module>
+    <module>service-risk</module>
     <module>service-capital</module>
+    <module>service-reimbursement</module>
   </modules>
   <groupId>com.jluzh</groupId>
   <artifactId>banana-finance</artifactId>
@@ -146,11 +147,6 @@
       <groupId>cn.hutool</groupId>
       <artifactId>hutool-all</artifactId>
       <version>${hutool-version}</version>
-    </dependency>
-    <dependency>
-      <groupId>com.github.ulisesbocchio</groupId>
-      <artifactId>jasypt-spring-boot-starter</artifactId>
-      <version>3.0.3</version>
     </dependency>
   </dependencies>
 
