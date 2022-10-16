@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jluzh.ledger.dao.IncomeAccountDao">
+
+    <resultMap type="com.jluzh.ledger.entity.IncomeAccount" id="IncomeAccountMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="itemName" column="item_name" jdbcType="VARCHAR"/>
+        <result property="today" column="today" jdbcType="NUMERIC"/>
+        <result property="monthTotal" column="month_total" jdbcType="NUMERIC"/>
+        <result property="yearTotal" column="year_total" jdbcType="NUMERIC"/>
+        <result property="lastBalance" column="last_balance" jdbcType="NUMERIC"/>
+        <result property="balance" column="balance" jdbcType="NUMERIC"/>
+        <result property="cashier" column="cashier" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!-- 批量插入 -->
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into bfinance.income_account(item_name, today, month_total, year_total, last_balance, balance, cashier)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.itemName}, #{entity.today}, #{entity.monthTotal}, #{entity.yearTotal}, #{entity.lastBalance},
+            #{entity.balance}, #{entity.cashier})
+        </foreach>
+    </insert>
+    <!-- 批量插入或按主键更新 -->
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into bfinance.income_account(item_name, today, month_total, year_total, last_balance, balance, cashier)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.itemName}, #{entity.today}, #{entity.monthTotal}, #{entity.yearTotal}, #{entity.lastBalance},
+            #{entity.balance}, #{entity.cashier})
+        </foreach>
+        on duplicate key update
+        item_name = values(item_name) , today = values(today) , month_total = values(month_total) , year_total =
+        values(year_total) , last_balance = values(last_balance) , balance = values(balance) , cashier = values(cashier)
+    </insert>
+
+</mapper>
+

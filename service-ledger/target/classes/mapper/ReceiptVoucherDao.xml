@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jluzh.ledger.dao.ReceiptVoucherDao">
+
+    <resultMap type="com.jluzh.ledger.entity.ReceiptVoucher" id="ReceiptVoucherMap">
+        <result property="id" column="id" jdbcType="VARCHAR"/>
+        <result property="lenderAccountId" column="lender_account_id" jdbcType="INTEGER"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="summary" column="summary" jdbcType="VARCHAR"/>
+        <result property="creditorAccountId" column="creditor_account_id" jdbcType="INTEGER"/>
+        <result property="creditorActiveAccountId" column="creditor_active_account_id" jdbcType="INTEGER"/>
+        <result property="accountMoney" column="account_money" jdbcType="NUMERIC"/>
+        <result property="activeAcountMoney" column="active_acount_money" jdbcType="NUMERIC"/>
+        <result property="auditor" column="auditor" jdbcType="INTEGER"/>
+        <result property="supervisor" column="supervisor" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!-- 批量插入 -->
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into bfinance.receipt_voucher(lender_account_id, create_time, summary, creditor_account_id,
+        creditor_active_account_id, account_money, active_acount_money, auditor, supervisor)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.lenderAccountId}, #{entity.createTime}, #{entity.summary}, #{entity.creditorAccountId},
+            #{entity.creditorActiveAccountId}, #{entity.accountMoney}, #{entity.activeAcountMoney}, #{entity.auditor},
+            #{entity.supervisor})
+        </foreach>
+    </insert>
+    <!-- 批量插入或按主键更新 -->
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into bfinance.receipt_voucher(lender_account_id, create_time, summary, creditor_account_id,
+        creditor_active_account_id, account_money, active_acount_money, auditor, supervisor)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.lenderAccountId}, #{entity.createTime}, #{entity.summary}, #{entity.creditorAccountId},
+            #{entity.creditorActiveAccountId}, #{entity.accountMoney}, #{entity.activeAcountMoney}, #{entity.auditor},
+            #{entity.supervisor})
+        </foreach>
+        on duplicate key update
+        lender_account_id = values(lender_account_id) , create_time = values(create_time) , summary = values(summary) ,
+        creditor_account_id = values(creditor_account_id) , creditor_active_account_id =
+        values(creditor_active_account_id) , account_money = values(account_money) , active_acount_money =
+        values(active_acount_money) , auditor = values(auditor) , supervisor = values(supervisor)
+    </insert>
+
+</mapper>
+

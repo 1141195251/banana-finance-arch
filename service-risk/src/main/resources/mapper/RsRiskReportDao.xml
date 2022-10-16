@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jluzh.risk.dao.RsRiskReportDao">
+
+    <resultMap type="com.jluzh.risk.entity.RsRiskReport" id="RsRiskReportMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="riskId" column="risk_id" jdbcType="INTEGER"/>
+        <result property="analysis" column="analysis" jdbcType="VARCHAR"/>
+        <result property="measure" column="measure" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!-- 批量插入 -->
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into bfinance.rs_risk_report(risk_id, analysis, measure, create_time)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.riskId}, #{entity.analysis}, #{entity.measure}, #{entity.createTime})
+        </foreach>
+    </insert>
+    <!-- 批量插入或按主键更新 -->
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into bfinance.rs_risk_report(risk_id, analysis, measure, create_time)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.riskId}, #{entity.analysis}, #{entity.measure}, #{entity.createTime})
+        </foreach>
+        on duplicate key update
+        risk_id = values(risk_id) , analysis = values(analysis) , measure = values(measure) , create_time =
+        values(create_time)
+    </insert>
+
+</mapper>
+

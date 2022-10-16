@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jluzh.ledger.dao.TransferVoucherDao">
+
+    <resultMap type="com.jluzh.ledger.entity.TransferVoucher" id="TransferVoucherMap">
+        <result property="id" column="id" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="summary" column="summary" jdbcType="VARCHAR"/>
+        <result property="accountId" column="account_id" jdbcType="INTEGER"/>
+        <result property="activeAccountId" column="active_account_id" jdbcType="INTEGER"/>
+        <result property="lenderAccountMoney" column="lender_account_money" jdbcType="NUMERIC"/>
+        <result property="lenderActiveAccountMoney" column="lender_active_account_money" jdbcType="NUMERIC"/>
+        <result property="creditorAccountMoney" column="creditor_account_money" jdbcType="NUMERIC"/>
+        <result property="creditorActiveAccountMoney" column="creditor_active_account_money" jdbcType="NUMERIC"/>
+        <result property="auditor" column="auditor" jdbcType="INTEGER"/>
+        <result property="supervisor" column="supervisor" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!-- 批量插入 -->
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into bfinance.transfer_voucher(create_time, summary, account_id, active_account_id, lender_account_money,
+        lender_active_account_money, creditor_account_money, creditor_active_account_money, auditor, supervisor)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.createTime}, #{entity.summary}, #{entity.accountId}, #{entity.activeAccountId},
+            #{entity.lenderAccountMoney}, #{entity.lenderActiveAccountMoney}, #{entity.creditorAccountMoney},
+            #{entity.creditorActiveAccountMoney}, #{entity.auditor}, #{entity.supervisor})
+        </foreach>
+    </insert>
+    <!-- 批量插入或按主键更新 -->
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into bfinance.transfer_voucher(create_time, summary, account_id, active_account_id, lender_account_money,
+        lender_active_account_money, creditor_account_money, creditor_active_account_money, auditor, supervisor)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.createTime}, #{entity.summary}, #{entity.accountId}, #{entity.activeAccountId},
+            #{entity.lenderAccountMoney}, #{entity.lenderActiveAccountMoney}, #{entity.creditorAccountMoney},
+            #{entity.creditorActiveAccountMoney}, #{entity.auditor}, #{entity.supervisor})
+        </foreach>
+        on duplicate key update
+        create_time = values(create_time) , summary = values(summary) , account_id = values(account_id) ,
+        active_account_id = values(active_account_id) , lender_account_money = values(lender_account_money) ,
+        lender_active_account_money = values(lender_active_account_money) , creditor_account_money =
+        values(creditor_account_money) , creditor_active_account_money = values(creditor_active_account_money) , auditor
+        = values(auditor) , supervisor = values(supervisor)
+    </insert>
+
+</mapper>
+

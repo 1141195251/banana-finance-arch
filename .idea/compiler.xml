@@ -8,6 +8,7 @@
       <directory url="file://$PROJECT_DIR$/service-api/src/main/resources/archetype-resources" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/common/src/main/resources/archetype-resources" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/service-admin/src/main/resources/archetype-resources" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/service-ledger/src/main/resources/archetype-resources" includeSubdirectories="true" />
     </excludeFromCompile>
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
@@ -15,12 +16,15 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="service-admin" />
         <module name="service-msm" />
         <module name="service-gateway" />
+        <module name="service-risk" />
         <module name="common" />
+        <module name="service-admin" />
+        <module name="service-ledger" />
         <module name="service-auth" />
         <module name="service-api" />
+        <module name="service-capital" />
       </profile>
     </annotationProcessing>
   </component>

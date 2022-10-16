@@ -27,7 +27,7 @@ import io.swagger.annotations.ApiOperation;
  */
 @Api(tags = "消息推送记录表(MessageRecord)")
 @RestController
-@RequestMapping("messageRecord")
+@RequestMapping("/msm/messageRecord")
 public class MessageRecordController {
     /**
      * 服务对象

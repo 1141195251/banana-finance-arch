@@ -33,6 +33,30 @@ spring:
             - Path=/service-admin/**
           filters:
             - StripPrefix=1
+        - id: service-msm
+          uri: lb://service-msm
+          predicates:
+            - Path=/service-msm/**
+          filters:
+            - StripPrefix=1
+        - id: service-ledger
+          uri: lb://service-ledger
+          predicates:
+            - Path=/service-ledger/**
+          filters:
+            - StripPrefix=1
+        - id: service-capital
+          uri: lb://service-capital
+          predicates:
+            - Path=/service-capital/**
+          filters:
+            - StripPrefix=1
+        - id: service-risk
+          uri: lb://service-risk
+          predicates:
+            - Path=/service-risk/**
+          filters:
+            - StripPrefix=1
     nacos:
       discovery:
         server-addr: http://localhost:8848

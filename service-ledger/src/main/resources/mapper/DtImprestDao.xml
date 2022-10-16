@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jluzh.ledger.dao.DtImprestDao">
+
+    <resultMap type="com.jluzh.ledger.entity.DtImprest" id="DtImprestMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="accountId" column="account_id" jdbcType="INTEGER"/>
+        <result property="amount" column="amount" jdbcType="NUMERIC"/>
+        <result property="summary" column="summary" jdbcType="VARCHAR"/>
+        <result property="debitMoney" column="debit_money" jdbcType="NUMERIC"/>
+        <result property="lendDate" column="lend_date" jdbcType="TIMESTAMP"/>
+        <result property="voucherId" column="voucher_id" jdbcType="VARCHAR"/>
+        <result property="takeAmount" column="take_amount" jdbcType="NUMERIC"/>
+    </resultMap>
+
+    <!-- 批量插入 -->
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into bfinance.dt_imprest(account_id, amount, summary, debit_money, lend_date, voucher_id, take_amount)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.accountId}, #{entity.amount}, #{entity.summary}, #{entity.debitMoney}, #{entity.lendDate},
+            #{entity.voucherId}, #{entity.takeAmount})
+        </foreach>
+    </insert>
+    <!-- 批量插入或按主键更新 -->
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into bfinance.dt_imprest(account_id, amount, summary, debit_money, lend_date, voucher_id, take_amount)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.accountId}, #{entity.amount}, #{entity.summary}, #{entity.debitMoney}, #{entity.lendDate},
+            #{entity.voucherId}, #{entity.takeAmount})
+        </foreach>
+        on duplicate key update
+        account_id = values(account_id) , amount = values(amount) , summary = values(summary) , debit_money =
+        values(debit_money) , lend_date = values(lend_date) , voucher_id = values(voucher_id) , take_amount =
+        values(take_amount)
+    </insert>
+
+</mapper>
+

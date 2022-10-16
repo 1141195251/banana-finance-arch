@@ -10,8 +10,8 @@ banana:
 server:
   port: 9700
 spring:
-#  application:
-#    name: service-msm
+  application:
+    name: service-msm
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher

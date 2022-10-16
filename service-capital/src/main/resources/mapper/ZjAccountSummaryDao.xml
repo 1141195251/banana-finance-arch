@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jluzh.capital.dao.ZjAccountSummaryDao">
+
+    <resultMap type="com.jluzh.capital.entity.ZjAccountSummary" id="ZjAccountSummaryMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="accountId" column="account_id" jdbcType="INTEGER"/>
+        <result property="debtorAccrual" column="debtor_accrual" jdbcType="NUMERIC"/>
+        <result property="creditorAccrual" column="creditor_accrual" jdbcType="NUMERIC"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!-- 批量插入 -->
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into bfinance.zj_account_summary(account_id, debtor_accrual, creditor_accrual, create_time)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.accountId}, #{entity.debtorAccrual}, #{entity.creditorAccrual}, #{entity.createTime})
+        </foreach>
+    </insert>
+    <!-- 批量插入或按主键更新 -->
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into bfinance.zj_account_summary(account_id, debtor_accrual, creditor_accrual, create_time)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.accountId}, #{entity.debtorAccrual}, #{entity.creditorAccrual}, #{entity.createTime})
+        </foreach>
+        on duplicate key update
+        account_id = values(account_id) , debtor_accrual = values(debtor_accrual) , creditor_accrual =
+        values(creditor_accrual) , create_time = values(create_time)
+    </insert>
+
+</mapper>
+

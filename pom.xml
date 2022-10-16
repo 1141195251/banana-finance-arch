@@ -10,6 +10,9 @@
     <module>common</module>
     <module>service-admin</module>
     <module>service-msm</module>
+      <module>service-ledger</module>
+      <module>service-risk</module>
+    <module>service-capital</module>
   </modules>
   <groupId>com.jluzh</groupId>
   <artifactId>banana-finance</artifactId>

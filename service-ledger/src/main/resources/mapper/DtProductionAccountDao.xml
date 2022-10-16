@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jluzh.ledger.dao.DtProductionAccountDao">
+
+    <resultMap type="com.jluzh.ledger.entity.DtProductionAccount" id="DtProductionAccountMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="voucherId" column="voucher_id" jdbcType="VARCHAR"/>
+        <result property="summary" column="summary" jdbcType="VARCHAR"/>
+        <result property="materialCost" column="material_cost" jdbcType="NUMERIC"/>
+        <result property="labourCost" column="labour_cost" jdbcType="NUMERIC"/>
+        <result property="productionCost" column="production_cost" jdbcType="NUMERIC"/>
+        <result property="total" column="total" jdbcType="NUMERIC"/>
+    </resultMap>
+
+    <!-- 批量插入 -->
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into bfinance.dt_production_account(create_time, voucher_id, summary, material_cost, labour_cost,
+        production_cost, total)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.createTime}, #{entity.voucherId}, #{entity.summary}, #{entity.materialCost}, #{entity.labourCost},
+            #{entity.productionCost}, #{entity.total})
+        </foreach>
+    </insert>
+    <!-- 批量插入或按主键更新 -->
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into bfinance.dt_production_account(create_time, voucher_id, summary, material_cost, labour_cost,
+        production_cost, total)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.createTime}, #{entity.voucherId}, #{entity.summary}, #{entity.materialCost}, #{entity.labourCost},
+            #{entity.productionCost}, #{entity.total})
+        </foreach>
+        on duplicate key update
+        create_time = values(create_time) , voucher_id = values(voucher_id) , summary = values(summary) , material_cost
+        = values(material_cost) , labour_cost = values(labour_cost) , production_cost = values(production_cost) , total
+        = values(total)
+    </insert>
+
+</mapper>
+

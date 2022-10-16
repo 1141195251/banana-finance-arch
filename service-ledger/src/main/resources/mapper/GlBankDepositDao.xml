@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jluzh.ledger.dao.GlBankDepositDao">
+
+    <resultMap type="com.jluzh.ledger.entity.GlBankDeposit" id="GlBankDepositMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="voucherId" column="voucher_id" jdbcType="VARCHAR"/>
+        <result property="summary" column="summary" jdbcType="VARCHAR"/>
+        <result property="debtor" column="debtor" jdbcType="NUMERIC"/>
+        <result property="creditor" column="creditor" jdbcType="NUMERIC"/>
+        <result property="jhd" column="jhd" jdbcType="VARCHAR"/>
+        <result property="balance" column="balance" jdbcType="NUMERIC"/>
+    </resultMap>
+
+    <!-- 批量插入 -->
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into bfinance.gl_bank_deposit(voucher_id, summary, debtor, creditor, jhd, balance)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.voucherId}, #{entity.summary}, #{entity.debtor}, #{entity.creditor}, #{entity.jhd},
+            #{entity.balance})
+        </foreach>
+    </insert>
+    <!-- 批量插入或按主键更新 -->
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into bfinance.gl_bank_deposit(voucher_id, summary, debtor, creditor, jhd, balance)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.voucherId}, #{entity.summary}, #{entity.debtor}, #{entity.creditor}, #{entity.jhd},
+            #{entity.balance})
+        </foreach>
+        on duplicate key update
+        voucher_id = values(voucher_id) , summary = values(summary) , debtor = values(debtor) , creditor =
+        values(creditor) , jhd = values(jhd) , balance = values(balance)
+    </insert>
+
+</mapper>
+
