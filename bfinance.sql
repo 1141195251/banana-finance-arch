@@ -461,7 +461,7 @@ CREATE TABLE `tb_reimbursement_info` (
                                          `create_sn` char(5) DEFAULT NULL COMMENT '创建人',
                                          `create_time` datetime DEFAULT NULL COMMENT '创建时间',
                                          `next_deal_sn` char(5) DEFAULT NULL COMMENT '待处理人',
-                                         `total_amount` double DEFAULT NULL COMMENT '总金额',
+                                         `total_amount` decimal(25,2) DEFAULT NULL COMMENT '总金额',
                                          `status` varchar(20) DEFAULT NULL COMMENT '状态',
                                          PRIMARY KEY (`id`) USING BTREE,
                                          KEY `next_deal_sn` (`next_deal_sn`) USING BTREE,
@@ -471,10 +471,10 @@ CREATE TABLE `tb_reimbursement_info` (
 /*Data for the table `tb_reimbursement_info` */
 
 insert  into `tb_reimbursement_info`(`id`,`cause`,`create_sn`,`create_time`,`next_deal_sn`,`total_amount`,`status`) values
-                                                                                                                        (18,'出差三天','1005','2019-07-19 21:54:12','1005',2900,'新创建'),
-                                                                                                                        (19,'出差一周','1004','2019-07-19 21:56:29',NULL,3500,'已终止'),
-                                                                                                                        (20,'聚餐','1004','2019-07-19 21:56:47',NULL,800,'已打款'),
-                                                                                                                        (21,'节日旅游','1004','2019-07-19 21:57:14','1003',7000,'已审核');
+                                                                                                                        (18,'出差三天','1005','2019-07-19 21:54:12','1005',2900.00,'新创建'),
+                                                                                                                        (19,'出差一周','1004','2019-07-19 21:56:29',NULL,3500.00,'已终止'),
+                                                                                                                        (20,'聚餐','1004','2019-07-19 21:56:47',NULL,800.00,'已打款'),
+                                                                                                                        (21,'节日旅游','1004','2019-07-19 21:57:14','1003',7000.00,'已审核');
 
 /*Table structure for table `tb_reimbursement_item` */
 
@@ -484,7 +484,7 @@ CREATE TABLE `tb_reimbursement_item` (
                                          `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
                                          `claim_voucher_id` int(11) DEFAULT NULL COMMENT '报销单',
                                          `item` varchar(20) DEFAULT NULL COMMENT '费用类型',
-                                         `amount` double DEFAULT NULL COMMENT '金额',
+                                         `amount` decimal(25,2) DEFAULT NULL COMMENT '金额',
                                          `comment` varchar(100) DEFAULT NULL COMMENT '描述',
                                          PRIMARY KEY (`id`) USING BTREE,
                                          KEY `claim_voucher_id` (`claim_voucher_id`) USING BTREE
@@ -493,15 +493,15 @@ CREATE TABLE `tb_reimbursement_item` (
 /*Data for the table `tb_reimbursement_item` */
 
 insert  into `tb_reimbursement_item`(`id`,`claim_voucher_id`,`item`,`amount`,`comment`) values
-                                                                                            (30,18,'交通',2000,'高铁'),
-                                                                                            (31,18,'住宿',700,'酒店'),
-                                                                                            (32,18,'餐饮',200,'三餐'),
-                                                                                            (33,19,'交通',2000,'飞机'),
-                                                                                            (34,19,'餐饮',500,'三餐'),
-                                                                                            (35,19,'住宿',1000,'旅馆'),
-                                                                                            (36,20,'餐饮',800,''),
-                                                                                            (37,21,'交通',5000,'飞机'),
-                                                                                            (38,21,'餐饮',2000,'聚餐');
+                                                                                            (30,18,'交通',2000.00,'高铁'),
+                                                                                            (31,18,'住宿',700.00,'酒店'),
+                                                                                            (32,18,'餐饮',200.00,'三餐'),
+                                                                                            (33,19,'交通',2000.00,'飞机'),
+                                                                                            (34,19,'餐饮',500.00,'三餐'),
+                                                                                            (35,19,'住宿',1000.00,'旅馆'),
+                                                                                            (36,20,'餐饮',800.00,''),
+                                                                                            (37,21,'交通',5000.00,'飞机'),
+                                                                                            (38,21,'餐饮',2000.00,'聚餐');
 
 /*Table structure for table `tb_reimbursement_record` */
 
