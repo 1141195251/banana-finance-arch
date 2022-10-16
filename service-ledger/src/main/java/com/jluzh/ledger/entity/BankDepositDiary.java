@@ -1,22 +1,24 @@
 package com.jluzh.ledger.entity;
 
 
-import java.io.Serializable;
-import java.util.Date;
-
-import io.swagger.annotations.*;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * 银行存款日记(BankDepositDiary)表实体类
  *
  * @author panlaoliu
- * @since 2022-10-16 16:39:06
+ * @since 2022-10-17 01:19:38
  */
 @Data
 @ApiModel("银行存款日记")
 public class BankDepositDiary implements Serializable {
-    private static final long serialVersionUID = -11821143393575393L;
+    private static final long serialVersionUID = 252028355085274806L;
 
     @ApiModelProperty("编号")
     private Long id;
@@ -34,13 +36,13 @@ public class BankDepositDiary implements Serializable {
     private Integer toAccountId;
 
     @ApiModelProperty("收入")
-    private Double income;
+    private BigDecimal income;
 
     @ApiModelProperty("支出")
-    private Double expense;
+    private BigDecimal expense;
 
     @ApiModelProperty("结余")
-    private Double balance;
+    private BigDecimal balance;
 
 }
 

@@ -1,22 +1,24 @@
 package com.jluzh.ledger.entity;
 
 
-import java.io.Serializable;
-import java.util.Date;
-
-import io.swagger.annotations.*;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * 收款凭证(ReceiptVoucher)表实体类
  *
  * @author panlaoliu
- * @since 2022-10-16 16:39:10
+ * @since 2022-10-17 01:19:39
  */
 @Data
 @ApiModel("收款凭证")
 public class ReceiptVoucher implements Serializable {
-    private static final long serialVersionUID = -42786265441195532L;
+    private static final long serialVersionUID = -74475766873214565L;
 
     @ApiModelProperty("凭证字号")
     private String id;
@@ -37,10 +39,10 @@ public class ReceiptVoucher implements Serializable {
     private Integer creditorActiveAccountId;
 
     @ApiModelProperty("一级科目金额")
-    private Double accountMoney;
+    private BigDecimal accountMoney;
 
     @ApiModelProperty("明细科目金额")
-    private Double activeAcountMoney;
+    private BigDecimal activeAcountMoney;
 
     @ApiModelProperty("审核")
     private Long auditor;

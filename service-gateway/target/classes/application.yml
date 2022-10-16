@@ -57,6 +57,12 @@ spring:
             - Path=/service-risk/**
           filters:
             - StripPrefix=1
+        - id: service-reimbursement
+          uri: lb://service-reimbursement
+          predicates:
+            - Path=/service-reimbursement/**
+          filters:
+            - StripPrefix=1
     nacos:
       discovery:
         server-addr: http://localhost:8848

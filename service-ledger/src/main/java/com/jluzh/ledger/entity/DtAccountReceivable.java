@@ -1,22 +1,24 @@
 package com.jluzh.ledger.entity;
 
 
-import java.io.Serializable;
-import java.util.Date;
-
-import io.swagger.annotations.*;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * 应收款明细账(DtAccountReceivable)表实体类
  *
  * @author panlaoliu
- * @since 2022-10-16 16:39:06
+ * @since 2022-10-17 01:19:39
  */
 @Data
 @ApiModel("应收款明细账")
 public class DtAccountReceivable implements Serializable {
-    private static final long serialVersionUID = -68889242216462020L;
+    private static final long serialVersionUID = 239642348407736168L;
 
     @ApiModelProperty("编号")
     private Long id;
@@ -31,16 +33,16 @@ public class DtAccountReceivable implements Serializable {
     private String summary;
 
     @ApiModelProperty("借方")
-    private Double debtor;
+    private BigDecimal debtor;
 
     @ApiModelProperty("贷方")
-    private Double lender;
+    private BigDecimal lender;
 
     @ApiModelProperty("借或贷")
     private String jhd;
 
     @ApiModelProperty("余额")
-    private Double balance;
+    private BigDecimal balance;
 
 }
 

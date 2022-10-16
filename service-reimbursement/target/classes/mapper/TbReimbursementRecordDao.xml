@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.jluzh.dao.TbReimbursementRecordDao">
+<mapper namespace="com.jluzh.reimbursement.dao.TbReimbursementRecordDao">
 
-    <resultMap type="com.jluzh.entity.TbReimbursementRecord" id="TbReimbursementRecordMap">
+    <resultMap type="com.jluzh.reimbursement.entity.TbReimbursementRecord" id="TbReimbursementRecordMap">
         <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="claimVoucherId" column="claim_voucher_id" jdbcType="INTEGER"/>
         <result property="dealSn" column="deal_sn" jdbcType="VARCHAR"/>
@@ -12,138 +12,23 @@
         <result property="comment" column="comment" jdbcType="VARCHAR"/>
     </resultMap>
 
-    <!--查询单个-->
-    <select id="queryById" resultMap="TbReimbursementRecordMap">
-        select
-          id, claim_voucher_id, deal_sn, deal_time, deal_way, deal_result, comment
-        from tb_reimbursement_record
-        where id = #{id}
-    </select>
-
-    <!--查询指定行数据-->
-    <select id="queryAllByLimit" resultMap="TbReimbursementRecordMap">
-        select
-          id, claim_voucher_id, deal_sn, deal_time, deal_way, deal_result, comment
-        from tb_reimbursement_record
-        <where>
-            <if test="id != null">
-                and id = #{id}
-            </if>
-            <if test="claimVoucherId != null">
-                and claim_voucher_id = #{claimVoucherId}
-            </if>
-            <if test="dealSn != null and dealSn != ''">
-                and deal_sn = #{dealSn}
-            </if>
-            <if test="dealTime != null">
-                and deal_time = #{dealTime}
-            </if>
-            <if test="dealWay != null and dealWay != ''">
-                and deal_way = #{dealWay}
-            </if>
-            <if test="dealResult != null and dealResult != ''">
-                and deal_result = #{dealResult}
-            </if>
-            <if test="comment != null and comment != ''">
-                and comment = #{comment}
-            </if>
-        </where>
-        limit #{pageable.offset}, #{pageable.pageSize}
-    </select>
-
-    <!--统计总行数-->
-    <select id="count" resultType="java.lang.Long">
-        select count(1)
-        from tb_reimbursement_record
-        <where>
-            <if test="id != null">
-                and id = #{id}
-            </if>
-            <if test="claimVoucherId != null">
-                and claim_voucher_id = #{claimVoucherId}
-            </if>
-            <if test="dealSn != null and dealSn != ''">
-                and deal_sn = #{dealSn}
-            </if>
-            <if test="dealTime != null">
-                and deal_time = #{dealTime}
-            </if>
-            <if test="dealWay != null and dealWay != ''">
-                and deal_way = #{dealWay}
-            </if>
-            <if test="dealResult != null and dealResult != ''">
-                and deal_result = #{dealResult}
-            </if>
-            <if test="comment != null and comment != ''">
-                and comment = #{comment}
-            </if>
-        </where>
-    </select>
-
-    <!--新增所有列-->
-    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into tb_reimbursement_record(claim_voucher_id, deal_sn, deal_time, deal_way, deal_result, comment)
-        values (#{claimVoucherId}, #{dealSn}, #{dealTime}, #{dealWay}, #{dealResult}, #{comment})
-    </insert>
-
+    <!-- 批量插入 -->
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into tb_reimbursement_record(claim_voucher_id, deal_sn, deal_time, deal_way, deal_result, comment)
+        insert into bfinance.tb_reimbursement_record(claim_voucher_id, deal_sn, deal_time, deal_way, deal_result, comment)
         values
         <foreach collection="entities" item="entity" separator=",">
         (#{entity.claimVoucherId}, #{entity.dealSn}, #{entity.dealTime}, #{entity.dealWay}, #{entity.dealResult}, #{entity.comment})
         </foreach>
     </insert>
-
+    <!-- 批量插入或按主键更新 -->
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into tb_reimbursement_record(claim_voucher_id, deal_sn, deal_time, deal_way, deal_result, comment)
+        insert into bfinance.tb_reimbursement_record(claim_voucher_id, deal_sn, deal_time, deal_way, deal_result, comment)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.claimVoucherId}, #{entity.dealSn}, #{entity.dealTime}, #{entity.dealWay}, #{entity.dealResult}, #{entity.comment})
         </foreach>
         on duplicate key update
-        claim_voucher_id = values(claim_voucher_id),
-        deal_sn = values(deal_sn),
-        deal_time = values(deal_time),
-        deal_way = values(deal_way),
-        deal_result = values(deal_result),
-        comment = values(comment)
-    </insert>
+         claim_voucher_id = values(claim_voucher_id) , deal_sn = values(deal_sn) , deal_time = values(deal_time) , deal_way = values(deal_way) , deal_result = values(deal_result) , comment = values(comment)     </insert>
 
-    <!--通过主键修改数据-->
-    <update id="update">
-        update tb_reimbursement_record
-        <set>
-            <if test="claimVoucherId != null">
-                claim_voucher_id = #{claimVoucherId},
-            </if>
-            <if test="dealSn != null and dealSn != ''">
-                deal_sn = #{dealSn},
-            </if>
-            <if test="dealTime != null">
-                deal_time = #{dealTime},
-            </if>
-            <if test="dealWay != null and dealWay != ''">
-                deal_way = #{dealWay},
-            </if>
-            <if test="dealResult != null and dealResult != ''">
-                deal_result = #{dealResult},
-            </if>
-            <if test="comment != null and comment != ''">
-                comment = #{comment},
-            </if>
-        </set>
-        where id = #{id}
-    </update>
-
-    <!--通过主键删除-->
-    <delete id="deleteById">
-        delete from tb_reimbursement_record where id = #{id}
-    </delete>
-
-    <select id="queryAll" resultMap="TbReimbursementRecordMap">
-    select
-    id, claim_voucher_id, deal_sn, deal_time, deal_way, deal_result, comment
-    from tb_reimbursement_record
-    </select>
 </mapper>
 

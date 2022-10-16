@@ -28,8 +28,5 @@
         <module name="service-capital" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="service-reimbursement" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>

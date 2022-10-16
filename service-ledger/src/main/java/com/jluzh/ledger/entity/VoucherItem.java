@@ -1,22 +1,24 @@
 package com.jluzh.ledger.entity;
 
 
-import java.io.Serializable;
-import java.util.Date;
-
-import io.swagger.annotations.*;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * 凭证单(VoucherItem)表实体类
  *
  * @author panlaoliu
- * @since 2022-10-16 16:39:11
+ * @since 2022-10-17 01:19:39
  */
 @Data
 @ApiModel("凭证单")
 public class VoucherItem implements Serializable {
-    private static final long serialVersionUID = 561020843062069739L;
+    private static final long serialVersionUID = 565342979504945437L;
 
     @ApiModelProperty("凭证单号")
     private Long id;
@@ -34,7 +36,7 @@ public class VoucherItem implements Serializable {
     private Date appDate;
 
     @ApiModelProperty("总金额")
-    private Double total;
+    private BigDecimal total;
 
     @ApiModelProperty("凭证状态")
     private String status;

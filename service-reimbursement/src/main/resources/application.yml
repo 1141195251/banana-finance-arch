@@ -3,12 +3,34 @@ server:
 spring:
   application:
     name: service-reimbursement
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher #在SpringBoot2.6之后，Spring MVC 处理程序映射匹配请求路径的默认策略已从AntPathMatcher更改为PathPatternParser
   cloud:
     nacos:
       discovery:
         server-addr: http://localhost:8848
   datasource:
-    username: root
-    password: 111
     url: jdbc:mysql://localhost:3306/bfinance?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+    druid:
+      initial-size: 5 #连接池初始化大小
+      min-idle: 10 #最小空闲连接数
+      max-active: 20 #最大连接数
+      web-stat-filter:
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*" #不统计这些请求数据
+    servlet:
+      multipart:
+        enabled: true #开启文件上传
+        max-file-size: 10MB #限制文件上传大小为10M
+feign:
+  okhttp:
+    enabled: true
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: basic
+

@@ -3,22 +3,15 @@
   <component name="EasyCodeTableSetting">
     <option name="tableInfoMap">
       <map>
-<<<<<<< HEAD
         <entry key="bfinance.bank_deposit_diary">
           <value>
             <TableInfoDTO>
               <option name="comment" value="银行存款日记" />
-=======
-        <entry key="bfinance.tb_reimbursement _info">
-          <value>
-            <TableInfoDTO>
->>>>>>> dev1
               <option name="fullColumn">
                 <list>
                   <ColumnInfoDTO>
                     <option name="comment" value="编号" />
                     <option name="custom" value="false" />
-<<<<<<< HEAD
                     <option name="ext" value="{}" />
                     <option name="name" value="id" />
                     <option name="type" value="java.lang.Long" />
@@ -56,182 +49,30 @@
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
                     <option name="name" value="income" />
-                    <option name="type" value="java.lang.Double" />
+                    <option name="type" value="java.math.BigDecimal" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="支出" />
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
                     <option name="name" value="expense" />
-                    <option name="type" value="java.lang.Double" />
+                    <option name="type" value="java.math.BigDecimal" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="结余" />
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
                     <option name="name" value="balance" />
-                    <option name="type" value="java.lang.Double" />
+                    <option name="type" value="java.math.BigDecimal" />
                   </ColumnInfoDTO>
                 </list>
               </option>
               <option name="name" value="BankDepositDiary" />
               <option name="preName" value="" />
-              <option name="saveModelName" value="service-ledger" />
-              <option name="savePackageName" value="com.jluzh.ledger" />
-              <option name="savePath" value="./service-ledger/src/main/java/com/jluzh/ledger" />
+              <option name="saveModelName" value="service-reimbursement" />
+              <option name="savePackageName" value="" />
+              <option name="savePath" value="./service-reimbursement/src/main/java" />
               <option name="templateGroupName" value="mytemplate" />
-            </TableInfoDTO>
-          </value>
-        </entry>
-        <entry key="bfinance.company">
-          <value>
-            <TableInfoDTO>
-              <option name="comment" value="公司" />
-              <option name="fullColumn">
-                <list>
-                  <ColumnInfoDTO>
-                    <option name="comment" value="编号" />
-                    <option name="custom" value="false" />
-                    <option name="ext" value="{}" />
-=======
-                    <option name="ext">
-                      <map>
-                        <entry key="jdbcType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                        <entry key="sqlType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                      </map>
-                    </option>
->>>>>>> dev1
-                    <option name="name" value="id" />
-                    <option name="type" value="java.lang.Integer" />
-                  </ColumnInfoDTO>
-                  <ColumnInfoDTO>
-<<<<<<< HEAD
-                    <option name="comment" value="名称" />
-                    <option name="custom" value="false" />
-                    <option name="ext" value="{}" />
-                    <option name="name" value="name" />
-                    <option name="type" value="java.lang.String" />
-                  </ColumnInfoDTO>
-                  <ColumnInfoDTO>
-                    <option name="comment" value="描述" />
-                    <option name="custom" value="false" />
-                    <option name="ext" value="{}" />
-                    <option name="name" value="comment" />
-                    <option name="type" value="java.lang.String" />
-                  </ColumnInfoDTO>
-                  <ColumnInfoDTO>
-                    <option name="comment" value="创建日期" />
-                    <option name="custom" value="false" />
-                    <option name="ext" value="{}" />
-                    <option name="name" value="createTime" />
-                    <option name="type" value="java.util.Date" />
-                  </ColumnInfoDTO>
-                </list>
-              </option>
-              <option name="name" value="Company" />
-              <option name="preName" value="" />
-              <option name="saveModelName" value="service-msm" />
-              <option name="savePackageName" value="com.jluzh.msm" />
-              <option name="savePath" value="./service-msm/src/main/java/com/jluzh/msm" />
-              <option name="templateGroupName" value="mytemplate" />
-            </TableInfoDTO>
-          </value>
-        </entry>
-        <entry key="bfinance.dept">
-          <value>
-            <TableInfoDTO>
-              <option name="comment" value="部门" />
-              <option name="fullColumn">
-                <list>
-                  <ColumnInfoDTO>
-                    <option name="comment" value="编号" />
-                    <option name="custom" value="false" />
-                    <option name="ext" value="{}" />
-                    <option name="name" value="id" />
-                    <option name="type" value="java.lang.Integer" />
-                  </ColumnInfoDTO>
-                  <ColumnInfoDTO>
-                    <option name="comment" value="名称" />
-                    <option name="custom" value="false" />
-                    <option name="ext" value="{}" />
-                    <option name="name" value="name" />
-                    <option name="type" value="java.lang.String" />
-                  </ColumnInfoDTO>
-                  <ColumnInfoDTO>
-                    <option name="comment" value="描述" />
-                    <option name="custom" value="false" />
-                    <option name="ext" value="{}" />
-                    <option name="name" value="comment" />
-                    <option name="type" value="java.lang.String" />
-                  </ColumnInfoDTO>
-                  <ColumnInfoDTO>
-                    <option name="comment" value="创建日期" />
-                    <option name="custom" value="false" />
-                    <option name="ext" value="{}" />
-                    <option name="name" value="createTime" />
-                    <option name="type" value="java.util.Date" />
-                  </ColumnInfoDTO>
-                </list>
-              </option>
-              <option name="name" value="Dept" />
-              <option name="preName" value="" />
-              <option name="saveModelName" value="service-ledger" />
-              <option name="savePackageName" value="com.jluzh.ledger" />
-              <option name="savePath" value="./service-ledger/src/main/java/com/jluzh/ledger" />
-              <option name="templateGroupName" value="" />
-            </TableInfoDTO>
-          </value>
-        </entry>
-        <entry key="bfinance.dept_relation">
-          <value>
-            <TableInfoDTO>
-              <option name="comment" value="部门关系" />
-              <option name="fullColumn">
-                <list>
-                  <ColumnInfoDTO>
-                    <option name="comment" value="编号" />
-                    <option name="custom" value="false" />
-                    <option name="ext" value="{}" />
-                    <option name="name" value="id" />
-                    <option name="type" value="java.lang.Integer" />
-                  </ColumnInfoDTO>
-                  <ColumnInfoDTO>
-                    <option name="comment" value="公司" />
-                    <option name="custom" value="false" />
-                    <option name="ext" value="{}" />
-                    <option name="name" value="companyId" />
-                    <option name="type" value="java.lang.Integer" />
-                  </ColumnInfoDTO>
-                  <ColumnInfoDTO>
-                    <option name="comment" value="部门" />
-                    <option name="custom" value="false" />
-                    <option name="ext" value="{}" />
-                    <option name="name" value="deptId" />
-                    <option name="type" value="java.lang.Integer" />
-                  </ColumnInfoDTO>
-                  <ColumnInfoDTO>
-                    <option name="comment" value="创建日期" />
-                    <option name="custom" value="false" />
-                    <option name="ext" value="{}" />
-                    <option name="name" value="createTime" />
-                    <option name="type" value="java.util.Date" />
-                  </ColumnInfoDTO>
-                </list>
-              </option>
-              <option name="name" value="DeptRelation" />
-              <option name="preName" value="" />
-              <option name="saveModelName" value="service-msm" />
-              <option name="savePackageName" value="com.jluzh.msm" />
-              <option name="savePath" value="./service-msm/src/main/java/com/jluzh/msm" />
-              <option name="templateGroupName" value="" />
             </TableInfoDTO>
           </value>
         </entry>
@@ -274,14 +115,14 @@
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
                     <option name="name" value="debtor" />
-                    <option name="type" value="java.lang.Double" />
+                    <option name="type" value="java.math.BigDecimal" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="贷方" />
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
                     <option name="name" value="lender" />
-                    <option name="type" value="java.lang.Double" />
+                    <option name="type" value="java.math.BigDecimal" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="借或贷" />
@@ -295,15 +136,15 @@
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
                     <option name="name" value="balance" />
-                    <option name="type" value="java.lang.Double" />
+                    <option name="type" value="java.math.BigDecimal" />
                   </ColumnInfoDTO>
                 </list>
               </option>
               <option name="name" value="DtAccountReceivable" />
               <option name="preName" value="" />
-              <option name="saveModelName" value="service-ledger" />
-              <option name="savePackageName" value="com.jluzh.ledger" />
-              <option name="savePath" value="./service-ledger/src/main/java/com/jluzh/ledger" />
+              <option name="saveModelName" value="service-reimbursement" />
+              <option name="savePackageName" value="" />
+              <option name="savePath" value="./service-reimbursement/src/main/java" />
               <option name="templateGroupName" value="" />
             </TableInfoDTO>
           </value>
@@ -333,7 +174,7 @@
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
                     <option name="name" value="amount" />
-                    <option name="type" value="java.lang.Double" />
+                    <option name="type" value="java.math.BigDecimal" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="摘要" />
@@ -347,7 +188,7 @@
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
                     <option name="name" value="debitMoney" />
-                    <option name="type" value="java.lang.Double" />
+                    <option name="type" value="java.math.BigDecimal" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="贷出日期" />
@@ -368,15 +209,15 @@
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
                     <option name="name" value="takeAmount" />
-                    <option name="type" value="java.lang.Double" />
+                    <option name="type" value="java.math.BigDecimal" />
                   </ColumnInfoDTO>
                 </list>
               </option>
               <option name="name" value="DtImprest" />
               <option name="preName" value="" />
-              <option name="saveModelName" value="service-ledger" />
-              <option name="savePackageName" value="com.jluzh.ledger" />
-              <option name="savePath" value="./service-ledger/src/main/java/com/jluzh/ledger" />
+              <option name="saveModelName" value="service-reimbursement" />
+              <option name="savePackageName" value="" />
+              <option name="savePath" value="./service-reimbursement/src/main/java" />
               <option name="templateGroupName" value="" />
             </TableInfoDTO>
           </value>
@@ -427,14 +268,14 @@
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
                     <option name="name" value="inUnitPrice" />
-                    <option name="type" value="java.lang.Double" />
+                    <option name="type" value="java.math.BigDecimal" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="收入金额" />
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
                     <option name="name" value="inPrice" />
-                    <option name="type" value="java.lang.Double" />
+                    <option name="type" value="java.math.BigDecimal" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="发出数量" />
@@ -448,14 +289,14 @@
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
                     <option name="name" value="outUprice" />
-                    <option name="type" value="java.lang.Double" />
+                    <option name="type" value="java.math.BigDecimal" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="发出金额" />
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
                     <option name="name" value="outPrice" />
-                    <option name="type" value="java.lang.Double" />
+                    <option name="type" value="java.math.BigDecimal" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="结存数量" />
@@ -469,22 +310,22 @@
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
                     <option name="name" value="balanceUprice" />
-                    <option name="type" value="java.lang.Double" />
+                    <option name="type" value="java.math.BigDecimal" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="结存金额" />
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
                     <option name="name" value="balance" />
-                    <option name="type" value="java.lang.Double" />
+                    <option name="type" value="java.math.BigDecimal" />
                   </ColumnInfoDTO>
                 </list>
               </option>
               <option name="name" value="DtMaterialAccount" />
               <option name="preName" value="" />
-              <option name="saveModelName" value="service-ledger" />
-              <option name="savePackageName" value="com.jluzh.ledger" />
-              <option name="savePath" value="./service-ledger/src/main/java/com/jluzh/ledger" />
+              <option name="saveModelName" value="service-reimbursement" />
+              <option name="savePackageName" value="" />
+              <option name="savePath" value="./service-reimbursement/src/main/java" />
               <option name="templateGroupName" value="" />
             </TableInfoDTO>
           </value>
@@ -528,36 +369,36 @@
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
                     <option name="name" value="materialCost" />
-                    <option name="type" value="java.lang.Double" />
+                    <option name="type" value="java.math.BigDecimal" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="直接人工" />
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
                     <option name="name" value="labourCost" />
-                    <option name="type" value="java.lang.Double" />
+                    <option name="type" value="java.math.BigDecimal" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="制造费用" />
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
                     <option name="name" value="productionCost" />
-                    <option name="type" value="java.lang.Double" />
+                    <option name="type" value="java.math.BigDecimal" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="合计" />
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
                     <option name="name" value="total" />
-                    <option name="type" value="java.lang.Double" />
+                    <option name="type" value="java.math.BigDecimal" />
                   </ColumnInfoDTO>
                 </list>
               </option>
               <option name="name" value="DtProductionAccount" />
               <option name="preName" value="" />
-              <option name="saveModelName" value="service-ledger" />
-              <option name="savePackageName" value="com.jluzh.ledger" />
-              <option name="savePath" value="./service-ledger/src/main/java/com/jluzh/ledger" />
+              <option name="saveModelName" value="service-reimbursement" />
+              <option name="savePackageName" value="" />
+              <option name="savePath" value="./service-reimbursement/src/main/java" />
               <option name="templateGroupName" value="" />
             </TableInfoDTO>
           </value>
@@ -594,14 +435,14 @@
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
                     <option name="name" value="debtor" />
-                    <option name="type" value="java.lang.Double" />
+                    <option name="type" value="java.math.BigDecimal" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="贷方" />
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
                     <option name="name" value="creditor" />
-                    <option name="type" value="java.lang.Double" />
+                    <option name="type" value="java.math.BigDecimal" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="借或贷" />
@@ -615,15 +456,15 @@
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
                     <option name="name" value="balance" />
-                    <option name="type" value="java.lang.Double" />
+                    <option name="type" value="java.math.BigDecimal" />
                   </ColumnInfoDTO>
                 </list>
               </option>
               <option name="name" value="GlBankDeposit" />
               <option name="preName" value="" />
-              <option name="saveModelName" value="service-ledger" />
-              <option name="savePackageName" value="com.jluzh.ledger" />
-              <option name="savePath" value="./service-ledger/src/main/java/com/jluzh/ledger" />
+              <option name="saveModelName" value="service-reimbursement" />
+              <option name="savePackageName" value="" />
+              <option name="savePath" value="./service-reimbursement/src/main/java" />
               <option name="templateGroupName" value="" />
             </TableInfoDTO>
           </value>
@@ -653,35 +494,35 @@
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
                     <option name="name" value="today" />
-                    <option name="type" value="java.lang.Double" />
+                    <option name="type" value="java.math.BigDecimal" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="本月累计" />
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
                     <option name="name" value="monthTotal" />
-                    <option name="type" value="java.lang.Double" />
+                    <option name="type" value="java.math.BigDecimal" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="本年累计" />
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
                     <option name="name" value="yearTotal" />
-                    <option name="type" value="java.lang.Double" />
+                    <option name="type" value="java.math.BigDecimal" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="昨日结存" />
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
                     <option name="name" value="lastBalance" />
-                    <option name="type" value="java.lang.Double" />
+                    <option name="type" value="java.math.BigDecimal" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="今日结存" />
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
                     <option name="name" value="balance" />
-                    <option name="type" value="java.lang.Double" />
+                    <option name="type" value="java.math.BigDecimal" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="出纳员" />
@@ -694,191 +535,10 @@
               </option>
               <option name="name" value="IncomeAccount" />
               <option name="preName" value="" />
-              <option name="saveModelName" value="service-ledger" />
-              <option name="savePackageName" value="com.jluzh.ledger" />
-              <option name="savePath" value="./service-ledger/src/main/java/com/jluzh/ledger" />
+              <option name="saveModelName" value="service-reimbursement" />
+              <option name="savePackageName" value="" />
+              <option name="savePath" value="./service-reimbursement/src/main/java" />
               <option name="templateGroupName" value="" />
-            </TableInfoDTO>
-          </value>
-        </entry>
-        <entry key="bfinance.job">
-          <value>
-            <TableInfoDTO>
-              <option name="comment" value="职位" />
-              <option name="fullColumn">
-                <list>
-                  <ColumnInfoDTO>
-                    <option name="comment" value="编号" />
-                    <option name="custom" value="false" />
-                    <option name="ext" value="{}" />
-                    <option name="name" value="id" />
-                    <option name="type" value="java.lang.Integer" />
-                  </ColumnInfoDTO>
-                  <ColumnInfoDTO>
-                    <option name="comment" value="名称" />
-                    <option name="custom" value="false" />
-                    <option name="ext" value="{}" />
-                    <option name="name" value="name" />
-                    <option name="type" value="java.lang.String" />
-                  </ColumnInfoDTO>
-                  <ColumnInfoDTO>
-                    <option name="comment" value="描述" />
-                    <option name="custom" value="false" />
-                    <option name="ext" value="{}" />
-                    <option name="name" value="comment" />
-                    <option name="type" value="java.lang.String" />
-                  </ColumnInfoDTO>
-                  <ColumnInfoDTO>
-                    <option name="comment" value="创建日期" />
-                    <option name="custom" value="false" />
-                    <option name="ext" value="{}" />
-                    <option name="name" value="createTime" />
-                    <option name="type" value="java.util.Date" />
-                  </ColumnInfoDTO>
-                </list>
-              </option>
-              <option name="name" value="Job" />
-              <option name="preName" value="" />
-              <option name="saveModelName" value="service-msm" />
-              <option name="savePackageName" value="com.jluzh.msm" />
-              <option name="savePath" value="./service-msm/src/main/java/com/jluzh/msm" />
-              <option name="templateGroupName" value="" />
-            </TableInfoDTO>
-          </value>
-        </entry>
-        <entry key="bfinance.message_record">
-          <value>
-            <TableInfoDTO>
-              <option name="comment" value="消息推送记录表" />
-              <option name="fullColumn">
-                <list>
-                  <ColumnInfoDTO>
-                    <option name="comment" value="编号" />
-                    <option name="custom" value="false" />
-                    <option name="ext" value="{}" />
-                    <option name="name" value="id" />
-                    <option name="type" value="java.lang.Long" />
-                  </ColumnInfoDTO>
-                  <ColumnInfoDTO>
-                    <option name="comment" value="消息模板ID" />
-                    <option name="custom" value="false" />
-                    <option name="ext" value="{}" />
-                    <option name="name" value="templateId" />
-                    <option name="type" value="java.lang.Integer" />
-                  </ColumnInfoDTO>
-                  <ColumnInfoDTO>
-                    <option name="comment" value="推送渠道" />
-                    <option name="custom" value="false" />
-                    <option name="ext" value="{}" />
-                    <option name="name" value="toType" />
-                    <option name="type" value="java.lang.Integer" />
-                  </ColumnInfoDTO>
-                  <ColumnInfoDTO>
-                    <option name="comment" value="消息接收者ID" />
-                    <option name="custom" value="false" />
-                    <option name="ext" value="{}" />
-                    <option name="name" value="receiverId" />
-                    <option name="type" value="java.lang.Long" />
-                  </ColumnInfoDTO>
-                  <ColumnInfoDTO>
-                    <option name="comment" value="消息推送内容" />
-                    <option name="custom" value="false" />
-                    <option name="ext" value="{}" />
-                    <option name="name" value="content" />
-=======
-                    <option name="comment" value="事由" />
-                    <option name="custom" value="false" />
-                    <option name="ext">
-                      <map>
-                        <entry key="jdbcType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                        <entry key="sqlType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                      </map>
-                    </option>
-                    <option name="name" value="cause" />
->>>>>>> dev1
-                    <option name="type" value="java.lang.String" />
-                  </ColumnInfoDTO>
-                  <ColumnInfoDTO>
-                    <option name="comment" value="创建人" />
-                    <option name="custom" value="false" />
-<<<<<<< HEAD
-                    <option name="ext" value="{}" />
-                    <option name="name" value="createBy" />
-                    <option name="type" value="java.lang.Long" />
-=======
-                    <option name="ext">
-                      <map>
-                        <entry key="jdbcType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                        <entry key="sqlType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                      </map>
-                    </option>
-                    <option name="name" value="createSn" />
-                    <option name="type" value="java.lang.String" />
->>>>>>> dev1
-                  </ColumnInfoDTO>
-                  <ColumnInfoDTO>
-                    <option name="comment" value="创建时间" />
-                    <option name="custom" value="false" />
-<<<<<<< HEAD
-                    <option name="ext" value="{}" />
-=======
-                    <option name="ext">
-                      <map>
-                        <entry key="jdbcType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                        <entry key="sqlType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                      </map>
-                    </option>
->>>>>>> dev1
-                    <option name="name" value="createTime" />
-                    <option name="type" value="java.util.Date" />
-                  </ColumnInfoDTO>
-                  <ColumnInfoDTO>
-<<<<<<< HEAD
-                    <option name="comment" value="修改人" />
-                    <option name="custom" value="false" />
-                    <option name="ext" value="{}" />
-                    <option name="name" value="updateBy" />
-                    <option name="type" value="java.lang.Long" />
-                  </ColumnInfoDTO>
-                  <ColumnInfoDTO>
-                    <option name="comment" value="修改时间" />
-                    <option name="custom" value="false" />
-                    <option name="ext" value="{}" />
-                    <option name="name" value="updateTime" />
-                    <option name="type" value="java.util.Date" />
-                  </ColumnInfoDTO>
-                </list>
-              </option>
-              <option name="name" value="MessageRecord" />
-              <option name="preName" value="" />
-              <option name="saveModelName" value="service-msm" />
-              <option name="savePackageName" value="com.jluzh.msm" />
-              <option name="savePath" value="./service-msm/src/main/java/com/jluzh/msm" />
-              <option name="templateGroupName" value="mytemplate" />
             </TableInfoDTO>
           </value>
         </entry>
@@ -935,14 +595,14 @@
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
                     <option name="name" value="accountMoney" />
-                    <option name="type" value="java.lang.Double" />
+                    <option name="type" value="java.math.BigDecimal" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="明细科目金额" />
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
                     <option name="name" value="activeAcountMoney" />
-                    <option name="type" value="java.lang.Double" />
+                    <option name="type" value="java.math.BigDecimal" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="审核" />
@@ -962,9 +622,9 @@
               </option>
               <option name="name" value="PaymentVoucher" />
               <option name="preName" value="" />
-              <option name="saveModelName" value="service-ledger" />
-              <option name="savePackageName" value="com.jluzh.ledger" />
-              <option name="savePath" value="./service-ledger/src/main/java/com/jluzh/ledger" />
+              <option name="saveModelName" value="service-reimbursement" />
+              <option name="savePackageName" value="" />
+              <option name="savePath" value="./service-reimbursement/src/main/java" />
               <option name="templateGroupName" value="" />
             </TableInfoDTO>
           </value>
@@ -1022,14 +682,14 @@
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
                     <option name="name" value="accountMoney" />
-                    <option name="type" value="java.lang.Double" />
+                    <option name="type" value="java.math.BigDecimal" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="明细科目金额" />
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
                     <option name="name" value="activeAcountMoney" />
-                    <option name="type" value="java.lang.Double" />
+                    <option name="type" value="java.math.BigDecimal" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="审核" />
@@ -1049,272 +709,64 @@
               </option>
               <option name="name" value="ReceiptVoucher" />
               <option name="preName" value="" />
-              <option name="saveModelName" value="service-ledger" />
-              <option name="savePackageName" value="com.jluzh.ledger" />
-              <option name="savePath" value="./service-ledger/src/main/java/com/jluzh/ledger" />
-              <option name="templateGroupName" value="" />
-            </TableInfoDTO>
-          </value>
-        </entry>
-        <entry key="bfinance.rs_risk">
-          <value>
-            <TableInfoDTO>
-              <option name="comment" value="风险表" />
-=======
-                    <option name="comment" value="待处理人" />
-                    <option name="custom" value="false" />
-                    <option name="ext">
-                      <map>
-                        <entry key="jdbcType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                        <entry key="sqlType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                      </map>
-                    </option>
-                    <option name="name" value="nextDealSn" />
-                    <option name="type" value="java.lang.String" />
-                  </ColumnInfoDTO>
-                  <ColumnInfoDTO>
-                    <option name="comment" value="总金额" />
-                    <option name="custom" value="false" />
-                    <option name="ext">
-                      <map>
-                        <entry key="jdbcType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                        <entry key="sqlType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                      </map>
-                    </option>
-                    <option name="name" value="totalAmount" />
-                    <option name="type" value="java.lang.Double" />
-                  </ColumnInfoDTO>
-                  <ColumnInfoDTO>
-                    <option name="comment" value="状态" />
-                    <option name="custom" value="false" />
-                    <option name="ext">
-                      <map>
-                        <entry key="jdbcType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                        <entry key="sqlType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                      </map>
-                    </option>
-                    <option name="name" value="status" />
-                    <option name="type" value="java.lang.String" />
-                  </ColumnInfoDTO>
-                </list>
-              </option>
-              <option name="name" value="TbReimbursement Info" />
-              <option name="preName" value="" />
               <option name="saveModelName" value="service-reimbursement" />
               <option name="savePackageName" value="" />
               <option name="savePath" value="./service-reimbursement/src/main/java" />
-              <option name="templateGroupName" value="Default" />
+              <option name="templateGroupName" value="" />
             </TableInfoDTO>
           </value>
         </entry>
         <entry key="bfinance.tb_reimbursement_info">
           <value>
             <TableInfoDTO>
->>>>>>> dev1
               <option name="fullColumn">
                 <list>
                   <ColumnInfoDTO>
                     <option name="comment" value="编号" />
                     <option name="custom" value="false" />
-<<<<<<< HEAD
-                    <option name="ext" value="{}" />
-=======
-                    <option name="ext">
-                      <map>
-                        <entry key="jdbcType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                        <entry key="sqlType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                      </map>
-                    </option>
->>>>>>> dev1
+                    <option name="ext" value="{&quot;disable&quot;:false}" />
                     <option name="name" value="id" />
                     <option name="type" value="java.lang.Integer" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
-<<<<<<< HEAD
-                    <option name="comment" value="风险名称" />
-                    <option name="custom" value="false" />
-                    <option name="ext" value="{}" />
-                    <option name="name" value="riskName" />
-                    <option name="type" value="java.lang.String" />
-                  </ColumnInfoDTO>
-                  <ColumnInfoDTO>
-                    <option name="comment" value="风险分类ID" />
-                    <option name="custom" value="false" />
-                    <option name="ext" value="{}" />
-                    <option name="name" value="riskCategoryId" />
-                    <option name="type" value="java.lang.Integer" />
-                  </ColumnInfoDTO>
-                  <ColumnInfoDTO>
-                    <option name="comment" value="创建日期" />
-                    <option name="custom" value="false" />
-                    <option name="ext" value="{}" />
-                    <option name="name" value="createTime" />
-                    <option name="type" value="java.util.Date" />
-                  </ColumnInfoDTO>
-                </list>
-              </option>
-              <option name="name" value="RsRisk" />
-              <option name="preName" value="" />
-              <option name="saveModelName" value="service-risk" />
-              <option name="savePackageName" value="com.jluzh.risk" />
-              <option name="savePath" value="./service-risk/src/main/java/com/jluzh/risk" />
-              <option name="templateGroupName" value="mytemplate" />
-            </TableInfoDTO>
-          </value>
-        </entry>
-        <entry key="bfinance.rs_risk_category">
-          <value>
-            <TableInfoDTO>
-              <option name="comment" value="风险分类表" />
-=======
                     <option name="comment" value="事由" />
                     <option name="custom" value="false" />
-                    <option name="ext">
-                      <map>
-                        <entry key="jdbcType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                        <entry key="sqlType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                      </map>
-                    </option>
+                    <option name="ext" value="{}" />
                     <option name="name" value="cause" />
                     <option name="type" value="java.lang.String" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="创建人" />
                     <option name="custom" value="false" />
-                    <option name="ext">
-                      <map>
-                        <entry key="jdbcType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                        <entry key="sqlType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                      </map>
-                    </option>
+                    <option name="ext" value="{}" />
                     <option name="name" value="createSn" />
                     <option name="type" value="java.lang.String" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="创建时间" />
                     <option name="custom" value="false" />
-                    <option name="ext">
-                      <map>
-                        <entry key="jdbcType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                        <entry key="sqlType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                      </map>
-                    </option>
+                    <option name="ext" value="{}" />
                     <option name="name" value="createTime" />
                     <option name="type" value="java.util.Date" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="待处理人" />
                     <option name="custom" value="false" />
-                    <option name="ext">
-                      <map>
-                        <entry key="jdbcType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                        <entry key="sqlType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                      </map>
-                    </option>
+                    <option name="ext" value="{}" />
                     <option name="name" value="nextDealSn" />
                     <option name="type" value="java.lang.String" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="总金额" />
                     <option name="custom" value="false" />
-                    <option name="ext">
-                      <map>
-                        <entry key="jdbcType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                        <entry key="sqlType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                      </map>
-                    </option>
+                    <option name="ext" value="{}" />
                     <option name="name" value="totalAmount" />
-                    <option name="type" value="java.lang.Double" />
+                    <option name="type" value="java.math.BigDecimal" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="状态" />
                     <option name="custom" value="false" />
-                    <option name="ext">
-                      <map>
-                        <entry key="jdbcType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                        <entry key="sqlType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                      </map>
-                    </option>
+                    <option name="ext" value="{}" />
                     <option name="name" value="status" />
                     <option name="type" value="java.lang.String" />
                   </ColumnInfoDTO>
@@ -1323,72 +775,15 @@
               <option name="name" value="TbReimbursementInfo" />
               <option name="preName" value="" />
               <option name="saveModelName" value="service-reimbursement" />
-              <option name="savePackageName" value="" />
-              <option name="savePath" value="./service-reimbursement/src/main/java/com/jluzh" />
-              <option name="templateGroupName" value="" />
+              <option name="savePackageName" value="com.jluzh.reimbursement" />
+              <option name="savePath" value="./service-reimbursement/src/main/java/com/jluzh/reimbursement" />
+              <option name="templateGroupName" value="mytemplate" />
             </TableInfoDTO>
           </value>
         </entry>
         <entry key="bfinance.tb_reimbursement_item">
           <value>
             <TableInfoDTO>
->>>>>>> dev1
-              <option name="fullColumn">
-                <list>
-                  <ColumnInfoDTO>
-                    <option name="comment" value="编号" />
-                    <option name="custom" value="false" />
-<<<<<<< HEAD
-                    <option name="ext" value="{}" />
-=======
-                    <option name="ext">
-                      <map>
-                        <entry key="jdbcType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                        <entry key="sqlType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                      </map>
-                    </option>
->>>>>>> dev1
-                    <option name="name" value="id" />
-                    <option name="type" value="java.lang.Integer" />
-                  </ColumnInfoDTO>
-                  <ColumnInfoDTO>
-<<<<<<< HEAD
-                    <option name="comment" value="风险名称" />
-                    <option name="custom" value="false" />
-                    <option name="ext" value="{}" />
-                    <option name="name" value="riskCategoryName" />
-                    <option name="type" value="java.lang.String" />
-                  </ColumnInfoDTO>
-                  <ColumnInfoDTO>
-                    <option name="comment" value="创建日期" />
-                    <option name="custom" value="false" />
-                    <option name="ext" value="{}" />
-                    <option name="name" value="createTime" />
-                    <option name="type" value="java.util.Date" />
-                  </ColumnInfoDTO>
-                </list>
-              </option>
-              <option name="name" value="RsRiskCategory" />
-              <option name="preName" value="" />
-              <option name="saveModelName" value="service-risk" />
-              <option name="savePackageName" value="com.jluzh.risk" />
-              <option name="savePath" value="./service-risk/src/main/java/com/jluzh/risk" />
-              <option name="templateGroupName" value="" />
-            </TableInfoDTO>
-          </value>
-        </entry>
-        <entry key="bfinance.rs_risk_report">
-          <value>
-            <TableInfoDTO>
-              <option name="comment" value="风险报告" />
               <option name="fullColumn">
                 <list>
                   <ColumnInfoDTO>
@@ -1399,118 +794,30 @@
                     <option name="type" value="java.lang.Integer" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
-                    <option name="comment" value="风险ID" />
-                    <option name="custom" value="false" />
-                    <option name="ext" value="{}" />
-                    <option name="name" value="riskId" />
-                    <option name="type" value="java.lang.Integer" />
-                  </ColumnInfoDTO>
-                  <ColumnInfoDTO>
-                    <option name="comment" value="分析" />
-                    <option name="custom" value="false" />
-                    <option name="ext" value="{}" />
-                    <option name="name" value="analysis" />
-                    <option name="type" value="java.lang.String" />
-                  </ColumnInfoDTO>
-                  <ColumnInfoDTO>
-                    <option name="comment" value="措施" />
-                    <option name="custom" value="false" />
-                    <option name="ext" value="{}" />
-                    <option name="name" value="measure" />
-                    <option name="type" value="java.lang.String" />
-                  </ColumnInfoDTO>
-                  <ColumnInfoDTO>
-                    <option name="comment" value="创建日期" />
-                    <option name="custom" value="false" />
-                    <option name="ext" value="{}" />
-                    <option name="name" value="createTime" />
-                    <option name="type" value="java.util.Date" />
-                  </ColumnInfoDTO>
-                </list>
-              </option>
-              <option name="name" value="RsRiskReport" />
-              <option name="preName" value="" />
-              <option name="saveModelName" value="service-risk" />
-              <option name="savePackageName" value="com.jluzh.risk" />
-              <option name="savePath" value="./service-risk/src/main/java/com/jluzh/risk" />
-              <option name="templateGroupName" value="" />
-=======
                     <option name="comment" value="报销单" />
                     <option name="custom" value="false" />
-                    <option name="ext">
-                      <map>
-                        <entry key="jdbcType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                        <entry key="sqlType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                      </map>
-                    </option>
+                    <option name="ext" value="{}" />
                     <option name="name" value="claimVoucherId" />
                     <option name="type" value="java.lang.Integer" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="费用类型" />
                     <option name="custom" value="false" />
-                    <option name="ext">
-                      <map>
-                        <entry key="jdbcType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                        <entry key="sqlType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                      </map>
-                    </option>
+                    <option name="ext" value="{}" />
                     <option name="name" value="item" />
                     <option name="type" value="java.lang.String" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="金额" />
                     <option name="custom" value="false" />
-                    <option name="ext">
-                      <map>
-                        <entry key="jdbcType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                        <entry key="sqlType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                      </map>
-                    </option>
+                    <option name="ext" value="{}" />
                     <option name="name" value="amount" />
-                    <option name="type" value="java.lang.Double" />
+                    <option name="type" value="java.math.BigDecimal" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="描述" />
                     <option name="custom" value="false" />
-                    <option name="ext">
-                      <map>
-                        <entry key="jdbcType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                        <entry key="sqlType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                      </map>
-                    </option>
+                    <option name="ext" value="{}" />
                     <option name="name" value="comment" />
                     <option name="type" value="java.lang.String" />
                   </ColumnInfoDTO>
@@ -1519,10 +826,9 @@
               <option name="name" value="TbReimbursementItem" />
               <option name="preName" value="" />
               <option name="saveModelName" value="service-reimbursement" />
-              <option name="savePackageName" value="" />
-              <option name="savePath" value="./service-reimbursement/src/main/java/com/jluzh" />
-              <option name="templateGroupName" value="Default" />
->>>>>>> dev1
+              <option name="savePackageName" value="com.jluzh.reimbursement1" />
+              <option name="savePath" value="./service-reimbursement/src/main/java/com/jluzh/reimbursement1" />
+              <option name="templateGroupName" value="" />
             </TableInfoDTO>
           </value>
         </entry>
@@ -1534,168 +840,49 @@
                   <ColumnInfoDTO>
                     <option name="comment" value="编号" />
                     <option name="custom" value="false" />
-<<<<<<< HEAD
                     <option name="ext" value="{}" />
-=======
-                    <option name="ext">
-                      <map>
-                        <entry key="jdbcType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                        <entry key="sqlType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                      </map>
-                    </option>
->>>>>>> dev1
                     <option name="name" value="id" />
                     <option name="type" value="java.lang.Integer" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="报销单" />
                     <option name="custom" value="false" />
-<<<<<<< HEAD
                     <option name="ext" value="{}" />
-=======
-                    <option name="ext">
-                      <map>
-                        <entry key="jdbcType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                        <entry key="sqlType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                      </map>
-                    </option>
->>>>>>> dev1
                     <option name="name" value="claimVoucherId" />
                     <option name="type" value="java.lang.Integer" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="处理人" />
                     <option name="custom" value="false" />
-<<<<<<< HEAD
                     <option name="ext" value="{}" />
-=======
-                    <option name="ext">
-                      <map>
-                        <entry key="jdbcType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                        <entry key="sqlType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                      </map>
-                    </option>
->>>>>>> dev1
                     <option name="name" value="dealSn" />
                     <option name="type" value="java.lang.String" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="处理时间" />
                     <option name="custom" value="false" />
-<<<<<<< HEAD
                     <option name="ext" value="{}" />
-=======
-                    <option name="ext">
-                      <map>
-                        <entry key="jdbcType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                        <entry key="sqlType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                      </map>
-                    </option>
->>>>>>> dev1
                     <option name="name" value="dealTime" />
                     <option name="type" value="java.util.Date" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="处理类型" />
                     <option name="custom" value="false" />
-<<<<<<< HEAD
                     <option name="ext" value="{}" />
-=======
-                    <option name="ext">
-                      <map>
-                        <entry key="jdbcType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                        <entry key="sqlType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                      </map>
-                    </option>
->>>>>>> dev1
                     <option name="name" value="dealWay" />
                     <option name="type" value="java.lang.String" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="处理结果" />
                     <option name="custom" value="false" />
-<<<<<<< HEAD
                     <option name="ext" value="{}" />
-=======
-                    <option name="ext">
-                      <map>
-                        <entry key="jdbcType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                        <entry key="sqlType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                      </map>
-                    </option>
->>>>>>> dev1
                     <option name="name" value="dealResult" />
                     <option name="type" value="java.lang.String" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="备注" />
                     <option name="custom" value="false" />
-<<<<<<< HEAD
                     <option name="ext" value="{}" />
-=======
-                    <option name="ext">
-                      <map>
-                        <entry key="jdbcType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                        <entry key="sqlType">
-                          <value>
-                            <Object />
-                          </value>
-                        </entry>
-                      </map>
-                    </option>
->>>>>>> dev1
                     <option name="name" value="comment" />
                     <option name="type" value="java.lang.String" />
                   </ColumnInfoDTO>
@@ -1703,11 +890,10 @@
               </option>
               <option name="name" value="TbReimbursementRecord" />
               <option name="preName" value="" />
-<<<<<<< HEAD
-              <option name="saveModelName" value="" />
-              <option name="savePackageName" value="" />
-              <option name="savePath" value="" />
-              <option name="templateGroupName" value="" />
+              <option name="saveModelName" value="service-reimbursement" />
+              <option name="savePackageName" value="com.jluzh.reimbursement1" />
+              <option name="savePath" value="./service-reimbursement/src/main/java/com/jluzh/reimbursement1" />
+              <option name="templateGroupName" value="mytemplate" />
             </TableInfoDTO>
           </value>
         </entry>
@@ -1757,28 +943,28 @@
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
                     <option name="name" value="lenderAccountMoney" />
-                    <option name="type" value="java.lang.Double" />
+                    <option name="type" value="java.math.BigDecimal" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="借方明细科目金额" />
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
                     <option name="name" value="lenderActiveAccountMoney" />
-                    <option name="type" value="java.lang.Double" />
+                    <option name="type" value="java.math.BigDecimal" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="贷方一级科目金额" />
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
                     <option name="name" value="creditorAccountMoney" />
-                    <option name="type" value="java.lang.Double" />
+                    <option name="type" value="java.math.BigDecimal" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="贷方明细科目金额" />
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
                     <option name="name" value="creditorActiveAccountMoney" />
-                    <option name="type" value="java.lang.Double" />
+                    <option name="type" value="java.math.BigDecimal" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="审核" />
@@ -1798,9 +984,9 @@
               </option>
               <option name="name" value="TransferVoucher" />
               <option name="preName" value="" />
-              <option name="saveModelName" value="service-ledger" />
-              <option name="savePackageName" value="com.jluzh.ledger" />
-              <option name="savePath" value="./service-ledger/src/main/java/com/jluzh/ledger" />
+              <option name="saveModelName" value="service-reimbursement" />
+              <option name="savePackageName" value="" />
+              <option name="savePath" value="./service-reimbursement/src/main/java" />
               <option name="templateGroupName" value="" />
             </TableInfoDTO>
           </value>
@@ -1851,7 +1037,7 @@
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
                     <option name="name" value="total" />
-                    <option name="type" value="java.lang.Double" />
+                    <option name="type" value="java.math.BigDecimal" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="凭证状态" />
@@ -1871,9 +1057,9 @@
               </option>
               <option name="name" value="VoucherItem" />
               <option name="preName" value="" />
-              <option name="saveModelName" value="service-ledger" />
-              <option name="savePackageName" value="com.jluzh.ledger" />
-              <option name="savePath" value="./service-ledger/src/main/java/com/jluzh/ledger" />
+              <option name="saveModelName" value="service-reimbursement" />
+              <option name="savePackageName" value="" />
+              <option name="savePath" value="./service-reimbursement/src/main/java" />
               <option name="templateGroupName" value="" />
             </TableInfoDTO>
           </value>
@@ -1903,14 +1089,14 @@
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
                     <option name="name" value="debtorAccrual" />
-                    <option name="type" value="java.lang.Double" />
+                    <option name="type" value="java.math.BigDecimal" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="本期贷方发生额" />
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
                     <option name="name" value="creditorAccrual" />
-                    <option name="type" value="java.lang.Double" />
+                    <option name="type" value="java.math.BigDecimal" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="创建日期" />
@@ -1926,7 +1112,7 @@
               <option name="saveModelName" value="service-capital" />
               <option name="savePackageName" value="com.jluzh.capital" />
               <option name="savePath" value="./service-capital/src/main/java/com/jluzh/capital" />
-              <option name="templateGroupName" value="" />
+              <option name="templateGroupName" value="mytemplate" />
             </TableInfoDTO>
           </value>
         </entry>
@@ -1969,28 +1155,28 @@
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
                     <option name="name" value="price" />
-                    <option name="type" value="java.lang.Double" />
+                    <option name="type" value="java.math.BigDecimal" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="已开票金额" />
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
                     <option name="name" value="invoiceAmount" />
-                    <option name="type" value="java.lang.Double" />
+                    <option name="type" value="java.math.BigDecimal" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="已付款金额" />
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
                     <option name="name" value="paidAmount" />
-                    <option name="type" value="java.lang.Double" />
+                    <option name="type" value="java.math.BigDecimal" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="未付款金额" />
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
                     <option name="name" value="unpayAmount" />
-                    <option name="type" value="java.lang.Double" />
+                    <option name="type" value="java.math.BigDecimal" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
                     <option name="comment" value="创建日期" />
@@ -2065,103 +1251,6 @@
               <option name="saveModelName" value="service-capital" />
               <option name="savePackageName" value="com.jluzh.capital" />
               <option name="savePath" value="./service-capital/src/main/java/com/jluzh/capital" />
-              <option name="templateGroupName" value="mytemplate" />
-            </TableInfoDTO>
-          </value>
-        </entry>
-        <entry key="information_schema.CHARACTER_SETS">
-          <value>
-            <TableInfoDTO>
-              <option name="fullColumn">
-                <list>
-                  <ColumnInfoDTO>
-                    <option name="custom" value="false" />
-                    <option name="ext" value="{}" />
-                    <option name="name" value="characterSetName" />
-                    <option name="type" value="java.lang.String" />
-                  </ColumnInfoDTO>
-                  <ColumnInfoDTO>
-                    <option name="custom" value="false" />
-                    <option name="ext" value="{}" />
-                    <option name="name" value="defaultCollateName" />
-                    <option name="type" value="java.lang.String" />
-                  </ColumnInfoDTO>
-                  <ColumnInfoDTO>
-                    <option name="custom" value="false" />
-                    <option name="ext" value="{}" />
-                    <option name="name" value="description" />
-                    <option name="type" value="java.lang.String" />
-                  </ColumnInfoDTO>
-                  <ColumnInfoDTO>
-                    <option name="custom" value="false" />
-                    <option name="ext" value="{}" />
-                    <option name="name" value="maxlen" />
-                    <option name="type" value="java.lang.Long" />
-                  </ColumnInfoDTO>
-                </list>
-              </option>
-              <option name="name" value="CharacterSets" />
-              <option name="preName" value="" />
-              <option name="saveModelName" value="" />
-              <option name="savePackageName" value="" />
-              <option name="savePath" value="" />
-              <option name="templateGroupName" value="" />
-            </TableInfoDTO>
-          </value>
-        </entry>
-        <entry key="information_schema.COLLATIONS">
-          <value>
-            <TableInfoDTO>
-              <option name="fullColumn">
-                <list>
-                  <ColumnInfoDTO>
-                    <option name="custom" value="false" />
-                    <option name="ext" value="{}" />
-                    <option name="name" value="collationName" />
-                    <option name="type" value="java.lang.String" />
-                  </ColumnInfoDTO>
-                  <ColumnInfoDTO>
-                    <option name="custom" value="false" />
-                    <option name="ext" value="{}" />
-                    <option name="name" value="characterSetName" />
-                    <option name="type" value="java.lang.String" />
-                  </ColumnInfoDTO>
-                  <ColumnInfoDTO>
-                    <option name="custom" value="false" />
-                    <option name="ext" value="{}" />
-                    <option name="name" value="id" />
-                    <option name="type" value="java.lang.Long" />
-                  </ColumnInfoDTO>
-                  <ColumnInfoDTO>
-                    <option name="custom" value="false" />
-                    <option name="ext" value="{}" />
-                    <option name="name" value="isDefault" />
-                    <option name="type" value="java.lang.String" />
-                  </ColumnInfoDTO>
-                  <ColumnInfoDTO>
-                    <option name="custom" value="false" />
-                    <option name="ext" value="{}" />
-                    <option name="name" value="isCompiled" />
-                    <option name="type" value="java.lang.String" />
-                  </ColumnInfoDTO>
-                  <ColumnInfoDTO>
-                    <option name="custom" value="false" />
-                    <option name="ext" value="{}" />
-                    <option name="name" value="sortlen" />
-                    <option name="type" value="java.lang.Long" />
-                  </ColumnInfoDTO>
-                </list>
-              </option>
-              <option name="name" value="Collations" />
-              <option name="preName" value="" />
-              <option name="saveModelName" value="" />
-              <option name="savePackageName" value="" />
-              <option name="savePath" value="" />
-=======
-              <option name="saveModelName" value="service-reimbursement" />
-              <option name="savePackageName" value="" />
-              <option name="savePath" value="./service-reimbursement/src/main/java/com/jluzh" />
->>>>>>> dev1
               <option name="templateGroupName" value="" />
             </TableInfoDTO>
           </value>

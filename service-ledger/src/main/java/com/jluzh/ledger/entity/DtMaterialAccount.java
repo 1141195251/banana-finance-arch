@@ -1,22 +1,24 @@
 package com.jluzh.ledger.entity;
 
 
-import java.io.Serializable;
-import java.util.Date;
-
-import io.swagger.annotations.*;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * 原材料明细账(DtMaterialAccount)表实体类
  *
  * @author panlaoliu
- * @since 2022-10-16 16:39:07
+ * @since 2022-10-17 01:19:39
  */
 @Data
 @ApiModel("原材料明细账")
 public class DtMaterialAccount implements Serializable {
-    private static final long serialVersionUID = -17734884186040155L;
+    private static final long serialVersionUID = 205033756576556203L;
 
     @ApiModelProperty("编号")
     private Long id;
@@ -34,28 +36,28 @@ public class DtMaterialAccount implements Serializable {
     private Integer inCount;
 
     @ApiModelProperty("收入单价")
-    private Double inUnitPrice;
+    private BigDecimal inUnitPrice;
 
     @ApiModelProperty("收入金额")
-    private Double inPrice;
+    private BigDecimal inPrice;
 
     @ApiModelProperty("发出数量")
     private Integer outCount;
 
     @ApiModelProperty("发出单价")
-    private Double outUprice;
+    private BigDecimal outUprice;
 
     @ApiModelProperty("发出金额")
-    private Double outPrice;
+    private BigDecimal outPrice;
 
     @ApiModelProperty("结存数量")
     private Integer balanceCount;
 
     @ApiModelProperty("结存单价")
-    private Double balanceUprice;
+    private BigDecimal balanceUprice;
 
     @ApiModelProperty("结存金额")
-    private Double balance;
+    private BigDecimal balance;
 
 }
 

@@ -11,12 +11,12 @@ import lombok.Data;
  * 供应商(ZjSupplier)表实体类
  *
  * @author panlaoliu
- * @since 2022-10-16 16:57:48
+ * @since 2022-10-17 01:23:02
  */
 @Data
 @ApiModel("供应商")
 public class ZjSupplier implements Serializable {
-    private static final long serialVersionUID = 900962185227389240L;
+    private static final long serialVersionUID = -31320270635077948L;
 
     @ApiModelProperty("编号")
     private Integer id;

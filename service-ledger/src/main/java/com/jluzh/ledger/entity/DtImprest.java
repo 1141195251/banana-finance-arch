@@ -1,22 +1,24 @@
 package com.jluzh.ledger.entity;
 
 
-import java.io.Serializable;
-import java.util.Date;
-
-import io.swagger.annotations.*;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * 备用金明细账(DtImprest)表实体类
  *
  * @author panlaoliu
- * @since 2022-10-16 16:39:07
+ * @since 2022-10-17 01:19:39
  */
 @Data
 @ApiModel("备用金明细账")
 public class DtImprest implements Serializable {
-    private static final long serialVersionUID = -81695715354640623L;
+    private static final long serialVersionUID = -18657331831268664L;
 
     @ApiModelProperty("编号")
     private Long id;
@@ -25,13 +27,13 @@ public class DtImprest implements Serializable {
     private Integer accountId;
 
     @ApiModelProperty("报销金额")
-    private Double amount;
+    private BigDecimal amount;
 
     @ApiModelProperty("摘要")
     private String summary;
 
     @ApiModelProperty("借方金额")
-    private Double debitMoney;
+    private BigDecimal debitMoney;
 
     @ApiModelProperty("贷出日期")
     private Date lendDate;
@@ -40,7 +42,7 @@ public class DtImprest implements Serializable {
     private String voucherId;
 
     @ApiModelProperty("收回金额")
-    private Double takeAmount;
+    private BigDecimal takeAmount;
 
 }
 

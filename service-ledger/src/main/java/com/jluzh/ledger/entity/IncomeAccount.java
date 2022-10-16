@@ -1,22 +1,23 @@
 package com.jluzh.ledger.entity;
 
 
-import java.io.Serializable;
-import java.util.Date;
-
-import io.swagger.annotations.*;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
 
 /**
  * 收入账表(IncomeAccount)表实体类
  *
  * @author panlaoliu
- * @since 2022-10-16 16:39:09
+ * @since 2022-10-17 01:19:39
  */
 @Data
 @ApiModel("收入账表")
 public class IncomeAccount implements Serializable {
-    private static final long serialVersionUID = 454240734414554501L;
+    private static final long serialVersionUID = 154280568118728696L;
 
     @ApiModelProperty("编号")
     private Long id;
@@ -25,19 +26,19 @@ public class IncomeAccount implements Serializable {
     private String itemName;
 
     @ApiModelProperty("本日")
-    private Double today;
+    private BigDecimal today;
 
     @ApiModelProperty("本月累计")
-    private Double monthTotal;
+    private BigDecimal monthTotal;
 
     @ApiModelProperty("本年累计")
-    private Double yearTotal;
+    private BigDecimal yearTotal;
 
     @ApiModelProperty("昨日结存")
-    private Double lastBalance;
+    private BigDecimal lastBalance;
 
     @ApiModelProperty("今日结存")
-    private Double balance;
+    private BigDecimal balance;
 
     @ApiModelProperty("出纳员")
     private Integer cashier;
