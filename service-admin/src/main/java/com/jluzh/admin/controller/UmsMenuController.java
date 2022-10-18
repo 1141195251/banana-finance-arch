@@ -82,7 +82,7 @@ public class UmsMenuController {
 //    }
 
     @ApiOperation("根据编号删除后台菜单")
-    @GetMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public CommonResult delete(@PathVariable Long id) {
         boolean hasRemoved = menuService.removeById(id);
         if (hasRemoved) {
