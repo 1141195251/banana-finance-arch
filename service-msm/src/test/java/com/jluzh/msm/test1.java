@@ -1,6 +1,8 @@
 package com.jluzh.msm;
 
 import org.jasypt.encryption.StringEncryptor;
+import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
+import org.jasypt.encryption.pbe.config.EnvironmentPBEConfig;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -13,6 +15,10 @@ public class test1 {
 
     @Test
     public void encryptor(){
-//        String username = encryptor.encrypt("");
+        String username = encryptor.encrypt("admin");
+        System.out.println(username);
+
+        String password = encryptor.encrypt("feiliuzhixia3qianchi");
+        System.out.println(password);
     }
 }

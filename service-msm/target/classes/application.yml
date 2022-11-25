@@ -1,12 +1,16 @@
 banana:
   mqtt:
-    username: ENC(S6PJ2mT6Zs44k8+SoCYrzXt8f09M/ZMgTRD+bLvYmQpdQC9znluVSSI3B+3AgU68)
-    password: ENC(ClLQCQXi6iakQBgBaRWRNwVJ0AV+kjSjE7BDw24fmg1xqgeHQznPpPtD4qIk2eJqbpVZplFkEFAmBvnEcouJ1A==)
+    username: ENC(I0GpQ21iooE2ej1v3zsFX1Ado8IRdSn2kVg3M4dYLEg3kQhxlP2Dx9n3UgApb2kV)
+    password: ENC(0DL1CH+zbdNTM2+BCrUgpxFR+rUHCpYOcpry0V232QEuNIclqhhKQf0K6wntNf6CWg+AfLqXX7liKgySXzuBrg==)
     clientId: client-1
     defaultTopic: push_message_topic
     serverClientId: publisherClient-1
     servers:
       - tcp://124.223.102.183:1883
+#jasypt加密的密匙
+jasypt:
+  encryptor: #你自己的密钥
+    password: abcd
 server:
   port: 9700
 spring:
@@ -18,8 +22,8 @@ spring:
   rabbitmq:
     host: 124.223.102.183
     port: 5672
-    username: ENC(S6PJ2mT6Zs44k8+SoCYrzXt8f09M/ZMgTRD+bLvYmQpdQC9znluVSSI3B+3AgU68)
-    password: ENC(ClLQCQXi6iakQBgBaRWRNwVJ0AV+kjSjE7BDw24fmg1xqgeHQznPpPtD4qIk2eJqbpVZplFkEFAmBvnEcouJ1A==)
+    username: ENC(I0GpQ21iooE2ej1v3zsFX1Ado8IRdSn2kVg3M4dYLEg3kQhxlP2Dx9n3UgApb2kV)
+    password: ENC(0DL1CH+zbdNTM2+BCrUgpxFR+rUHCpYOcpry0V232QEuNIclqhhKQf0K6wntNf6CWg+AfLqXX7liKgySXzuBrg==)
   datasource:
     url: jdbc:mysql://localhost:3306/bfinance?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false
     username: root

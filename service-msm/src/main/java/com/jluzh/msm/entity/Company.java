@@ -4,6 +4,8 @@ package com.jluzh.msm.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import io.swagger.annotations.*;
 import lombok.Data;
 
@@ -19,6 +21,7 @@ public class Company implements Serializable {
     private static final long serialVersionUID = 801724913560255677L;
 
     @ApiModelProperty("编号")
+    @TableId(type = IdType.AUTO)
     private Integer id;
 
     @ApiModelProperty("名称")
