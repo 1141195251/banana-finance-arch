@@ -32,7 +32,7 @@ CREATE TABLE `bank_deposit_diary` (
                                       PRIMARY KEY (`id`),
                                       KEY `idx_voucher_id` (`voucher_id`),
                                       KEY `idx_to_account_id` (`to_account_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='银行存款日记';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='银行存款日记';
 
 /*Data for the table `bank_deposit_diary` */
 
@@ -46,7 +46,7 @@ CREATE TABLE `company` (
                            `comment` varchar(100) DEFAULT NULL COMMENT '描述',
                            `create_time` datetime DEFAULT NULL COMMENT '创建日期',
                            PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='公司';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='公司';
 
 /*Data for the table `company` */
 
@@ -60,7 +60,7 @@ CREATE TABLE `dept` (
                         `comment` varchar(100) DEFAULT NULL COMMENT '描述',
                         `create_time` datetime DEFAULT NULL COMMENT '创建日期',
                         PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='部门';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='部门';
 
 /*Data for the table `dept` */
 
@@ -76,7 +76,7 @@ CREATE TABLE `dept_relation` (
                                  PRIMARY KEY (`id`),
                                  KEY `idx_company_id` (`company_id`),
                                  KEY `idx_dept_id` (`dept_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='部门关系';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='部门关系';
 
 /*Data for the table `dept_relation` */
 
@@ -95,7 +95,7 @@ CREATE TABLE `dt_account_receivable` (
                                          `balance` decimal(25,2) DEFAULT NULL COMMENT '余额',
                                          PRIMARY KEY (`id`),
                                          KEY `idx_voucher_id` (`voucher_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='应收款明细账';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='应收款明细账';
 
 /*Data for the table `dt_account_receivable` */
 
@@ -115,7 +115,7 @@ CREATE TABLE `dt_imprest` (
                               PRIMARY KEY (`id`),
                               KEY `idx_voucher_id` (`voucher_id`),
                               KEY `idx_account_id` (`account_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='备用金明细账';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='备用金明细账';
 
 /*Data for the table `dt_imprest` */
 
@@ -139,7 +139,7 @@ CREATE TABLE `dt_material_account` (
                                        `balance` decimal(25,2) DEFAULT NULL COMMENT '结存金额',
                                        PRIMARY KEY (`id`),
                                        KEY `idx_voucher_id` (`voucher_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='原材料明细账';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='原材料明细账';
 
 /*Data for the table `dt_material_account` */
 
@@ -158,7 +158,7 @@ CREATE TABLE `dt_production_account` (
                                          `total` decimal(25,2) DEFAULT NULL COMMENT '合计',
                                          PRIMARY KEY (`id`),
                                          KEY `idx_voucher_id` (`voucher_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='生产成本明细账';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='生产成本明细账';
 
 /*Data for the table `dt_production_account` */
 
@@ -176,7 +176,7 @@ CREATE TABLE `gl_bank_deposit` (
                                    `balance` decimal(25,2) NOT NULL COMMENT '余额',
                                    PRIMARY KEY (`id`),
                                    KEY `idx_voucher_id` (`voucher_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='银行存款总账';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='银行存款总账';
 
 /*Data for the table `gl_bank_deposit` */
 
@@ -195,7 +195,7 @@ CREATE TABLE `income_account` (
                                   `cashier` int(11) DEFAULT NULL COMMENT '出纳员',
                                   PRIMARY KEY (`id`),
                                   KEY `idx_item_name` (`item_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='收入账表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='收入账表';
 
 /*Data for the table `income_account` */
 
@@ -226,7 +226,7 @@ CREATE TABLE `invoice` (
                            KEY `idx_purchaser_name` (`purchaser_name`),
                            KEY `idx_seller_name` (`seller_name`),
                            KEY `idx_invoice_code` (`invoice_code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='发票';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='发票';
 
 /*Data for the table `invoice` */
 
@@ -240,7 +240,7 @@ CREATE TABLE `job` (
                        `comment` varchar(100) DEFAULT NULL COMMENT '描述',
                        `create_time` datetime DEFAULT NULL COMMENT '创建日期',
                        PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='职位';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='职位';
 
 /*Data for the table `job` */
 
@@ -263,7 +263,7 @@ CREATE TABLE `message_record` (
                                   KEY `idx_receiver_id` (`receiver_id`),
                                   KEY `idx_create_by` (`create_by`),
                                   KEY `idx_update_by` (`update_by`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='消息推送记录表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='消息推送记录表';
 
 /*Data for the table `message_record` */
 
@@ -288,7 +288,7 @@ CREATE TABLE `payment_voucher` (
                                    KEY `idx_lender_active_account_id` (`lender_active_account_id`),
                                    KEY `idx_auditor` (`auditor`),
                                    KEY `idx_supervisor` (`supervisor`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='付款凭证';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='付款凭证';
 
 /*Data for the table `payment_voucher` */
 
@@ -313,7 +313,7 @@ CREATE TABLE `receipt_voucher` (
                                    KEY `idx_lender_account_id` (`lender_account_id`),
                                    KEY `idx_supervisor` (`supervisor`),
                                    KEY `idx_auditor` (`auditor`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='收款凭证';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='收款凭证';
 
 /*Data for the table `receipt_voucher` */
 
@@ -328,7 +328,7 @@ CREATE TABLE `rs_risk` (
                            `create_time` datetime DEFAULT NULL COMMENT '创建日期',
                            PRIMARY KEY (`id`),
                            KEY `idx_risk_category_id` (`risk_category_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='风险表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='风险表';
 
 /*Data for the table `rs_risk` */
 
@@ -341,7 +341,7 @@ CREATE TABLE `rs_risk_category` (
                                     `risk_category_name` varchar(50) DEFAULT NULL COMMENT '风险名称',
                                     `create_time` datetime DEFAULT NULL COMMENT '创建日期',
                                     PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='风险分类表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='风险分类表';
 
 /*Data for the table `rs_risk_category` */
 
@@ -357,7 +357,7 @@ CREATE TABLE `rs_risk_report` (
                                   `create_time` datetime DEFAULT NULL COMMENT '创建日期',
                                   PRIMARY KEY (`id`),
                                   KEY `idx_risk_id` (`risk_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='风险报告';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4mb4 COMMENT='风险报告';
 
 /*Data for the table `rs_risk_report` */
 
@@ -372,7 +372,7 @@ CREATE TABLE `tb_account` (
                               `description` varchar(100) DEFAULT NULL COMMENT '描述',
                               PRIMARY KEY (`id`),
                               KEY `idx_parent_account_id` (`parent_account_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='科目表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4mb4 COMMENT='科目表';
 
 /*Data for the table `tb_account` */
 
@@ -389,7 +389,7 @@ CREATE TABLE `tb_account_relation` (
                                        KEY `idx_account_id` (`account_id`),
                                        KEY `idx_company_id` (`company_id`),
                                        KEY `idx_dept_id` (`dept_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='科目关系表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='科目关系表';
 
 /*Data for the table `tb_account_relation` */
 
@@ -407,7 +407,7 @@ CREATE TABLE `tb_expense` (
                               KEY `idx_allocation_id` (`allocation_id`),
                               KEY `idx_company_id` (`company_id`),
                               KEY `idx_dept_id` (`dept_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='费用表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='费用表';
 
 /*Data for the table `tb_expense` */
 
@@ -422,7 +422,7 @@ CREATE TABLE `tb_expense_allocation` (
                                          `total` decimal(25,2) DEFAULT NULL COMMENT '合计金额',
                                          PRIMARY KEY (`id`),
                                          KEY `idx_account_id` (`account_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='费用分摊表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='费用分摊表';
 
 /*Data for the table `tb_expense_allocation` */
 
@@ -443,7 +443,7 @@ CREATE TABLE `tb_expense_budge` (
                                     KEY `idx_account_id` (`account_id`),
                                     KEY `idx_company_id` (`company_id`),
                                     KEY `idx_dept_id` (`dept_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='费用预算';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='费用预算';
 
 /*Data for the table `tb_expense_budge` */
 
@@ -462,7 +462,7 @@ CREATE TABLE `tb_reimbursement_info` (
                                          PRIMARY KEY (`id`) USING BTREE,
                                          KEY `next_deal_sn` (`next_deal_sn`) USING BTREE,
                                          KEY `create_sn` (`create_sn`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=COMPACT;
 
 /*Data for the table `tb_reimbursement_info` */
 
@@ -484,7 +484,7 @@ CREATE TABLE `tb_reimbursement_item` (
                                          `comment` varchar(100) DEFAULT NULL COMMENT '描述',
                                          PRIMARY KEY (`id`) USING BTREE,
                                          KEY `claim_voucher_id` (`claim_voucher_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=COMPACT;
 
 /*Data for the table `tb_reimbursement_item` */
 
@@ -514,7 +514,7 @@ CREATE TABLE `tb_reimbursement_record` (
                                            PRIMARY KEY (`id`) USING BTREE,
                                            KEY `claim_voucher_id` (`claim_voucher_id`) USING BTREE,
                                            KEY `deal_sn` (`deal_sn`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=COMPACT;
 
 /*Data for the table `tb_reimbursement_record` */
 
@@ -539,7 +539,7 @@ CREATE TABLE `transfer_voucher` (
                                     KEY `idx_active_account_id` (`active_account_id`),
                                     KEY `idx_supervisor` (`supervisor`),
                                     KEY `idx_auditor` (`auditor`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='转账凭证';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='转账凭证';
 
 /*Data for the table `transfer_voucher` */
 
@@ -559,7 +559,7 @@ CREATE TABLE `ums_admin` (
                              `login_time` datetime DEFAULT NULL COMMENT '最后登录时间',
                              `status` int(1) DEFAULT '1' COMMENT '帐号启用状态：0->禁用；1->启用',
                              PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8 COMMENT='后台用户表';
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb4 COMMENT='后台用户表';
 
 /*Data for the table `ums_admin` */
 
@@ -588,7 +588,7 @@ CREATE TABLE `ums_admin_login_log` (
                                        `address` varchar(100) DEFAULT NULL,
                                        `user_agent` varchar(100) DEFAULT NULL COMMENT '浏览器登录类型',
                                        PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=651 DEFAULT CHARSET=utf8 COMMENT='后台用户登录日志表';
+) ENGINE=InnoDB AUTO_INCREMENT=651 DEFAULT CHARSET=utf8mb4 COMMENT='后台用户登录日志表';
 
 /*Data for the table `ums_admin_login_log` */
 
@@ -969,7 +969,7 @@ CREATE TABLE `ums_admin_role_relation` (
                                            `admin_id` bigint(20) DEFAULT NULL,
                                            `role_id` bigint(20) DEFAULT NULL,
                                            PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=115 DEFAULT CHARSET=utf8 COMMENT='后台用户和角色关系表';
+) ENGINE=InnoDB AUTO_INCREMENT=115 DEFAULT CHARSET=utf8mb4 COMMENT='后台用户和角色关系表';
 
 /*Data for the table `ums_admin_role_relation` */
 
@@ -1005,7 +1005,7 @@ CREATE TABLE `ums_menu` (
                             `icon` varchar(200) DEFAULT NULL COMMENT '前端图标',
                             `hidden` int(1) DEFAULT NULL COMMENT '前端隐藏',
                             PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8 COMMENT='后台菜单表';
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COMMENT='后台菜单表';
 
 /*Data for the table `ums_menu` */
 
@@ -1031,7 +1031,7 @@ CREATE TABLE `ums_resource` (
                                 `description` varchar(500) DEFAULT NULL COMMENT '描述',
                                 `category_id` bigint(20) DEFAULT NULL COMMENT '资源分类ID',
                                 PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8 COMMENT='后台资源表';
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COMMENT='后台资源表';
 
 /*Data for the table `ums_resource` */
 
@@ -1075,7 +1075,7 @@ CREATE TABLE `ums_resource_category` (
                                          `name` varchar(200) DEFAULT NULL COMMENT '分类名称',
                                          `sort` int(4) DEFAULT NULL COMMENT '排序',
                                          PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='资源分类表';
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COMMENT='资源分类表';
 
 /*Data for the table `ums_resource_category` */
 
@@ -1100,7 +1100,7 @@ CREATE TABLE `ums_role` (
                             `status` int(1) DEFAULT '1' COMMENT '启用状态：0->禁用；1->启用',
                             `sort` int(11) DEFAULT '0',
                             PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COMMENT='后台用户角色表';
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COMMENT='后台用户角色表';
 
 /*Data for the table `ums_role` */
 
@@ -1121,7 +1121,7 @@ CREATE TABLE `ums_role_menu_relation` (
                                           `role_id` bigint(20) DEFAULT NULL COMMENT '角色ID',
                                           `menu_id` bigint(20) DEFAULT NULL COMMENT '菜单ID',
                                           PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=124 DEFAULT CHARSET=utf8 COMMENT='后台角色菜单关系表';
+) ENGINE=InnoDB AUTO_INCREMENT=124 DEFAULT CHARSET=utf8mb4 COMMENT='后台角色菜单关系表';
 
 /*Data for the table `ums_role_menu_relation` */
 
@@ -1219,7 +1219,7 @@ CREATE TABLE `ums_role_resource_relation` (
                                               `role_id` bigint(20) DEFAULT NULL COMMENT '角色ID',
                                               `resource_id` bigint(20) DEFAULT NULL COMMENT '资源ID',
                                               PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=216 DEFAULT CHARSET=utf8 COMMENT='后台角色资源关系表';
+) ENGINE=InnoDB AUTO_INCREMENT=216 DEFAULT CHARSET=utf8mb4 COMMENT='后台角色资源关系表';
 
 /*Data for the table `ums_role_resource_relation` */
 
@@ -1297,7 +1297,7 @@ CREATE TABLE `voucher_item` (
                                 `comment` varchar(100) DEFAULT NULL COMMENT '凭证返回说明',
                                 PRIMARY KEY (`id`),
                                 KEY `idx_applicant` (`applicant`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='凭证单';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='凭证单';
 
 /*Data for the table `voucher_item` */
 
@@ -1313,7 +1313,7 @@ CREATE TABLE `zj_account_summary` (
                                       `create_time` datetime DEFAULT NULL COMMENT '创建日期',
                                       PRIMARY KEY (`id`),
                                       KEY `idx_account_id` (`account_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='科目汇总表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='科目汇总表';
 
 /*Data for the table `zj_account_summary` */
 
@@ -1334,7 +1334,7 @@ CREATE TABLE `zj_contract_item` (
                                     PRIMARY KEY (`id`),
                                     KEY `idx_account_id` (`account_id`),
                                     KEY `idx_supplier_id` (`supplier_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='合同付款表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='合同付款表';
 
 /*Data for the table `zj_contract_item` */
 
@@ -1351,7 +1351,7 @@ CREATE TABLE `zj_supplier` (
                                `grade` varchar(8) DEFAULT NULL COMMENT '等级',
                                PRIMARY KEY (`id`),
                                KEY `idx_company_id` (`company_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='供应商';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='供应商';
 
 /*Data for the table `zj_supplier` */
 
