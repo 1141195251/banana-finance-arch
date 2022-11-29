@@ -16,7 +16,7 @@ import java.util.Date;
 /**
  * (TbReimbursementInfo)表实体类
  *
- * @author
+ * @author pan-laoliu
  * @since 2022-10-16 22:24:12
  */
 @Data
@@ -28,7 +28,7 @@ public class TbReimbursementInfo implements Serializable {
 
     @ApiModelProperty("编号")
     @ExcelIgnore
-    private Integer id;
+    private Long id;
 
     @ApiModelProperty("事由")
     @ExcelProperty("事由")

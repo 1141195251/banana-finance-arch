@@ -19,7 +19,7 @@ public class Dept implements Serializable {
     private static final long serialVersionUID = -81640923234378640L;
 
     @ApiModelProperty("编号")
-    private Integer id;
+    private Long id;
 
     @ApiModelProperty("名称")
     private String name;

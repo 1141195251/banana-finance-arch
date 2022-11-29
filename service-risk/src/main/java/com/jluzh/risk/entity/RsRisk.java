@@ -19,7 +19,7 @@ public class RsRisk implements Serializable {
     private static final long serialVersionUID = -40346314058650605L;
 
     @ApiModelProperty("编号")
-    private Integer id;
+    private Long id;
 
     @ApiModelProperty("风险名称")
     private String riskName;

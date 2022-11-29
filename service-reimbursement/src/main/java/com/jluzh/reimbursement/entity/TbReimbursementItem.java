@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 /**
  * (TbReimbursementItem)表实体类
  *
- * @author
+ * @author pan-laoliu
  * @since 2022-10-16 22:24:11
  */
 @Data
@@ -27,7 +27,7 @@ public class TbReimbursementItem implements Serializable {
 
     @ApiModelProperty("编号")
     @ExcelIgnore
-    private Integer id;
+    private Long id;
 
     @ApiModelProperty("报销单")
     @ExcelProperty("v")

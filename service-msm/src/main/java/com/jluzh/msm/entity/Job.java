@@ -19,7 +19,7 @@ public class Job implements Serializable {
     private static final long serialVersionUID = 586464444851661000L;
 
     @ApiModelProperty("编号")
-    private Integer id;
+    private Long id;
 
     @ApiModelProperty("名称")
     private String name;

@@ -19,7 +19,7 @@ public class RsRiskReport implements Serializable {
     private static final long serialVersionUID = -85228225523494497L;
 
     @ApiModelProperty("编号")
-    private Integer id;
+    private Long id;
 
     @ApiModelProperty("风险ID")
     private Integer riskId;
